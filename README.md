@@ -1,95 +1,9 @@
-# PythonTemplate
-This repository contains a simple template for Python repositories, including actions and a `.gitignore` file. The actions include organizing imports with `isort`, linting using `ruff`, automatic test execution using `pytest`, as well as a small coverage report with `coverage` on merging to the main branch.
+# Canadian Inborn Errors of Immunity National Registry (CIEINR)
 
-## Get started
-
-First, clone the repository.
-
-Create the `main`, `develop` and, `gh-pages` branches.
-
-Whenever you want to change something, create a new branch. If it is done, create a pull request to the `develop` branch.
-
-Only pull from `develop` to `main` with fully functional, tested and documented new versions.
-
-### Repository Settings
-**Branch Protection Rules**
-1. Go to the repository settings
-2. Open `Branches` in the left sidebar
-3. Click `Add branch ruleset`
-4. Choose an appropriate ruleset name, such as `Branch protection rules for main and develop`
-5. Under `target branches`, enter `main` and `develop`
-6. Under `Rules` select at least:
-    - `Restricht deletions`
-    - `Require linear history`
-    - `Require a pull request before merging`
-      - Select an appropriate number of reviewers
-      - 
-    - `Block force pushes`
-7. Click `Create` to finish. you can now find the ruleset under `Rules`>`Rulesets`
-
-**Actions Permissions**
-1. Go to the repository settings
-2. Open `Actions` > `General` in the left sidebar
-3. Under `Workflow permissions`, select
-   - `Read and write permissions`
-   - `Allow GitHub Actions to create and approve pull requests`
-
-### Set Up Project
-1. [Optional] Create a new virtual environment
-2. Run `pip install -e .[test,docs]`
-
-**Documentation Setup**
-1. Create a `docs` folder in the root of the project and open it (`mkdir docs && cd docs`)
-2. Run `spinx-quickstart` to create a new documentation (On Windows, run `sphinx-quickstart.exe`). Fill out all relevant information.
-    - Select no `[n]` when asked `Separate source and build directories (y/n) [n]`
-3. [Optionally] Run `make html` to build the documentation (On Windows, might have to write full path to `make.bat`).
-4. Copy `docs/conf.py` into your own docs folder, replacing the existing one.
-5. Change all relevant fields in the `pyproject.toml` and `docs/conf.py` files. (Don't forget the intersphinx setup)
-
-If you want to run sphinx locally: 
-- `sphinx-apidoc --separate --module-first -d 2 -H "API reference" --follow-links -o apidocs ../src/template_for_python_projects`
-- `make.bat` html
-- Open `docs/_build/html/index.html` in your browser
-
-### Submodules
-Sometimes it is necessary to have other repositories as submodules. To initiate this you can follow this tutorial by Git itself on [Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). But in essence you need this command:
-
-`git submodule add https://github.com/frehburg/TemplateForPythonProjects`
-
-If you then want to import the submodule as a python package in your code, the ci will not be able to resolve it. To fix this, add the following lines to `python_ci.yml`:
-
-```
-- name: Checkout code
-        uses: actions/checkout@v3
-        with:  # this
-          submodules: true   # this to ensure submodules are checked out
-```
-
-and further down
-
-```
- run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install --editable .[test,docs]
-          python3 -m pip install --editable ./submodules/TemplateForPythonProjects  # this to install the submodule package
-```
-
-### Add custom badges to your README
-Please check the tutorial in [custom_badges.md](https://github.com/frehburg/TemplateForPythonProjects/blob/develop/custom_badges.md) for information on creating custom badges for your github repo.
-
-
-
-
-You can also add a badge like this one to your README.md file:
-[![Build status](https://github.com/frehburg/TemplateForPythonProjects/workflows/CI/badge.svg)](https://github.com/frehburg/TemplateForPythonProjects/actions/workflows/python_ci.yml)  
-[Stable Documentation](https://frehburg.github.io/TemplateForPythonProjects/stable/)  
-[Latest Documentation](https://frehburg.github.io/TemplateForPythonProjects/latest/)  
-
-See here a template for your README
-
-# Project Name
-
-Brief description of your project.
+This repository houses the LinkML representation of the data model for
+the Canadian Inborn Errors of Immunity National Registry (CIEINR). This
+project facilitates the export of patient data into Phenopackets,
+leveraging RareLink's functionalities.
 
 ## Table of Contents
 
@@ -98,18 +12,43 @@ Brief description of your project.
 - [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
-- [Features](#features)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ## Project Description
 
-A brief overview of your project and its purpose.
+The Canadian Inborn Errors of Immunity National Registry (CIEINR) aims
+to collect and standardize data on patients with inborn errors of
+immunity (IEI) across Canada. This repository provides the LinkML
+representation of the CIEINR data model, enabling the creation of
+interoperable data structures and facilitating the export of patient
+data into Phenopackets. This approach aligns with the goals of
+improving diagnosis, treatment, and research for IEI patients, as
+detailed in [Genotype-first approach to the diagnosis of primary
+immunodeficiencies: a Canadian perspective](https://www.sciencedirect.
+com/science/article/abs/pii/S1521661624001268).
+
+This project integrates with RareLink to export data into Phenopackets,
+promoting data sharing and analysis using standardized formats. The
+forms used in this project are developed based on the rules found in
+[RareLink's documentation for developing REDCap instruments](https://
+rarelink.readthedocs.io/en/latest/4_user_guide/4_5_develop_redcap_
+instruments.html).
 
 ## Features
 
-List the key features of your project.
+* **LinkML Data Model:** Defines the structure of the CIEINR data,
+  ensuring data consistency and interoperability.
+* **RareLink Integration:** Enables the export of CIEINR data into
+  Phenopackets.
+* **Phenopacket Generation:** Facilitates the creation of standardized
+  Phenopackets for patient data.
+* **REDCap Instrument Alignment:** The forms are developed using the
+  guidelines for Rarelink and REDCap integration.
+* **Data Standardization:** Promotes the use of standardized
+  terminologies and data formats.
 
 ## Getting Started
 
@@ -117,24 +56,41 @@ Instructions on how to set up and run your project locally.
 
 ### Prerequisites
 
-List any software, libraries, or dependencies that need to be installed before setting up the project.
+* Python 3.x
+* pip
+* RareLink (if you need to generate phenopackets)
+* LinkML Toolkit
 
 ### Installation
 
 Step-by-step instructions on how to install and set up your project.
 
-To install your own code run `pip install -e .` in a terminal
+To install your own code run `pip install -e .` in a terminal.
 
-## Features
+## Usage
 
-Provide examples and explanations of how your project can be used. Include code snippets or screenshots if necessary.
+This project primarily focuses on the LinkML representation of the
+CIEINR data model. You can use the LinkML schema to:
 
-## Contributing
-
-Guidelines for contributing to your project. Include information about how others can contribute, submit issues, and create pull requests.
+* Generate data validation tools.
+* Create data transformation scripts.
+* Export data into various formats, including Phenopackets using
+  RareLink.
+* Follow the instructions found in the Rarelink documentation to
+  export phenopackets. [Rarelink phenopackets documentation](https://
+  rarelink.readthedocs.io/en/latest/4_user_guide/4_3_phenopackets.html)
 
 ## License
 
-Specify the license under which your project is distributed.
+Specify the license under which your project is distributed. (e.g., MIT)
 
 ## Acknowledgements
+
+* This project is inspired by the research on inborn errors of
+  immunity and the need for standardized data collection. 
+* We acknowledge the RareLink project for providing the tools and
+  guidelines for Phenopacket generation.
+* We acknowledge the paper, [Genotype-first approach to the diagnosis
+  of primary immunodeficiencies: a Canadian perspective](https://
+  www.sciencedirect.com/science/article/abs/pii/S1521661624001268),
+  for the general information regarding CIEINR.
