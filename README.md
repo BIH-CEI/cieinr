@@ -1,4 +1,4 @@
-# Canadian Inborn Errors of Immunity National Registry (CIEINR)
+# Repo for the Canadian Inborn Errors of Immunity National Registrie's data model
 
 This repository houses the LinkML representation of the data model for
 the Canadian Inborn Errors of Immunity National Registry (CIEINR). This
