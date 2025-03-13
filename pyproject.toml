@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Repo for the Canadian Inborn Errors of Immunity National Registrie's data model"
+name = "cieinr"
 authors = [
     {name = "Adam Graefe", email="adam.graefe@charite.de"},
      ]
@@ -12,7 +12,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 keywords = [
     "Inborn Errors of Immunity",
-    "Phenopackets",
+    "GA4GH Phenopackets",
     "Canadian Inborn Errors of Immunity National Registry",
     "Ontologies",
     "Interoperability",
@@ -30,7 +30,8 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Machine Learning"
 ]
 dependencies = [
-    "numpy",
+    "pytest",
+
 ]
 dynamic = ["version"]
 
@@ -48,7 +49,7 @@ bugtracker = "https://github.com/frehburg/template_for_python_projects/issues"
 package-dir = { "" = "src" }
 
 [tool.setuptools.dynamic]
-version = { attr = "template_for_python_projects.__version__" }
+version = { attr = "cieinr.__version__" }
 
 # The following would provide a command line executable called `sample`
 # which executes the function `main` from this package when invoked.
