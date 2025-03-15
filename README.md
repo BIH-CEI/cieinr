@@ -1,4 +1,8 @@
-# Repo for the Canadian Inborn Errors of Immunity National Registrie's data model
+# Canadian Inborn Errors of Immunity National Registry (CIEINR) Data Model
+
+[![Python 3.10-3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![LinkML](https://img.shields.io/badge/LinkML-1.8.0+-green.svg)](https://linkml.io/)
 
 This repository houses the LinkML representation of the data model for
 the Canadian Inborn Errors of Immunity National Registry (CIEINR). This
@@ -56,10 +60,10 @@ Instructions on how to set up and run your project locally.
 
 ### Prerequisites
 
-* Python 3.x
+* Python 3.10, 3.11, or 3.12 (not compatible with Python 3.13 due to LinkML dependencies)
 * pip
 * RareLink (if you need to generate phenopackets)
-* LinkML Toolkit
+* LinkML Toolkit (1.8.0+)
 
 ### Installation
 

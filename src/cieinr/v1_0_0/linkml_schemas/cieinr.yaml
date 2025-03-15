@@ -1,9 +1,9 @@
-id: https://github.com/YourOrg/CIEINR/cieinr.yaml
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/cieinr.yaml
 name: cieinr
 description: National Inborn Errors of Immunity Registry in Canada - Simplified Model for Phenopackets Export
 prefixes:
   linkml: https://w3id.org/linkml/
-  cieinr: https://github.com/YourOrg/CIEINR/
+  cieinr: https://github.com/BIH-CEI/cieinr
   MONDO: https://purl.obolibrary.org/obo/MONDO_
   SNOMEDCT: http://snomed.info/sct/
 imports:
@@ -12,9 +12,9 @@ imports:
   - cieinr_repeated_elements
   - cieinr_types
   # Import only the three forms we're focusing on
-  - basic_form
-  - patient_demographics_initial_form
-  - infections_initial_form
+  - form_1_basic
+  - form_2_demographics_initial
+  - form_3_infections_initial
 
 default_prefix: cieinr
 default_range: string
@@ -25,9 +25,9 @@ classes:
       Base class for all records, containing only fields needed for Phenopackets export.
     slots:
       - record_id
-      - basic_form
-      - patient_demographics_initial
-      - repeated_elements
+      - form_1_basic
+      - form_2_demographics_initial
+      - cieinr_repeated_elements
     tree_root: true
 
 slots:
@@ -37,20 +37,20 @@ slots:
     required: true
     identifier: true
 
-  basic_form:
+  form_1_basic:
     description: Basic IEI diagnosis information
     range: BasicForm
     required: false
     inlined: true
 
-  patient_demographics_initial:
+  form_2_demographics_initial:
     description: Initial patient demographics data
     range: PatientDemographicsInitial
     required: false
     inlined: true
 
-  repeated_elements:
-    description: Container for repeated elements
-    multivalued: true
-    inlined_as_list: true
+  cieinr_repeated_elements:
+    description: Container for repeated elements used in CIEINR
     range: RepeatedElement
+    required: false
+    inlined: true

@@ -1,8 +1,8 @@
-id: https://github.com/YourOrg/CIEINR/code_systems_data
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/cieinr_code_systems_data
 name: cieinr_code_systems
 prefixes:
   linkml: https://w3id.org/linkml/
-  cieinr: https://github.com/YourOrg/CIEINR/
+  cieinr: https://github.com/BIH-CEI/cieinr
 imports:
   - linkml:types
   - cieinr_types

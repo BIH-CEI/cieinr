@@ -20,11 +20,13 @@ from collections import defaultdict
 # Import CIEINR functions directly to bypass CLI
 from cieinr.config import Config
 try:
-    from cieinr.v1_0_0.redcap_to_linkml.registry import MAPPING_FUNCTIONS
+    from cieinr.v1_0_0.mappings.redcap_to_linkml.registry import MAPPING_FUNCTIONS
+    # Import disease enum for better labels
+    from cieinr.v1_0_0.python_schemas.form_1_basic import IUIS2024MONDOEnum
 except ImportError:
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "src")))
     try:
-        from cieinr.v1_0_0.redcap_to_linkml.registry import MAPPING_FUNCTIONS
+        from cieinr.v1_0_0.mappings.redcap_to_linkml.registry import MAPPING_FUNCTIONS
     except ImportError:
         print("Error importing MAPPING_FUNCTIONS. Make sure the package is installed or modify sys.path.")
         sys.exit(1)
@@ -97,7 +99,7 @@ def redcap_to_linkml(records, output_file):
         records: List of REDCap records (either from file or API)
         output_file: Path to save the transformed data
     """
-    print(f"Transforming REDCap data to LinkML format...")
+    print("Transforming REDCap data to LinkML format...")
     
     # Process using the mapping functions
     transformed_data = []
@@ -372,7 +374,34 @@ def extract_diseases(record: dict) -> List[dict]:
     
     # Extract primary diagnosis if available
     if basic_form.get("iei_deficiency_basic"):
-        disease_term = map_mondo_term(basic_form["iei_deficiency_basic"])
+        disease_code = basic_form["iei_deficiency_basic"]
+        
+        # Get the disease label from the IUIS2024MONDOEnum if possible
+        disease_term = {}
+        try:
+            # Try to get the label from the enum - access as attribute
+            enum_value = getattr(IUIS2024MONDOEnum, disease_code, None)
+            if enum_value and hasattr(enum_value, 'description') and hasattr(enum_value, 'meaning'):
+                # Extract the MONDO ID from the meaning URL
+                mondo_id = str(enum_value.meaning)
+                if 'MONDO_' in mondo_id:
+                    mondo_id = 'MONDO:' + mondo_id.split('MONDO_')[1]
+                else:
+                    mondo_id = disease_code.upper()
+                    
+                disease_term = {
+                    "id": mondo_id,
+                    "label": enum_value.description
+                }
+                print(f"Using enum label: {disease_term['label']} for {disease_code}")
+            else:
+                # Fall back to basic mapping if the enum lookup fails
+                disease_term = map_mondo_term(disease_code)
+                print(f"Falling back to map_mondo_term for {disease_code} (enum value not found)")
+        except (AttributeError, TypeError) as e:
+            # Fall back to basic mapping if the enum lookup fails
+            disease_term = map_mondo_term(disease_code)
+            print(f"Falling back to map_mondo_term for {disease_code} due to error: {str(e)}")
         
         # Get diagnosis date from demographics
         demographics = record.get("patient_demographics_initial_form", {})
@@ -413,7 +442,7 @@ def phenopackets_export(linkml_data, output_dir, output_file=None):
     """
     Transform LinkML data to Phenopackets.
     """
-    print(f"Converting LinkML data to Phenopackets...")
+    print("Converting LinkML data to Phenopackets...")
     
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
@@ -515,7 +544,7 @@ def main():
         # Step 2: Convert LinkML format to Phenopackets
         phenopackets_dir = output_dir / "phenopackets"
         phenopackets_output = "all_phenopackets.json"
-        phenopackets = phenopackets_export(linkml_data, phenopackets_dir, phenopackets_output)
+        phenopackets_export(linkml_data, phenopackets_dir, phenopackets_output)
         
         # Also save to res directory for easy access
         res_linkml_path = base_dir / "res" / "patient_linkml.json"

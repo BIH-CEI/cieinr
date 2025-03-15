@@ -1,5 +1,5 @@
 {
-  "id": "phenopacket:e6ba95c6-2ef8-4bfb-9d27-7e5e6bbcf158",
+  "id": "phenopacket:6498df54-b496-4022-a0f5-5d344d84a0df",
   "subject": {
     "id": "16",
     "date_of_birth": "2022-03-01",
@@ -79,7 +79,7 @@
     {
       "term": {
         "id": "MONDO:0007843",
-        "label": "primary immunodeficiency disease"
+        "label": "Kabuki Syndrome 1 due to KMT2D deficiency"
       },
       "onset": {
         "timestamp": ""
@@ -94,7 +94,7 @@
     }
   ],
   "metadata": {
-    "created": "2025-03-15T16:51:07.352550",
+    "created": "2025-03-15T19:31:28.954611",
     "created_by": "Adam G.",
     "resources": [
       {
