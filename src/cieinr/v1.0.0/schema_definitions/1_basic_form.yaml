@@ -971,9 +971,6 @@ enums:
       mondo_0030693:
         description: Ligase I deficiency
         meaning: MONDO:0030693
-      mondo_0012859:
-        description: Lazy leukocyte
-        meaning: MONDO:0012859
       mondo_0013863:
         description: LRBA deficiency
         meaning: MONDO:0013863
@@ -1187,9 +1184,9 @@ enums:
       mondo_0014383:
         description: ORAI-1 deficiency
         meaning: MONDO:0014383
-      mondo_0012548:
+      mondo_0012559:
         description: P14/LAMTOR2 deficiency
-        meaning: MONDO:0012548
+        meaning: MONDO:0012559
       mondo_0010455:
         description: PAX1 deficiency
         meaning: MONDO:0010455
@@ -1283,9 +1280,6 @@ enums:
       mondo_0054699:
         description: PRAAS- CANDLE (PSMB4)
         meaning: MONDO:0054699
-      mondo_0054698:
-        description: PRAAS- CANDLE (PSMB8)
-        meaning: MONDO:0054698
       mondo_0968983:
         description: PRAAS -like condition (AD, AR, and various)
         meaning: MONDO:0968983
@@ -1415,9 +1409,9 @@ enums:
       mondo_0013059:
         description: SAMHD1 deficiency, AGS5
         meaning: MONDO:0013059
-      mondo_0958011:
+      mondo_0958013:
         description: SEC61A1 deficiency
-        meaning: MONDO:0958011
+        meaning: MONDO:0958013
       mondo_0044208:
         description: SMARCD2 deficiency
         meaning: MONDO:0044208
@@ -1568,9 +1562,9 @@ enums:
       tlr4_deficiency:
         description: TLR4 deficiency
         meaning: tlr4_deficiency
-      mondo_0019093:
+      mondo_0015698:
         description: Transient hypogammaglobulinemia of infancy
-        meaning: MONDO:0019093
+        meaning: MONDO:0015698
       mondo_0010149:
         description: Transcobalamin 2 deficiency
         meaning: MONDO:0010149
@@ -1610,9 +1604,9 @@ enums:
       tweak_deficiency:
         description: TWEAK deficiency
         meaning: tweak_deficiency
-      mondo_0012676:
+      mondo_0012682:
         description: Tyk2 deficiency / P1104A TYK2 homozygosity
-        meaning: MONDO:0012676
+        meaning: MONDO:0012682
       mondo_0012146:
         description: UNC13D / Munc13-4 deficiency (FHL3)
         meaning: MONDO:0012146
