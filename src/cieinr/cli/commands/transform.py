@@ -16,7 +16,7 @@ def redcap_to_linkml(
     """
     Transforms flat REDCap data into structured JSON format compatible with the LinkML schema.
     """
-    from cieinr.v1.0.0.redcap_to_linkml.registry import MAPPING_FUNCTIONS
+    from cieinr.v1_0_0.redcap_to_linkml.registry import MAPPING_FUNCTIONS
     
     # Load flat data from JSON
     with open(input_file, "r") as infile:
