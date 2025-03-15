@@ -1079,9 +1079,6 @@ enums:
       mondo_0010514:
         description: Moesin deficiency
         meaning: MONDO:0010514
-      mondo_0009191:
-        description: MOPD1 deficiency (Roifman syndrome)
-        meaning: MONDO:0009191
       mondo_0008871:
         description: MOPD1 deficiency (Roifman syndrome)
         meaning: MONDO:0008871
@@ -1241,9 +1238,6 @@ enums:
       mondo_0030843:
         description: PMS2 Deficiency
         meaning: MONDO:0030843
-      mondo_0013699:
-        description: PMS2 Deficiency
-        meaning: MONDO:0013699
       mondo_0970994:
         description: Polymerase d 1 deficiency
         meaning: MONDO:0970994
@@ -1340,7 +1334,7 @@ enums:
       mondo_0054696:
         description: RelB deficiency
         meaning: MONDO:0054696
-      mondo_0032659:
+      rela_interferonopathy:
         description: RELA interferonopathy
         meaning: MONDO:0032659
       mondo_0800147:
@@ -1472,9 +1466,6 @@ enums:
       srpra_deficiency:
         description: SRPRA deficiency
         meaning: srpra_deficiency
-      mondo_0013013:
-        description: STIM1 deficiency
-        meaning: MONDO:0013013
       mondo_0013008:
         description: STIM1 deficiency
         meaning: MONDO:0013008
@@ -1535,9 +1526,6 @@ enums:
       mondo_0014160:
         description: TCRα deficiency
         meaning: MONDO:0014160
-      mondo_0018881:
-        description: TET2 deficiency
-        meaning: MONDO:0018881
       mondo_0030858:
         description: TET2 deficiency
         meaning: MONDO:0030858
