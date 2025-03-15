@@ -51,6 +51,7 @@ enums:
         description: Unverified
       "2":
         description: Complete
+
   IUIS2024MONDOEnum:
     description: >
       Enumeration of Inborn Errors of Immunity based on IUIS 2024 classification
@@ -322,9 +323,6 @@ enums:
       mondo_0009174:
         description: CD55 deficiency (CHAPEL disease)
         meaning: MONDO:0009174
-      mondo_0012858:
-        description: Membrane Attack Complex Inhibitor (CD59) deficiency
-        meaning: MONDO:0012858
       mondo_0957388:
         description: CBLB deficiency
         meaning: MONDO:0957388
@@ -824,7 +822,7 @@ enums:
         description: IL7Ra deficiency
         meaning: MONDO:0012163
       mondo_0009413:
-        description: IL-21 deficiency
+        description: TACI deficiency (IL-21 deficiency)
         meaning: MONDO:0009413
       mondo_0014082:
         description: IL-21R deficiency
@@ -1577,10 +1575,7 @@ enums:
         description: Transcobalamin 2 deficiency
         meaning: MONDO:0010149
       mondo_0013920:
-        description: TRAF3 haplosufficiency
-        meaning: MONDO:0013920
-      mondo_0013920:
-        description: TRAF3 deficiency
+        description: TRAF3 deficiency / haplosufficiency
         meaning: MONDO:0013920
       mondo_0012931:
         description: Trypanosomiasis susceptibility
