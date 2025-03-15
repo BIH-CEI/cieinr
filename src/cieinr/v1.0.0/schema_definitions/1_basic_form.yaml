@@ -67,9 +67,9 @@ enums:
       4-1_bbl_deficiency:
         description: 4-1 BBL deficiency
         meaning: 4-1_bbl_deficiency
-      mondo_0014414:
+      mondo_0007818:
         description: AD-HIES Job syndrome
-        meaning: MONDO:0014414
+        meaning: MONDO:0007818
       mondo_0007064:
         description: Adenosine deaminase (ADA) deficiency
         meaning: MONDO:0007064
@@ -169,9 +169,9 @@ enums:
       mondo_0013284:
         description: BAFF receptor deficiency
         meaning: MONDO:0013284
-      mondo_0030069:
+      mondo_0032723:
         description: BACH2 deficiency
-        meaning: MONDO:0030069
+        meaning: MONDO:0032723
       mondo_0009470:
         description: b actin deficiency
         meaning: MONDO:0009470
@@ -397,15 +397,12 @@ enums:
       mondo_0009595:
         description: Cartilage hair hypoplasia (CHH)
         meaning: MONDO:0009595
-      mondo_0968982:
+      mondo_0054698:
         description: CANDLE (chronic atypical neutrophilic dermatitis with lipodystrophy) (Gene: PSMB8) (AD / AR)
-        meaning: MONDO:0968982
+        meaning: :MONDO:0054698
       mondo_0030931:
         description: CANDLE (chronic atypical neutrophilic dermatitis with lipodystrophy) (Gene: PSMG2)
         meaning: MONDO:0030931
-      mondo_0054698:
-        description: CANDLE (chronic atypical neutrophilic dermatitis with lipodystrophy) (Gene: PSMB8) (AD / AR)
-        meaning: MONDO:0054698
       mondo_0019093:
         description: Specific antibody deficiency with normal Ig levels and normal B cells
         meaning: MONDO:0019093
@@ -454,9 +451,6 @@ enums:
       mondo_0030334:
         description: DBR1 deficiency
         meaning: MONDO:0030334
-      mondo_0011338:
-        description: DCLRE1C (Artemis) deficiency
-        meaning: MONDO:0011338
       mondo_0011225:
         description: DCLRE1C (Artemis) deficiency
         meaning: MONDO:0011225
@@ -809,13 +803,7 @@ enums:
         description: Immunoskeletal dysplasia with neurodevelopmental abnormalities (EXTL3 Deficiency)
         meaning: MONDO:0044312
       mondo_0014810:
-        description: IKAROS haplosufficiency
-        meaning: MONDO:0014810
-      mondo_0014810:
-        description: Ikaros GOF
-        meaning: MONDO:0014810
-      mondo_0014810:
-        description: Ikaros deficiency
+        description: IKAROS haplosufficiency / GOF / deficiency
         meaning: MONDO:0014810
       ikzf2_dn:
         description: IKZF2 DN
@@ -962,10 +950,7 @@ enums:
         description: ITCH deficiency
         meaning: MONDO:0013245
       mondo_0033558:
-        description: JAK1 GOF
-        meaning: MONDO:0033558
-      mondo_0033558:
-        description: JAK1 (LOF)
+        description: JAK1 GOF / LOF
         meaning: MONDO:0033558
       mondo_0010938:
         description: JAK3 deficiency
@@ -1025,7 +1010,7 @@ enums:
         description: LYN GOF disease
         meaning: MONDO:0957271
       mondo_0010389:
-        description: Macrophage gp91 phox deficiency
+        description: gp91 phox deficiency Macrophage /  X-linked chronic granulomatous disease (CGD), gp91phox
         meaning: MONDO:0010389
       mondo_0013040:
         description: Membrane Cofactor Protein (CD46) deficiency (AD / AR)
@@ -1175,10 +1160,7 @@ enums:
         description: NUDCD3 deficiency
         meaning: nudcd3_deficiency
       mondo_0020840:
-        description: OAS1 deficiency
-        meaning: MONDO:0020840
-      mondo_0020840:
-        description: OAS1 GOF
+        description: OAS1 deficiency / GOF 
         meaning: MONDO:0020840
       oas2_deficiency:
         description: OAS2 deficiency
@@ -1681,9 +1663,6 @@ enums:
       mondo_0010294:
         description: X-linked neutropenia/myelodysplasia WAS GOF
         meaning: MONDO:0010294
-      mondo_0010389:
-        description: X-linked chronic granulomatous disease (CGD), gp91phox
-        meaning: MONDO:0010389
       mondo_0010023:
         description: ZAP-70 deficiency (ZAP70 LOF)
         meaning: MONDO:0010023
