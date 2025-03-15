@@ -764,9 +764,6 @@ enums:
       mondo_0011273:
         description: Hyperpigmentation hypertrichosis, histiocytosis-lymphadenopathy plus syndrome SLC29A3 mutation
         meaning: MONDO:0011273
-      mondo_0009413:
-        description: ICOS deficiency
-        meaning: MONDO:0009413
       mondo_0011864:
         description: ICOS deficiency
         meaning: MONDO:0011864
