@@ -8,7 +8,7 @@ This package contains various utility functions for the CIEINR project, includin
 """
 
 from .pipeline.fetch import fetch_redcap_records
-from .pipeline.phenopacket import create_phenopacket, phenopackets_export
+from .pipeline.test_phenopacket import create_phenopacket, phenopackets_export
 from .processing.schemas.redcap_to_linkml import redcap_to_linkml
 
 __all__ = [
