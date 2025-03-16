@@ -10,35 +10,30 @@ these are used by DataProcessor to access the correct fields in the data.
 INDIVIDUAL_BLOCK = {
     "id_field": "record_id",
     "date_of_birth_field": "patient_demographics_initial_form.snomedct_184099003",
-    "time_at_last_encounter_field": "patient_demographics_initial_form.last_encounter_date",
-    "sex_field": "patient_demographics_initial_form.snomedct_281053000",
-    "karyotypic_sex_field": "patient_demographics_initial_form.karyotypic_sex",
-    "gender_field": "patient_demographics_initial_form.gender_identity",
-}
-
-# Vital status block mapping
-VITAL_STATUS_BLOCK = {
-    "status_field": "patient_demographics_initial_form.vital_status",
-    "status_date_field": "patient_demographics_initial_form.date_of_death",
-    "causes_of_death_field": "patient_demographics_initial_form.causes_of_death",
+    "time_at_last_encounter_field": "patient_demographics_initial_form.visit_date_demographics"
 }
 
 # Disease block mapping
 DISEASE_BLOCK = {
-    "term_field": "basic_form.iei_deficiency_basic",
-    "onset_date_field": "patient_demographics_initial_form.snomedct_298059007",
-    "diagnosis_date_field": "patient_demographics_initial_form.snomedct_432213005",
-    "clinical_status_field": "patient_demographics_initial_form.disease_status",
+    "redcap_repeat_instrument": "basic_form", 
+    "term_field_1": "iei_deficiency_basic", 
+    "term_field_2": "other_iei_deficiency",
+    "onset_date_field": "snomedct_298059007"
 }
 
 # Phenotypic features block mapping
 PHENOTYPIC_FEATURES_BLOCK = {
     "redcap_repeat_instrument": "infections_initial_form",
-    "type_field": "infections_initial_form.type_of_infection",
-    "specific_type_field": None,  # Dynamically determined based on type_field
-    "severity_field": "infections_initial_form.infection_severity",
-    "temp_pattern_field": "infections_initial_form.infection_temp_pattern",
-    "temporal_pattern_field": "infections_initial_form.infection_times_obseverd",
+    "type_field": "type_of_infection",  # Simplified path for RareLink
+    "onset_field": "",  
+    "resolution_field": "",
+    "severity_field": "infection_severity",
+    "spatial_pattern_field": "",
+    "temporal_pattern_field": "infection_times_obseverd",
+    "laterality_field": "",
+    "evidence_code_field": "",
+    "excluded_field": "",
+    "modifiers_field": "",
 }
 
 # Code systems used in the data model
