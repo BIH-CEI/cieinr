@@ -17,6 +17,8 @@ leveraging RareLink's functionalities.
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
 - [Usage](#usage)
+   - [Importing from RareLink](#importing-from-rarelink)
+   - [Generating Phenopackets](#generating-phenopackets)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -56,22 +58,52 @@ instruments.html).
 
 ## Getting Started
 
-Instructions on how to set up and run your project locally.
-
 ### Prerequisites
 
 * Python 3.10, 3.11, or 3.12 (not compatible with Python 3.13 due to LinkML dependencies)
 * pip
-* RareLink (if you need to generate phenopackets)
+* Git (for cloning the repository with submodules)
 * LinkML Toolkit (1.8.0+)
 
 ### Installation
 
-Step-by-step instructions on how to install and set up your project.
+1. Clone the repository with submodules:
+   ```bash
+   git clone https://github.com/your-org/cieinr.git
+   cd cieinr
+   git submodule update --init --recursive
+   ```
 
-To install your own code run `pip install -e .` in a terminal.
+2. Create and activate a virtual environment (optional but recommended):
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows, use: .venv\Scripts\activate
+   ```
+
+3. Install the package in development mode:
+   ```bash
+   pip install -e .
+   ```
+
+   This will install CIEINR and its dependencies, including RareLink from the submodule.
 
 ## Usage
+
+### Importing from RareLink
+
+RareLink is included as a submodule and installed automatically with the package. You can import RareLink components directly in your code:
+
+```python
+# Import utilities from RareLink
+from rarelink.utils.processor import DataProcessor
+from rarelink.utils.processing.codes import process_redcap_code
+
+# Import phenopackets components
+from rarelink.phenopackets import create_phenopacket, write_phenopackets
+from rarelink.phenopackets.mappings import map_diseases, map_individual
+```
+
+### Generating Phenopackets
 
 This project primarily focuses on the LinkML representation of the
 CIEINR data model. You can use the LinkML schema to:
@@ -80,9 +112,29 @@ CIEINR data model. You can use the LinkML schema to:
 * Create data transformation scripts.
 * Export data into various formats, including Phenopackets using
   RareLink.
-* Follow the instructions found in the Rarelink documentation to
-  export phenopackets. [Rarelink phenopackets documentation](https://
-  rarelink.readthedocs.io/en/latest/4_user_guide/4_3_phenopackets.html)
+
+Example of generating a phenopacket:
+
+```python
+from rarelink.phenopackets import create_phenopacket, write_phenopackets
+from rarelink.utils.processor import DataProcessor
+from cieinr.v1_0_0.mappings.linkml_to_phenopackets import (
+    INDIVIDUAL_BLOCK, DISEASE_BLOCK, PHENOTYPIC_FEATURES_BLOCK
+)
+
+# Process a record with RareLink
+def transform_to_phenopacket(record):
+    # Initialize processors with CIEINR-specific mapping configurations
+    individual_processor = DataProcessor(mapping_config=INDIVIDUAL_BLOCK)
+    disease_processor = DataProcessor(mapping_config=DISEASE_BLOCK)
+    
+    # Create phenopacket
+    phenopacket = create_phenopacket(record, "CIEINR")
+    return phenopacket
+
+# More detailed examples can be found in the Rarelink documentation:
+# https://rarelink.readthedocs.io/en/latest/4_user_guide/4_3_phenopackets.html
+```
 
 ## License
 

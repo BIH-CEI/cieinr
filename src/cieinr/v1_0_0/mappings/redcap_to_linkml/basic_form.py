@@ -14,8 +14,5 @@ def map_basic_form(record):
     """
     return {
         "iei_deficiency_basic": record.get("iei_deficiency_basic", ""),
-        "basic_form_complete": record.get("basic_form_complete", "0"),
-        "snomedct_184099003": record.get("snomedct_184099003", ""),
-        "snomedct_432213005": record.get("snomedct_432213005", ""),
-        "snomedct_298059007": record.get("snomedct_298059007", "")
+        "basic_form_complete": record.get("basic_form_complete", "0")
     }

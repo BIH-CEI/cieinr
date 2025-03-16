@@ -7,7 +7,6 @@ while working around compatibility issues with Python 3.13.
 """
 
 import os
-import sys
 from pathlib import Path
 
 # Schema input and output paths

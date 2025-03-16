@@ -6,8 +6,7 @@ This package provides tools for:
 2. Converting REDCap records to LinkML schema
 3. Generating GA4GH Phenopackets from structured data
 """
-
 from cieinr._version import __version__
 from cieinr.config import Config
 
-__all__ = ["Config", "__version__"]
+__all__ = ["Config", "__version__", "RARELINK_AVAILABLE"]
