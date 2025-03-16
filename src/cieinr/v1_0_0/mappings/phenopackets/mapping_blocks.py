@@ -2,71 +2,57 @@
 Mapping blocks for the CIEINR v1.0.0 data model.
 
 These mappings define how fields in the CIEINR data model map to fields
-required for phenopacket construction. Similar to the RareLink CDM mappings,
-these are used by DataProcessor to access the correct fields in the data.
+required for phenopacket construction. These mappings leverage RareLink's 
+data processing capabilities while adding CIEINR-specific fields.
 """
+
+from typing import Dict, Any
 
 # Individual block mapping
 INDIVIDUAL_BLOCK = {
     "id_field": "record_id",
     "date_of_birth_field": "patient_demographics_initial_form.snomedct_184099003",
-    "time_at_last_encounter_field": "patient_demographics_initial_form.visit_date_demographics"
+    "time_at_last_encounter_field": "patient_demographics_initial_form.visit_date_demographics",
+    "sex_field": None,  # Will default to UNKNOWN_SEX in RareLink's mapper
+    "karyotypic_sex_field": None,  # Will default to UNKNOWN_KARYOTYPE
+    "gender_field": None  # Will default to None
 }
 
-# Disease block mapping
+# Vital status block mapping
+VITAL_STATUS_BLOCK = {
+    "status_field": "_default_",  # Special marker for default value
+    "time_of_death_field": None,
+    "cause_of_death_field": None,
+    "default_status": "UNKNOWN_STATUS"  # Explicitly set default
+}
+
+# Disease block mapping - designed to work with non-repeated elements
 DISEASE_BLOCK = {
-    "redcap_repeat_instrument": "basic_form", 
-    "term_field_1": "iei_deficiency_basic", 
-    "term_field_2": "other_iei_deficiency",
-    "onset_date_field": "snomedct_298059007"
+    "term_field_1": "basic_form.iei_deficiency_basic", 
+    "term_field_2": "basic_form.other_iei_deficiency",
+    "term_field_3": None,
+    "term_field_4": None,
+    "term_field_5": None,
+    "onset_date_field": None,
+    "onset_category_field": None,
+    "excluded_field": None,
+    "primary_site_field": None
 }
 
 # Phenotypic features block mapping
 PHENOTYPIC_FEATURES_BLOCK = {
     "redcap_repeat_instrument": "infections_initial_form",
-    "type_field": "type_of_infection",  # Simplified path for RareLink
-    "onset_field": "",  
-    "resolution_field": "",
+    "type_field": "type_of_infection",
+    "onset_field": None,  
+    "resolution_field": None,
     "severity_field": "infection_severity",
-    "spatial_pattern_field": "",
+    "spatial_pattern_field": None,
     "temporal_pattern_field": "infection_times_obseverd",
-    "laterality_field": "",
-    "evidence_code_field": "",
-    "excluded_field": "",
-    "modifiers_field": "",
+    "laterality_field": None,
+    "evidence_code_field": None,
+    "excluded_field": None,
+    "modifiers_field": None,
 }
-
-# Code systems used in the data model
-CIEINR_CODE_SYSTEMS = [
-    {
-        "id": "hp",
-        "name": "Human Phenotype Ontology",
-        "url": "http://purl.obolibrary.org/obo/hp.owl",
-        "version": "2023-06-04",
-        "namespace_prefix": "HP"
-    },
-    {
-        "id": "mondo",
-        "name": "Mondo Disease Ontology",
-        "url": "http://purl.obolibrary.org/obo/mondo.owl",
-        "version": "2023-05-31", 
-        "namespace_prefix": "MONDO"
-    },
-    {
-        "id": "ncit",
-        "name": "NCI Thesaurus",
-        "url": "http://purl.obolibrary.org/obo/ncit.owl",
-        "version": "2023-03-27",
-        "namespace_prefix": "NCIT"
-    },
-    {
-        "id": "snomedct",
-        "name": "SNOMED Clinical Terms",
-        "url": "http://snomed.info/sct",
-        "version": "2023-03",
-        "namespace_prefix": "SNOMEDCT"
-    }
-]
 
 # Mapping dictionaries for code conversions
 MAPPING_DICTS = [
@@ -97,10 +83,38 @@ MAPPING_DICTS = [
             "resolved": "RESOLVED",
             "": "UNKNOWN_STATUS"
         }
+    },
+    {
+        "name": "map_mondo_codes",
+        "mapping": {
+            # Our mapping will use LinkML enum labels by default,
+            # but this could be used for special cases
+        }
+    },
+    {
+        "name": "map_disease_verification_status",
+        "mapping": {
+            # Not used in the current model, but kept for compatibility
+            "verified": "false",
+            "unverified": "true",
+            "": "false"
+        }
+    },
+    {
+        "name": "map_infection_severity",
+        "mapping": {
+            # Will use LinkML enum labels by default
+        }
+    },
+    {
+        "name": "map_infection_temporal_pattern",
+        "mapping": {
+            # Will use LinkML enum labels by default
+        }
     }
 ]
 
-def get_mapping_by_name(name: str, to_boolean: bool = False):
+def get_mapping_by_name(name: str, to_boolean: bool = False) -> Dict[str, Any]:
     """
     Get a mapping dictionary by name.
     
