@@ -1,290 +1,287 @@
-#!/usr/bin/env python
 """
-CIEINR Phenopackets pipeline.
+CIEINR Phenopackets Pipeline
 
-This module provides a simple, clean pipeline for exporting CIEINR data to Phenopackets
-by leveraging RareLink's pipeline functions with minimal modifications.
+This module provides functions to create Phenopackets from CIEINR data using
+RareLink's Phenopacket generation engine. It adapts RareLink's mapping and processing
+capabilities to work with the CIEINR data model.
 """
 
-import json
+import os
 import logging
+import json
 from pathlib import Path
-from datetime import datetime
-from typing import List, Dict, Any, Optional
+from typing import Dict, Any, List, Tuple
+from dotenv import load_dotenv
 
-# Import phenopackets core models
-from phenopackets import (
-    Phenopacket, 
-    Individual, 
-    Disease, 
-    VitalStatus, 
-    OntologyClass, 
-    TimeElement, 
-    Age
-)
+# Try loading environment variables
+try:
+    # Load from .env file if it exists
+    load_dotenv()
+except Exception as e:
+    print(f"Warning: Could not load .env file: {e}")
 
-# Import RareLink functionality
+# Import RareLink phenopacket functions
 from rarelink.phenopackets import (
+    create_phenopacket,
     write_phenopackets,
     validate_phenopackets
 )
-from rarelink.phenopackets.mappings import (
-    map_individual as rarelink_map_individual
-)
-from rarelink.utils.processor import DataProcessor
 
-# Import CIEINR specific mappings
-from cieinr.v1_0_0.mappings.phenopackets import create_cieinr_phenopacket_mappings
-from cieinr.v1_0_0.mappings.phenopackets.metadata import (
-    map_cieinr_metadata,
-    CIEINR_CODE_SYSTEMS_CONTAINER
-)
-from cieinr.v1_0_0.python_schemas.form_1_basic import IUIS2024MONDOEnum
+# Import CIEINR-specific mappings
+from cieinr.v1_0_0.mappings.phenopackets.cieinr_phenopackets_mappings import create_cieinr_phenopacket_mappings
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, 
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# Set up logging
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def extract_enum_labels(enum_class) -> Dict[str, str]:
+def enhance_phenopacket_data(data: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Extract labels from a LinkML-generated enum class.
+    Enhance CIEINR data to work better with RareLink's phenopacket functions.
     
     Args:
-        enum_class: A LinkML-generated EnumDefinitionImpl class
+        data: CIEINR data
         
     Returns:
-        Dictionary mapping enum codes to their human-readable descriptions
+        Enhanced data
     """
-    labels = {}
+    # Create a copy to avoid modifying the original
+    enhanced_data = data.copy()
     
-    # Get all class attributes
-    for attr_name in dir(enum_class):
-        # Skip special methods and private attributes
-        if attr_name.startswith('_') or attr_name in ['_defn', '_addvals']:
-            continue
-        
-        try:
-            attr_value = getattr(enum_class, attr_name)
-            
-            # Check if it's a PermissibleValue
-            if hasattr(attr_value, 'text') and hasattr(attr_value, 'description'):
-                # Add to our labels dictionary
-                labels[attr_value.text] = attr_value.description
-        except Exception:
-            # Skip any attributes that cause errors
-            continue
-            
-    return labels
+    # Ensure repeated_elements is a list
+    if "repeated_elements" not in enhanced_data:
+        enhanced_data["repeated_elements"] = []
+    
+    # Ensure basic structures exist
+    if "basic_form" not in enhanced_data:
+        enhanced_data["basic_form"] = {}
+    
+    if "patient_demographics_initial_form" not in enhanced_data:
+        enhanced_data["patient_demographics_initial_form"] = {}
+    
+    # Process infection type fields to make them more RareLink-friendly
+    for element in enhanced_data.get("repeated_elements", []):
+        if element.get("redcap_repeat_instrument") == "infections_initial_form":
+            infection_data = element.get("infections_initial_form", {})
+            if infection_data:
+                # Try to set the type_field directly if possible
+                if "type_of_infection" in infection_data:
+                    infection_type = infection_data["type_of_infection"]
+                    # If the type has a corresponding value field, use it
+                    if infection_type in infection_data:
+                        # Already structured correctly
+                        pass
+    
+    return enhanced_data
 
-def map_cieinr_disease(record: Dict[str, Any]) -> Optional[Disease]:
+def create_cieinr_phenopacket(data: dict, created_by: str) -> Any:
     """
-    Map CIEINR disease data to a Phenopacket Disease object.
+    Create a Phenopacket from CIEINR data.
     
     Args:
-        record: The patient record
+        data (dict): CIEINR data record
+        created_by (str): Name of the person/system creating the phenopacket
         
     Returns:
-        Disease object if disease field is available, None otherwise
+        Phenopacket: A Phenopacket object
     """
-    # Check if basic form and disease field exist
-    if not record.get("basic_form", {}).get("iei_deficiency_basic"):
-        return None
-        
-    disease_code = record["basic_form"]["iei_deficiency_basic"]
+    # Get CIEINR mapping configurations
+    mapping_configs = create_cieinr_phenopacket_mappings()
     
-    # Ensure it's a MONDO code
-    if not disease_code.startswith("mondo_"):
-        return None
-        
-    # Format the MONDO ID
-    mondo_id = f"MONDO:{disease_code.replace('mondo_', '')}"
+    # Enhance data for better compatibility with RareLink
+    enhanced_data = enhance_phenopacket_data(data)
     
-    # Get labels from enum
-    iuis_labels = extract_enum_labels(IUIS2024MONDOEnum)
-    disease_label = iuis_labels.get(disease_code, disease_code)
-    
-    # Create and return Disease object
-    return Disease(
-        term=OntologyClass(
-            id=mondo_id,
-            label=disease_label
-        )
-    )
-
-def calculate_age_at_encounter(dob: str, visit_date: str) -> Optional[TimeElement]:
-    """
-    Calculate age at last encounter from date of birth and visit date.
-    
-    Args:
-        dob: Date of birth string in ISO format
-        visit_date: Visit date string in ISO format
-        
-    Returns:
-        TimeElement with age information, or None if calculation fails
-    """
+    # Create the phenopacket using RareLink's function
     try:
-        # Parse dates
-        dob_date = datetime.fromisoformat(dob.replace("Z", ""))
-        
-        try:
-            visit_date_obj = datetime.fromisoformat(visit_date.replace("Z", ""))
-        except ValueError:
-            # Try alternate format
-            visit_date_obj = datetime.strptime(visit_date, "%Y-%m-%d")
-        
-        # Calculate years
-        years = visit_date_obj.year - dob_date.year
-        if (visit_date_obj.month, visit_date_obj.day) < (dob_date.month, dob_date.day):
-            years -= 1
-        
-        # Create and return TimeElement
-        return TimeElement(
-            age=Age(iso8601duration=f"P{years}Y0M")
+        phenopacket = create_phenopacket(
+            data=enhanced_data,
+            created_by=created_by,
+            mapping_configs=mapping_configs
         )
-        
+        return phenopacket
     except Exception as e:
-        logger.warning(f"Could not calculate age: {e}")
-        return None
-
-def process_cieinr_phenopackets(
-    input_data_path: Path, 
-    output_dir: Path = None, 
-    created_by: str = "CIEINR Data Team"
-) -> List[Phenopacket]:
-    """
-    Process CIEINR LinkML data to phenopackets.
-    
-    Args:
-        input_data_path: Path to the input LinkML JSON file
-        output_dir: Directory to save phenopackets
-        created_by: Creator name for metadata
-        
-    Returns:
-        List of phenopackets
-    """
-    # Create output directory if needed
-    if output_dir is None:
-        base_dir = Path.cwd()
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_dir = base_dir / "output" / "phenopackets"
-    
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
-    try:
-        # Read input data
-        with open(input_data_path, 'r') as f:
-            linkml_data = json.load(f)
-        
-        # Basic validation
-        if not isinstance(linkml_data, list):
-            raise ValueError("Input data must be a list of patient records")
-        
-        logger.info(f"Processing {len(linkml_data)} patient records")
-        
-        # Get CIEINR mapping configuration
-        mapping_configs = create_cieinr_phenopacket_mappings()
-        
-        # Process each record
-        phenopackets = []
-        
-        for record in linkml_data:
-            record_id = record.get("record_id", "unknown")
-            logger.info(f"Processing record {record_id}")
-            
-            try:
-                # Create a basic DataProcessor for this record
-                processor = DataProcessor(record, mapping_configs["individual"]["mapping_block"])
-                
-                # Map individual component (using RareLink's function)
-                individual = rarelink_map_individual(record, processor)
-                
-                # Set vital status to UNKNOWN
-                vital_status = VitalStatus()
-                vital_status.status = VitalStatus.UNKNOWN_STATUS
-                individual.vital_status = vital_status
-                
-                # Map disease (using our custom function)
-                disease = map_cieinr_disease(record)
-                
-                # Calculate timeAtLastEncounter if missing
-                if not individual.time_at_last_encounter:
-                    dob = record.get("patient_demographics_initial_form", {}).get("snomedct_184099003")
-                    visit_date = record.get("patient_demographics_initial_form", {}).get("visit_date_demographics")
-                    
-                    if dob and visit_date:
-                        individual.time_at_last_encounter = calculate_age_at_encounter(dob, visit_date)
-                
-                # Generate metadata using CIEINR-specific function
-                metadata = map_cieinr_metadata(created_by)
-                
-                # Create the phenopacket
-                phenopacket = Phenopacket(
-                    id=record_id,
-                    subject=individual,
-                    meta_data=metadata
-                )
-                
-                # Add disease if available
-                if disease:
-                    phenopacket.diseases.append(disease)
-                
-                # Add to our list
-                phenopackets.append(phenopacket)
-                
-                # Write to file
-                output_file = output_dir / f"{record_id}.json"
-                
-                with open(output_file, 'w') as f:
-                    # Use RareLink's write function to serialize as JSON
-                    json_content = write_phenopackets([phenopacket], as_string=True)
-                    
-                    # Load and reorder to ensure metadata is last
-                    phenopacket_dict = json.loads(json_content)[0]
-                    ordered_phenopacket = {}
-                    
-                    # First add ID, subject, diseases, and other fields
-                    for key in ["id", "subject", "diseases", "phenotypicFeatures", "measurements"]:
-                        if key in phenopacket_dict:
-                            ordered_phenopacket[key] = phenopacket_dict[key]
-                    
-                    # Then add metadata at the end
-                    if "metaData" in phenopacket_dict:
-                        ordered_phenopacket["metaData"] = phenopacket_dict["metaData"]
-                    
-                    # Write the ordered dictionary
-                    json.dump(ordered_phenopacket, f, indent=2)
-                
-                logger.info(f"Created phenopacket for {record_id}")
-                
-            except Exception as e:
-                logger.error(f"Error processing record {record_id}: {e}")
-                continue
-        
-        logger.info(f"Created {len(phenopackets)} phenopackets in {output_dir}")
-        return phenopackets
-        
-    except Exception as e:
-        logger.error(f"Error processing phenopackets: {e}")
+        logger.error(f"Error creating phenopacket: {e}")
         raise
 
-def main():
-    """Command-line interface for phenopacket export."""
-    # Set paths
-    base_dir = Path.cwd()
-    input_data_path = base_dir / "res" / "patient_linkml.json"
-    output_dir = base_dir / "output" / "phenopackets"
+def ensure_valid_output_filename(record_id: str) -> str:
+    """
+    Ensure that the record ID will create a valid filename.
     
-    # Process phenopackets
+    Args:
+        record_id: The record ID to check
+        
+    Returns:
+        A sanitized record ID suitable for use as a filename
+    """
+    # Replace any characters that could cause issues in filenames
+    import re
+    sanitized = re.sub(r'[<>:"/\\|?*]', '_', str(record_id))
+    
+    # Ensure it's not empty
+    if not sanitized or sanitized.isspace():
+        import uuid
+        sanitized = f"record_{uuid.uuid4().hex[:8]}"
+        
+    return sanitized
+
+def cieinr_phenopackets_pipeline(
+    input_data: List[dict], 
+    output_dir: str, 
+    created_by: str, 
+    validate: bool = False
+) -> Tuple[List[Any], List[Dict[str, Any]]]:
+    """
+    Process CIEINR data and create Phenopackets.
+    
+    Args:
+        input_data (List[dict]): List of CIEINR data records
+        output_dir (str): Directory to save Phenopacket JSON files
+        created_by (str): Name of the person/system creating the phenopackets
+        validate (bool): Whether to validate the created phenopackets
+        
+    Returns:
+        Tuple[List[Any], List[Dict[str, Any]]]: Tuple containing:
+            - List of successfully created Phenopackets
+            - List of failed records with their errors
+    """
+    # Create output directory if it doesn't exist
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    
+    # Create Phenopackets
+    phenopackets = []
+    failed_records = []
+    
+    for record in input_data:
+        try:
+            # Ensure record has a valid ID for the output filename
+            if 'record_id' not in record or not record['record_id']:
+                record['record_id'] = f"record_{len(phenopackets)+1}"
+            
+            # Sanitize the record ID for use as a filename
+            record['record_id'] = ensure_valid_output_filename(record['record_id'])
+            
+            phenopacket = create_cieinr_phenopacket(record, created_by)
+            phenopackets.append(phenopacket)
+            record_id = record.get('record_id', 'unknown')
+            logger.info(f"Created Phenopacket for record id={record_id}")
+        except Exception as e:
+            record_id = record.get('record_id', 'unknown')
+            logger.error(f"Failed to create Phenopacket for record id={record_id}: {e}")
+            failed_records.append({
+                'record': record,
+                'error': str(e)
+            })
+    
+    # Write Phenopackets to files - standard format with record_id.json naming
+    logger.info(f"Writing {len(phenopackets)} Phenopackets to {output_dir}")
+    write_phenopackets(phenopackets, output_dir)
+    
+    # Validate Phenopackets if requested
+    if validate and phenopackets:
+        logger.info("Validating Phenopackets...")
+        try:
+            validation_results = validate_phenopackets(output_path)
+            if isinstance(validation_results, list):
+                for i, (success, details) in enumerate(validation_results):
+                    if success:
+                        logger.info(f"Validation successful for phenopacket {i+1}")
+                    else:
+                        logger.error(f"Validation failed for phenopacket {i+1}: {details}")
+            else:
+                success, details = validation_results
+                if success:
+                    logger.info("Validation successful")
+                else:
+                    logger.error(f"Validation failed: {details}")
+        except Exception as e:
+            logger.error(f"Error during validation: {e}")
+    
+    # Log summary
+    logger.info(f"Total records processed: {len(input_data)}")
+    logger.info(f"Successful Phenopackets: {len(phenopackets)}")
+    logger.info(f"Failed records: {len(failed_records)}")
+    
+    return phenopackets, failed_records
+
+def load_cieinr_data(input_file: str) -> List[dict]:
+    """
+    Load CIEINR data from a JSON file.
+    
+    Args:
+        input_file (str): Path to JSON file containing CIEINR data
+        
+    Returns:
+        List[dict]: List of CIEINR data records
+    """
     try:
-        phenopackets = process_cieinr_phenopackets(
-            input_data_path=input_data_path, 
-            output_dir=output_dir,
-            created_by="CIEINR Data Curator"
-        )
-        print(f"Phenopackets successfully created in {output_dir}")
+        with open(input_file, 'r') as file:
+            data = json.load(file)
+        logger.info(f"Loaded {len(data)} records from {input_file}")
+        return data
     except Exception as e:
-        print(f"Error: {e}")
+        logger.error(f"Error loading data from {input_file}: {e}")
+        raise
+
+def run_cieinr_phenopackets_pipeline(
+    input_file: str, 
+    output_dir: str, 
+    created_by: str = None,
+    validate: bool = False
+) -> Tuple[List[Any], List[Dict[str, Any]]]:
+    """
+    Run the complete CIEINR Phenopackets pipeline.
+    
+    Args:
+        input_file (str): Path to JSON file containing CIEINR data
+        output_dir (str): Directory to save Phenopacket JSON files
+        created_by (str): Name of the person/system creating the phenopackets
+        validate (bool): Whether to validate the created phenopackets
+        
+    Returns:
+        Tuple[List[Any], List[Dict[str, Any]]]: Tuple containing:
+            - List of successfully created Phenopackets
+            - List of failed records with their errors
+    """
+    # Load data
+    input_data = load_cieinr_data(input_file)
+    
+    # If created_by is not provided, try to get it from the environment
+    if created_by is None:
+        created_by = os.getenv("CREATED_BY", "CIEINR Data Team")
+    
+    # Run pipeline
+    return cieinr_phenopackets_pipeline(input_data, output_dir, created_by, validate)
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Create Phenopackets from CIEINR data")
+    parser.add_argument(
+        "--input", 
+        required=True, 
+        help="Path to JSON file containing CIEINR data"
+    )
+    parser.add_argument(
+        "--output-dir", 
+        required=True, 
+        help="Directory to save Phenopacket JSON files"
+    )
+    parser.add_argument(
+        "--created-by", 
+        default=None, 
+        help="Name of the person/system creating the phenopackets"
+    )
+    parser.add_argument(
+        "--validate", 
+        action="store_true", 
+        help="Validate the created phenopackets"
+    )
+    
+    args = parser.parse_args()
+    
+    run_cieinr_phenopackets_pipeline(
+        args.input, 
+        args.output_dir, 
+        args.created_by,
+        args.validate
+    )

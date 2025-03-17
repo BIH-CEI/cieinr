@@ -6,6 +6,7 @@
       "basic_form_complete": "2"
     },
     "patient_demographics_initial_form": {
+      "visit_date_demographics": "2025-03-15",
       "snomedct_184099003": "2022-03-01",
       "snomedct_432213005": "",
       "snomedct_298059007": "",
@@ -16,9 +17,9 @@
         "redcap_repeat_instrument": "infections_initial_form",
         "redcap_repeat_instance": 1,
         "infections_initial_form": {
-          "type_of_infection": "snomedct_21483005",
+          "type_of_infection": "",
           "snomedct_61274003": "",
-          "snomedct_21483005": "hp_0002383",
+          "snomedct_21483005": "",
           "snomedct_81745001": "",
           "snomedct_385383008": "",
           "snomedct_127856007": "",
@@ -30,7 +31,7 @@
           "infection_severity": "hp_0012826",
           "infection_temp_pattern": "hp_0011009",
           "infection_times_obseverd": "ncit_c156502",
-          "infections_initial_form_complete": "2"
+          "infections_initial_form_complete": "0"
         }
       },
       {

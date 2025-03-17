@@ -13,6 +13,7 @@ def map_patient_demographics(record):
         dict: The mapped data in LinkML format
     """
     return {
+        "visit_date_demographics": record.get("visit_date_demographics", ""),
         "snomedct_184099003": record.get("snomedct_184099003", ""),  # Date of birth
         "snomedct_432213005": record.get("snomedct_432213005", ""),  # Date of diagnosis
         "snomedct_298059007": record.get("snomedct_298059007", ""),  # Date of symptom onset
