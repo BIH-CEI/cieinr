@@ -17,9 +17,9 @@
         "redcap_repeat_instrument": "infections_initial_form",
         "redcap_repeat_instance": 1,
         "infections_initial_form": {
-          "type_of_infection": "",
+          "type_of_infection": "snomedct_21483005",
           "snomedct_61274003": "",
-          "snomedct_21483005": "",
+          "snomedct_21483005": "hp_0002383",
           "snomedct_81745001": "",
           "snomedct_385383008": "",
           "snomedct_127856007": "",
@@ -31,7 +31,7 @@
           "infection_severity": "hp_0012826",
           "infection_temp_pattern": "hp_0011009",
           "infection_times_obseverd": "ncit_c156502",
-          "infections_initial_form_complete": "0"
+          "infections_initial_form_complete": "2"
         }
       },
       {

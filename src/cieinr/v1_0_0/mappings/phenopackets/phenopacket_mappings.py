@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from .cieinr_phenopackets_mappings import CIEINR_RESOURCES
 
 def create_phenopacket_mappings():
     """
@@ -26,15 +27,11 @@ def create_phenopacket_mappings():
         "diseases": {
             "instrument_name": "basic_form",
             "mapping_block": {
-                # Direct mapping for diseases, not as a repeating element
                 "term_field_1": "basic_form.iei_deficiency_basic"
             }
         },
         "metadata": {
-            "resources": {
-                # Optional: custom code systems
+           # "code_systems": CIEINR_RESOURCES
             },
-            # Dynamically fetch metadata from environment variables
-            "created_by": os.getenv('CREATED_BY', 'Unknown')
-        },
-    }
+        }
+    
