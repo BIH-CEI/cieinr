@@ -247,7 +247,7 @@ def run_cieinr_phenopackets_pipeline(
     
     # If created_by is not provided, try to get it from the environment
     if created_by is None:
-        created_by = os.getenv("CREATED_BY", "CIEINR Data Team")
+        created_by = os.getenv("CREATED_BY")
     
     # Run pipeline
     return cieinr_phenopackets_pipeline(input_data, output_dir, created_by, validate)

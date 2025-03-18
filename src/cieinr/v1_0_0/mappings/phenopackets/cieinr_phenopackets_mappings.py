@@ -10,6 +10,8 @@ from dataclasses import dataclass
 import logging
 from pathlib import Path
 import os
+import sys
+import importlib.util
 from dotenv import load_dotenv
 
 # Try loading environment variables
@@ -32,87 +34,65 @@ class CodeSystem:
     url: str
     iri_prefix: str
 
-# Create a dictionary of code systems instead of using CodeSystemsContainer
-# This avoids the import issues with the RareLink's CodeSystemsContainer class
-CIEINR_CODE_SYSTEMS_DICT = {
-    "hpo": CodeSystem(
-        name="Human Phenotype Ontology",
-        prefix="HPO",
-        version="2024-08-13",
-        url="http://purl.obolibrary.org/obo/hp.owl",
-        iri_prefix="http://purl.obolibrary.org/obo/HP_"
-    ),
-    "loinc": CodeSystem(
-        name="Logical Observation Identifiers Names and Codes",
-        prefix="LOINC",
-        version="2.78",
-        url="https://loinc.org",
-        iri_prefix="http://loinc.org"
-    ),
-    "icd10cm": CodeSystem(
-        name="ICD-10 Clinical Modification",
-        prefix="ICD10CM",
-        version="2023",
-        url="https://www.cdc.gov/nchs/icd/icd10cm.htm",
-        iri_prefix="http://hl7.org/fhir/sid/icd-10-cm"
-    ),
-    "icd11": CodeSystem(
-        name="International Classification of Diseases, Eleventh Revision",
-        prefix="ICD11",
-        version="2024-09-01",
-        url="https://icd.who.int/en",
-        iri_prefix="http://hl7.org/fhir/sid/icd-11"
-    ),
-    "mondo": CodeSystem(
-        name="Monarch Disease Ontology",
-        prefix="MONDO",
-        version="2024-09-03",
-        url="https://purl.obolibrary.org/obo/MONDO/",
-        iri_prefix="http://purl.obolibrary.org/obo/MONDO_"
-    ),
-    "omim": CodeSystem(
-        name="Online Mendelian Inheritance",
-        prefix="OMIM",
-        version="2024-09-12",
-        url="https://omim.org/",
-        iri_prefix="https://www.omim.org/entry/"
-    ),
-    "orpha": CodeSystem(
-        name="Orphanet Rare Disease Ontology",
-        prefix="ORPHA",
-        version="2024-09-12",
-        url="https://www.orpha.net/",
-        iri_prefix="https://www.orpha.net/ORDO/Orphanet_"
-    ),
-    "ncit": CodeSystem(
-        name="NCI Thesaurus OBO Edition",
-        prefix="NCIT",
-        version="24.04e",
-        url="https://ncit.nci.nih.gov/",
-        iri_prefix="http://purl.obolibrary.org/obo/NCIT_"
-    ),
-    "uo": CodeSystem(
-        name="Units of Measurement Ontology",
-        prefix="UO",
-        version="2024-09-12",
-        url="https://www.ontobee.org/ontology/UO",
-        iri_prefix="http://purl.obolibrary.org/obo/UO_"
-    ),
-    "hgnc": CodeSystem(
-        name="HUGO Gene Nomenclature Committee",
-        prefix="HGNC",
-        version="2024-08-23",
-        url="https://www.genenames.org/",
-        iri_prefix="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
-    ),
-    "ncbitaxon": CodeSystem(
-        name="NCBI Taxonomy Ontology",
-        prefix="NCBITaxon",
-        version="2024-07-03",
-        url="https://www.ncbi.nlm.nih.gov/taxonomy",
-        iri_prefix="http://purl.obolibrary.org/obo/NCBITaxon_"
-    )
-}
+# Define the resources for Phenopackets metadata
+CIEINR_RESOURCES = [
+    {
+        "id": "hp",
+        "name": "Human Phenotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2023-06-04",
+        "namespace_prefix": "HP",
+        "iri_prefix": "http://purl.obolibrary.org/obo/HP_"
+    },
+    {
+        "id": "mondo",
+        "name": "Mondo Disease Ontology",
+        "url": "http://purl.obolibrary.org/obo/mondo.owl",
+        "version": "2024-09-03",
+        "namespace_prefix": "MONDO",
+        "iri_prefix": "http://purl.obolibrary.org/obo/MONDO_"
+    },
+    {
+        "id": "ncit",
+        "name": "NCI Thesaurus",
+        "url": "http://purl.obolibrary.org/obo/ncit.owl",
+        "version": "24.04e",
+        "namespace_prefix": "NCIT", 
+        "iri_prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    },
+    {
+        "id": "snomedct",
+        "name": "SNOMED Clinical Terms",
+        "url": "http://snomed.info/sct",
+        "version": "2023-03",
+        "namespace_prefix": "SNOMEDCT",
+        "iri_prefix": "http://snomed.info/id/"
+    },
+    {
+        "id": "ncbitaxon",
+        "name": "NCBI Taxonomy",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2023-04-01",
+        "namespace_prefix": "NCBITaxon",
+        "iri_prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+        "id": "loinc",
+        "name": "Logical Observation Identifiers Names and Codes",
+        "url": "http://loinc.org",
+        "version": "2.78",
+        "namespace_prefix": "LOINC",
+        "iri_prefix": "http://loinc.org"
+    },
+    {
+        "id": "icd10cm",
+        "name": "ICD-10 Clinical Modification",
+        "url": "https://www.cdc.gov/nchs/icd/icd10cm.htm",
+        "version": "2023",
+        "namespace_prefix": "ICD10CM",
+        "iri_prefix": "http://hl7.org/fhir/sid/icd-10-cm"
+    }
+]
 
 # Define mapping blocks for CIEINR data
 INDIVIDUAL_BLOCK = {
@@ -133,7 +113,7 @@ VITAL_STATUS_BLOCK = {
 
 DISEASE_BLOCK = {
     "term_field_1": "basic_form.iei_deficiency_basic",
-    "term_field_2": None,
+    "term_field_2": "basic_form.other_iei_deficiency",
     "term_field_3": None,
     "term_field_4": None,
     "term_field_5": None,
@@ -159,44 +139,49 @@ PHENOTYPIC_FEATURES_BLOCK = {
     "evidence_field": None,
 }
 
-# Create label dictionaries from CIEINR's enum classes
-def load_iuis_labels() -> Dict[str, str]:
+# Import IUIS2024MONDOEnum if possible
+def load_iuis_labels():
     """
-    Load labels for IUIS 2024 MONDO codes.
+    Import IUIS2024MONDOEnum from the Python schemas.
     
     Returns:
-        Dictionary mapping MONDO codes to their human-readable descriptions
+        dict: Dictionary mapping MONDO codes to their labels
     """
     try:
-        # Fallback: try to read from the source file
-        labels = {}
-        path = Path("src/cieinr/v1_0_0/linkml_schemas/iuis2024_redcap.txt")
-        
-        if path.exists():
-            with open(path, "r") as f:
-                for line in f:
-                    entries = line.split(" | ")
-                    for entry in entries:
-                        if "," in entry:
-                            code, label = entry.split(",", 1)
-                            code = code.strip()
-                            label = label.strip()
-                            labels[code] = label
-                            
-            return labels
-        else:
-            logger.warning(f"File not found: {path}")
+        # Try to import the module dynamically
+        spec = importlib.util.spec_from_file_location(
+            "form_1_basic", 
+            "src/cieinr/v1_0_0/python_schemas/form_1_basic.py"
+        )
+        if spec and spec.loader:
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
             
-            # Provide a minimal set of known labels as fallback
-            return {
-                "mondo_0007843": "Kabuki Syndrome 1 due to KMT2D deficiency",
-                "hp_0002383": "Encephalitis",
-                "mondo_0043653": "Herpes Labialis (cold sores)",
-                "hp_0002090": "Pneumonia"
-            }
+            if hasattr(module, 'IUIS2024MONDOEnum'):
+                enum_class = module.IUIS2024MONDOEnum
+                labels = {}
+                
+                # Extract values from the enum
+                for item_name in dir(enum_class):
+                    if not item_name.startswith('_'):
+                        try:
+                            item = getattr(enum_class, item_name)
+                            if hasattr(item, 'text') and hasattr(item, 'description'):
+                                labels[item.text] = item.description
+                        except:
+                            pass
+                
+                logger.info(f"Successfully imported IUIS labels, found {len(labels)} items")
+                return labels
+            else:
+                logger.warning("IUIS2024MONDOEnum not found in module")
+        else:
+            logger.warning("Could not load module specification")
     except Exception as e:
-        logger.error(f"Error loading IUIS labels: {e}")
-        return {}
+        logger.error(f"Error importing IUIS2024MONDOEnum: {e}")
+    
+    pass
+
 
 # Define the mapping dictionaries
 MAPPING_DICTS = [
@@ -298,26 +283,19 @@ def create_cieinr_phenopacket_mappings() -> Dict[str, Any]:
             "instrument_name": "patient_demographics_initial_form",
             "mapping_block": INDIVIDUAL_BLOCK,
             "label_dicts": {},
-            "mapping_dicts": {
-                "map_sex": get_mapping_by_name("map_sex"),
-            }
+            "mapping_dicts": {}
         },
         "vitalStatus": {
             "instrument_name": "__dummy__",  # Special marker for our patched function
             "mapping_block": VITAL_STATUS_BLOCK,
             "label_dicts": {},
-            "mapping_dicts": {
-                "map_vital_status": get_mapping_by_name("map_vital_status"),
-            }
+            "mapping_dicts": {}
         },
         "diseases": {
             "instrument_name": "basic_form",
             "mapping_block": DISEASE_BLOCK,
             "label_dicts": {
                 "IUIS2024MONDO": iuis_labels
-            },
-            "mapping_dicts": {
-                "map_disease_verification_status": get_mapping_by_name("map_disease_verification_status"),
             }
         },
         "phenotypicFeatures": {
@@ -330,8 +308,7 @@ def create_cieinr_phenopacket_mappings() -> Dict[str, Any]:
             }
         },
         "metadata": {
-            "resources": CIEINR_CODE_SYSTEMS_DICT,
+            "resources": CIEINR_RESOURCES,
             "created_by": created_by,
-            "bioportal_api_token": bioportal_api_token
         }
     }

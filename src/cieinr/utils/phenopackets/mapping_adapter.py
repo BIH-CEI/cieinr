@@ -57,36 +57,6 @@ def enhance_map_individual(data: dict, processor, **kwargs):
         logger.error(f"Error in enhanced map_individual: {e}")
         raise
 
-def enhance_map_vital_status(data: dict, processor, **kwargs):
-    """
-    Enhanced version of map_vital_status that handles CIEINR's data structure.
-    
-    Args:
-        data: The input data
-        processor: DataProcessor instance
-        **kwargs: Additional arguments
-        
-    Returns:
-        The mapped vital status
-    """
-    # Special handling for CIEINR - create default vital status
-    try:
-        # Check if we should use default value
-        instrument_name = processor.mapping_config.get("instrument_name")
-        if instrument_name == "__dummy__":
-            # Create a dummy vital status with UNKNOWN_STATUS
-            from phenopackets import VitalStatus
-            return VitalStatus(status="UNKNOWN_STATUS")
-        
-        # Call the original function 
-        from rarelink.phenopackets.mappings import map_vital_status
-        return map_vital_status(data, processor, **kwargs)
-    except Exception as e:
-        logger.error(f"Error in enhanced map_vital_status: {e}")
-        # Create a default vital status
-        from phenopackets import VitalStatus
-        return VitalStatus(status="UNKNOWN_STATUS")
-
 def enhance_map_diseases(data: dict, processor, **kwargs):
     """
     Enhanced version of map_diseases that handles CIEINR's data structure.
@@ -223,10 +193,6 @@ def apply_patches():
     with CIEINR data.
     """
     try:
-        # Import RareLink modules to ensure they're in sys.modules
-        import rarelink.phenopackets.mappings
-        import rarelink.utils.processor
-        
         # Register our custom implementations for the mapping functions
         # We're patching the module directly instead of trying to modify __code__
         monkey_patch_function(
