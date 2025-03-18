@@ -9,7 +9,6 @@ and outputs to patient_link.json in the same directory.
 
 import sys
 import os
-from pathlib import Path
 from cieinr.utils.processing.schemas.redcap_to_linkml import redcap_to_linkml
 from cieinr.v1_0_0.mappings.redcap_to_linkml.registry import MAPPING_FUNCTIONS
 

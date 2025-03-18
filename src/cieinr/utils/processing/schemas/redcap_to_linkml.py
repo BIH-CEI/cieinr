@@ -68,7 +68,8 @@ def redcap_to_linkml(
                 for schema_name, config in mapping_functions.items():
                     if config["is_repeating"] and repeated_instrument == schema_name:
                         try:
-                            repeated_element[schema_name] = config["mapper"](entry)
+                            custom_key = config.get("output_key", schema_name)
+                            repeated_element[custom_key] = config["mapper"](entry)
                         except Exception as e:
                             print(f"Error mapping {schema_name}: {e}")
                             repeated_element[schema_name] = {}
