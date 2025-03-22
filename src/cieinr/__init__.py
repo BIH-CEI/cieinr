@@ -9,4 +9,4 @@ This package provides tools for:
 from cieinr._version import __version__
 from cieinr.config import Config
 
-__all__ = ["Config", "__version__", "RARELINK_AVAILABLE"]
+__all__ = ["Config", "__version__"]

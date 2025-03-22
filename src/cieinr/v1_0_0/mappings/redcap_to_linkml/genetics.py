@@ -10,6 +10,8 @@ for Boolean conversions and prefix additions.
 
 from rarelink.utils.processing.codes import add_prefix_to_code
 
+
+
 """
 Mapping function for genetic findings REDCap data to LinkML format.
 """
@@ -24,6 +26,7 @@ def map_genetic_findings(record):
     Returns:
         dict: The mapped data in LinkML format
     """
+    
     return {
         "g_iei_deficiency": record.get("g_iei_deficiency", ""),
         "other_non_g_iei": record.get("other_non_g_iei", ""),
@@ -49,6 +52,7 @@ def map_genetic_findings(record):
         "loinc_93044_6": record.get("loinc_93044_6", ""),
         "rarelink_6_1_genetic_findings_complete": record.get("rarelink_6_1_genetic_findings_complete", "0")
     }
+    
 
 # Additional processing for Boolean conversion and prefix additions.
 ADDITIONAL_PROCESSING = {

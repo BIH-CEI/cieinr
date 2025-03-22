@@ -7,6 +7,7 @@ from .basic_form import map_basic_form
 from .patient_demographics import map_patient_demographics  
 from .infections import map_infections
 from .genetics import map_genetic_findings
+from .conditions import map_conditions
 
 # Registry of mapping functions with configuration
 MAPPING_FUNCTIONS = {
@@ -26,5 +27,9 @@ MAPPING_FUNCTIONS = {
         "mapper": map_genetic_findings,
         "is_repeating": True,
         "output_key": "genetic_findings" 
-    }
+    },
+    "patients_systemic_or_organ_specific_conditions":{
+        "mapper": map_conditions,
+        "is_repeating": True,
+    },
 }

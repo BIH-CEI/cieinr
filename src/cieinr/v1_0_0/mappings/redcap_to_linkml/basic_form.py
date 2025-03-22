@@ -16,6 +16,8 @@ def map_basic_form(record):
         "iei_deficiency_basic": record.get("iei_deficiency_basic", ""),
         "basic_form_complete": record.get("basic_form_complete", "0"),
         "igrt_basic": record.get("igrt_basic", ""),
+        "non_genetic_iei": record.get("non_genetic_iei", ""),
+        "non_genetic_iei_mondo": record.get("non_genetic_iei_mondo", ""),
         "hct_basic_form": record.get("hct_basic_form", "")
         
     }

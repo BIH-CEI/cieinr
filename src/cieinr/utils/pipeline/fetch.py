@@ -5,7 +5,10 @@ import requests
 from pathlib import Path
 from typing import Dict, Any, List
 
-def fetch_redcap_records(api_url: str, token: str, project_id: str = None, use_test_data: bool = False) -> List[Dict[str, Any]]:
+def fetch_redcap_records(api_url: str, 
+                         token: str, 
+                         project_id: str = None, 
+                         use_test_data: bool = False) -> List[Dict[str, Any]]:
     """
     Fetch records from REDCap using the API or use test data.
     

@@ -26,7 +26,7 @@ def main():
     # Check if input file exists
     if not os.path.exists(input_file):
         print(f"Error: Input file '{input_file}' not found.")
-        print(f"Please place your REDCap data in 'res/redcap_data.json'.")
+        print("Please place your REDCap data in 'res/redcap_data.json'.")
         sys.exit(1)
     
     print(f"Using input file: {input_file}")
