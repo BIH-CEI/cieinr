@@ -1,14 +1,37 @@
-id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/form_1_basic.yaml
-name: basic_form
-description: Basic form containing IEI diagnosis information for Phenopackets export
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/form_genetic_information.yaml
+name: genetic_information
+description: >
+  This form is used to capture genetic information related to a variant. 
+  <br><br>
+  <div class="rich-text-field-label">
+    <p>We need to negotiate these instructions:</p>
+    <p><strong>Notes for entering information into the Genetic Findings sheet</strong></p>
+    <ul>
+      <li>Complete a separate form for each variant (this is a repeated form).</li>
+      <li>If you have no information about something, leave it blank.</li>
+      <li><strong>To link a variant to a (genetic) IEI diagnosis, please select for the corresponding IEI disease.</strong> You can also link multiple variants with varying interpretation statuses to a disease by repeating the form.</li>
+      <li>OMIM_g codes refer to specific genes, while OMIM_p codes refer to phenotypes or clinical manifestations associated with genetic disorders (see <a href="https://www.omim.org/">OMIM</a>).</li>
+      <li>To capture the genetic variants, please provide validated HGVS values (<a href="https://hgvs-nomenclature.org/stable/">HGVS Nomenclature</a>) for genomic (g.HGVS), DNA (c.HGVS), or protein (p.HGVS) changes. We recommend entering c.HGVS before using g.HGVS or p.HGVS.</li>
+      <li><strong>To validate your mutations:</strong>
+        <ul>
+          <li>You can search for the mutation in ClinVar (<a href="https://www.ncbi.nlm.nih.gov/clinvar/">ClinVar</a>) or Varsome (<a href="https://varsome.com/">Varsome</a>).</li>
+        </ul>
+        <ul>
+          <li><strong>You must enter the expression into an HGVS expression validator, such as <a href="https://lhcforms.nlm.nih.gov/fhir/hgvs-validator/">HGVS Validator</a>.</strong></li>
+        </ul>
+      </li>
+      <li>If you cannot validate your variant expressions according to HGVS standards, please use the text field "Unvalidated Variant Text of the mutation" to enter all information you have for subsequent validation.</li>
+    </ul>
+  </div>
+  <br>
+  Please complete this form for each variant.
 prefixes:
   linkml: https://w3id.org/linkml/
   cieinr: https://github.com/BIH-CEI/cieinr
-  MONDO: https://purl.obolibrary.org/obo/MONDO_
-  HP: https://purl.obolibrary.org/obo/HP_
-  NCIT: http://purl.obolibrary.org/obo/NCIT/
-  ORDO: http://www.orpha.net/ORDO/
-  CustomCode: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SNOMEDCT: http://purl.obolibrary.org/obo/SNOMEDCT_
+  LOINC: http://loinc.org/
+  BIOPORTAL: http://bioportal.bioontology.org/ontologies/GENO
 imports:
   - linkml:types
   - cieinr_types
@@ -17,83 +40,233 @@ default_range: string
 default_prefix: cieinr
 
 classes:
-  BasicForm:
+  GeneticInformation:
     description: >
-      The basic form containing the IEI diagnosis information needed for Phenopackets export.
+      Genetic Information form capturing the date of evaluation, genetic diagnosis status,
+      gene/variant details, testing methods, variant expression (HGVS), inheritance pattern, and clinical interpretation.
     slots:
-      - iei_deficiency_basic
-      - non_genetic_iei
-      - basic_form_complete
-      - igrt_basic
-      - hct_basic_form
+      - date_of_genetic_evaluation
+      - genetic_diagnosis_g
+      - g_iei_deficiency
+      - gen_report
+      - g_other_iei_deficiency
+      - g_other_iei_def_text
+      - progress_status
+      - interpretation_status
+      - loinc_81304_8
+      - loinc_81304_8_other
+      - loinc_48018_6
+      - loinc_lp7824_8
+      - variant_expression
+      - loinc_81290_9
+      - loinc_48004_6
+      - loinc_48005_3
+      - variant_validation
+      - geno_0000141
+      - geno_0000141_other
+      - loinc_48019_4
+      - loinc_48019_4_other
+      - loinc_53034_5
+      - loinc_53034_5_other
+      - protein_funct
+      - pther_prot_expr
+      - loinc_53037_8
 
 slots:
-  iei_deficiency_basic:
-    title: IEI deficiency diagnosis or carrier status (IUIS 2024)
+  date_of_genetic_evaluation:
+    title: Date of Genetic Evaluation
     description: >
-      The IEI deficiency diagnosis or carrier status for the participant 
-      according to the IUIS 2024 classification.
-    range: IUIS2024MONDOEnum
-    required: false
-    comments: >
-      This field contains an extensive list of IEI deficiencies with MONDO codes.
-      Tip: use the IUIS 2024 classification. If not found, search in MONDO.
-
-  non_genetic_iei: 
-    title: Non-genetic IEI diagnosis
-    description: >
-      The non-genetic IEI diagnosis for the participant.
-    range: NonGeneticIEIEnum
+      Date of genetic evaluation (format: 01-M-Y).
+    range: union_date_string
     required: false
 
-  igrt_basic:
-    title:  Immunoglobulin replacement therapy
+  genetic_diagnosis_g:
+    title: Genetic IEI Diagnosis
     description: >
-      Has the patient ever received Immunoglobulin replacement therapy?
-    range: IGRTStatusEnumBasicForm
+      Is a genetic IEI diagnosis available in correspondence to the genetic variant captured?
+    range: GeneticDiagnosisEnum
     required: false
 
-  hct_basic_form:
-    title: Hematopoietic cell transplantation
+  g_iei_deficiency:
+    title: Genetic IEI Deficiency
     description: >
-      Has the patient ever received Hematopoietic cell transplantation?
-    range: HCTStatusEnumBasicForm
+      Please choose the genetic IEI deficiency (IUIS2024) related to the variant captured.
+    range: GeneticIEIDeficiencyEnum
     required: false
 
-  basic_form_complete:
-    title: Form completion status
+  gen_report:
+    title: Genetics Report
     description: >
-      Indicates the completion status of the basic form.
-    range: CompletionStatusEnumBasicForm
-    required: true
+      Please upload the genetics report. REMOVE ALL IDENTIFYING PATIENT INFORMATION (NAME, MRN, ULI, DOB).
+    range: file
+    required: false
+
+  g_other_iei_deficiency:
+    title: Other IEI Deficiency
+    description: >
+      Please search for the other IEI deficiency in MONDO.
+    range: string
+    required: false
+
+  g_other_iei_def_text:
+    title: Other IEI Deficiency (Text)
+    description: >
+      If not found in MONDO, specify in the text field.
+    range: string
+    required: false
+
+  progress_status:
+    title: Progress Status
+    description: >
+      The Progress Status of the Diagnosis.
+    range: ProgressStatusEnum
+    required: false
+
+  interpretation_status:
+    title: Variant Interpretation Status
+    description: >
+      Is this variant thought to be related to the diagnosis?
+    range: InterpretationStatusEnum
+    required: false
+
+  loinc_81304_8:
+    title: Genetic Testing Method
+    description: >
+      Please indicate what genetic testing method has been used for diagnosis.
+    range: GeneticTestMethodEnum
+    required: false
+
+  loinc_81304_8_other:
+    title: Other Genetic Test Method
+    description: >
+      Please indicate other test.
+    range: string
+    required: false
+
+  loinc_48018_6:
+    title: Gene ID
+    description: >
+      Please search in the HGNC (HUGO Gene Nomenclature Committee) for the gene ID.
+    range: string
+    required: false
+
+  loinc_lp7824_8:
+    title: Unvalidated Variant Text
+    description: >
+      Unvalidated Variant Text of the mutation that describes the variant change.
+    range: string
+    required: false
+
+  variant_expression:
+    title: Variant Expression Type
+    description: >
+      Please choose the type of the variant's validated HGVS expression.
+    range: VariantExpressionEnum
+    required: false
+
+  loinc_81290_9:
+    title: Genomic DNA Change (g.HGVS)
+    description: >
+      Please indicate the genomic DNA sequence change as a validated HGVS expression (g.HGVS), e.g. g.323176682G>A.
+    range: string
+    required: false
+
+  loinc_48004_6:
+    title: DNA Change (c.HGVS)
+    description: >
+      Please indicate the DNA change as a validated HGVS expression (c.HGVS), e.g. c.2582T>C.
+    range: string
+    required: false
+
+  loinc_48005_3:
+    title: Protein Change (p.HGVS)
+    description: >
+      Please indicate the protein change as a validated HGVS expression (p.HGVS), e.g. p.(Leu861Pro).
+    range: string
+    required: false
+
+  variant_validation:
+    title: Variant Validation
+    description: >
+      Are you sure the entered HGVS expression was validated using the variant validator?
+    range: VariantValidationEnum
+    required: false
+
+  geno_0000141:
+    title: Pattern of Inheritance
+    description: >
+      Please choose the pattern of inheritance.
+    range: InheritancePatternEnum
+    required: false
+
+  geno_0000141_other:
+    title: Other Inheritance Pattern
+    description: >
+      The name of the other type of inheritance.
+    range: string
+    required: false
+
+  loinc_48019_4:
+    title: Variant Type/Consequence
+    description: >
+      What is the variant type or consequence? (e.g. missense, non-sense)
+    range: VariantTypeEnum
+    required: false
+
+  loinc_48019_4_other:
+    title: Other Variant Type
+    description: >
+      What is the other mutation type?
+    range: string
+    required: false
+
+  loinc_53034_5:
+    title: Zygosity
+    description: >
+      Zygosity (e.g. homozygous, heterozygous).
+    range: ZygosityEnum
+    required: false
+
+  loinc_53034_5_other:
+    title: Other Zygosity
+    description: >
+      Please specify other zygosity.
+    range: string
+    required: false
+
+  protein_funct:
+    title: Protein Function Effect
+    description: >
+      What is the effect of the variant on protein function?
+    range: ProteinFunctionEffectEnum
+    required: false
+
+  pther_prot_expr:
+    title: Other Protein Function Explanation
+    description: >
+      Please clarify other type.
+    range: string
+    required: false
+
+  loinc_53037_8:
+    title: Clinical Significance (ACMG)
+    description: >
+      Please indicate the clinical significance of the variant.
+    range: ClinicalSignificanceEnum
+    required: false
 
 enums:
-  CompletionStatusEnumBasicForm:
-    description: >
-      Enumeration for form completion status
+  GeneticDiagnosisEnum:
+    description: Genetic IEI diagnosis available.
     permissible_values:
-      "0":
-        description: Incomplete
       "1":
-        description: Unverified
+        description: Yes
+        meaning: "1"
       "2":
-        description: Complete
+        description: No
+        meaning: "2"
 
-  IGRTStatusEnumBasicForm:
-    description: >
-      Enumeration for Immunoglobulin replacement therapy status in the basic form
-    permissible_values:
-      ncit_c62710:
-        description: Immunoglobulin Therapy
-
-  HCTStatusEnumBasicForm:
-    description: >
-      Enumeration for Hematopoietic cell transplantation status in the basic form
-    permissible_values:
-      ncit_c15431:
-        description: Hematopoietic Cell Transplantation
-
-  IUIS2024MONDOEnum:
+  GeneticIEIDeficiencyEnum:
     description: >
       Enumeration of Inborn Errors of Immunity based on IUIS 2024 classification
     permissible_values:
@@ -1694,67 +1867,217 @@ enums:
         description: ZNFX1 deficiency - ZNFX1
         meaning: MONDO:0030491
 
-  NonGeneticIEIEnum:
-    description: >
-      Enumeration of non-genetic Inborn Errors of Immunity
+
+  ProgressStatusEnum:
+    description: Progress status of the genetic diagnosis.
     permissible_values:
-      hp_000176: 
-        description: Asplenia
-        meaning: HP:000176
-      mondo_0015974:
-        description: (atypical) severe combined immunodeficiency
-        meaning: MONDO:0015974
-      mondo_0015131:
-        description: combined immunodeficiency
-        meaning: MONDO:0015131
-      early_onset_ibd:
-        description: Early-onset inflammatory bowel disease
-        meaning: CustomCode:early_onset_ibd
-      early_onset_mad:
-        description: Early-onset multi-organ autoimmune disease
-        meaning: CustomCode:early_onset_mad
-      ipex_like_disease:
-        description: IPEX-like disease
-        meaning: CustomCode:ipex_like_disease      
-      mondo_0013714:
-        description: mannose-binding lectin deficiency
-        meaning: MONDO:0013714
-      mondo_0011338:
-        description: Omenn syndrome
-        meaning: MONDO:0011338
-      mondo_0014226:
-        description: idiopathic CD4 lymphocytopenia
-        meaning: MONDO:0014226
-      mondo_0015977:
-        description: Agammaglobulinemia
-        meaning: MONDO:0015977
-      uncl_abd_def:
-        description: (Unclassified) antibody deficiency
-        meaning: CustomCode:uncl_abd_def
-      uncl_phag_dis:
-        description: (Unclassified) phagocytic disorder
-        meaning: CustomCode:uncl_phag_dis
-      ncit_c176595:
-        description: (Unclassified) disorders of immune dysregulation
-        meaning: NCIT:C176595
-      ordo_331193:
-        description: (Unclassified) defect in innate immunity
-        meaning: ORDO:331193
-      ncit_c4691:
-        description: (Unclassified) complement deficiency
-        meaning: NCIT:C4691
-      autoinflammatory_diseases:
-        description: (Unclassified) autoinflammatory disease
-        meaning: CustomCode:autoinflammatory_diseases
-      syndromic_immunodeficiencies:
-        description: (Unclassified) syndromic immunodeficiencies
-        meaning: CustomCode:syndromic_immunodeficiencies
-      other_t_cell_problem:
-        description: Unclassified/Other T cell proble
-        meaning: CustomCode:other_t_cell_problem
-      mondo_0001222:
-        description: congenital T-cell immunodeficiency / non-SCID
-        meaning: MONDO:0001222
-      mondo_0021094:
-        description: combined immunodeficiency
-        meaning: MONDO:0021094
+      unknown_progress:
+        description: No information is available about the diagnosis
+        meaning: UNKNOWN:PROGRESS
+      in_progress:
+        description: No diagnosis has been found to date but additional differential diagnostic work is in progress.
+        meaning: IN:PROGRESS
+      completed:
+        description: The work on the interpretation is complete.
+        meaning: COMPLETED
+      solved:
+        description: The interpretation is complete and considered to be a definitive diagnosis.
+        meaning: SOLVED
+      unsolved:
+        description: The interpretation is complete but no definitive diagnosis was found.
+        meaning: UNSOLVED
+
+  InterpretationStatusEnum:
+    description: Interpretation status for the variant.
+    permissible_values:
+      unknown_status:
+        description: No information is available about the status
+        meaning: UNKNOWN:STATUS
+      rejected:
+        description: The variant or gene reported here is interpreted not to be related to the diagnosis
+        meaning: REJECTED
+      candidate:
+        description: The variant or gene reported here is interpreted to possibly be related to the diagnosis
+        meaning: CANDIDATE
+      contributory:
+        description: The variant or gene reported here is interpreted to be related to the diagnosis
+        meaning: CONTRIBUTORY
+      causative:
+        description: The variant or gene reported here is interpreted to be causative of the diagnosis
+        meaning: CAUSATIVE
+
+  GeneticTestMethodEnum:
+    description: Genetic testing method used for diagnosis.
+    permissible_values:
+      loinc_la26406-1:
+        description: Karyotyping
+        meaning: LOINC:LA26406-1
+      loinc_la26404-6:
+        description: FISH
+        meaning: LOINC:LA26404-6
+      loinc_la26418-6:
+        description: PCR
+        meaning: LOINC:LA26418-6
+      loinc_la26419-4:
+        description: qPCR (real-time PCR)
+        meaning: LOINC:LA26419-4
+      loinc_la26400-4:
+        description: SNP array
+        meaning: LOINC:LA26400-4
+      loinc_la26813-8:
+        description: Restriction fragment length polymorphism (RFLP)
+        meaning: LOINC:LA26813-8
+      loinc_la26398-0:
+        description: Sequencing- to expand-WES, WGS, gene panel, sanger seq
+        meaning: LOINC:LA26398-0
+      loinc_la26415-2:
+        description: MLPA
+        meaning: LOINC:LA26415-2
+      loinc_la46-8:
+        description: Other
+        meaning: LOINC:LA46-8
+
+  VariantExpressionEnum:
+    description: Type of validated HGVS expression.
+    permissible_values:
+      chgvs:
+        description: Sequence DNA change [c.HGVS], ex. c.202C>T
+        meaning: CHGVS
+      phgvs:
+        description: Amino Acid Change [p.HGVS], ex. p.Leu861Pro
+        meaning: PHGVS
+      ghgvs:
+        description: Genomic DNA change [g.HGVS], ex. g.323176682G>A
+        meaning: GHGVS
+
+  VariantValidationEnum:
+    description: Validation status of the HGVS expression.
+    permissible_values:
+      yes:
+        description: Yes - I'm sure
+        meaning: YES
+      no:
+        description: No, I need to check again
+        meaning: NO
+
+  InheritancePatternEnum:
+    description: Pattern of inheritance.
+    permissible_values:
+      geno_0000936:
+        description: X-linked- XL
+        meaning: GENO:0000936
+      geno_0000148:
+        description: Autosomal recessive -AR
+        meaning: GENO:0000148
+      geno_0000147:
+        description: Autosomal dominant -AD
+        meaning: GENO:0000147
+      hp_0003745:
+        description: Sporadic (no prior family history)
+        meaning: HP:0003745
+      ncit_c70429:
+        description: Ambiguous positive family history
+        meaning: NCIT:C70429
+      snomedct_74964007:
+        description: Other - Please, specify the type of inheritance
+        meaning: SNOMEDCT:74964007
+      geno_0000889:
+        description: Unknown
+        meaning: GENO:0000889
+
+  VariantTypeEnum:
+    description: Variant type or consequence.
+    permissible_values:
+      loinc_la9658-1:
+        description: Wild type
+        meaning: LOINC:LA9658-1
+      loinc_la6692-3:
+        description: Deletion
+        meaning: LOINC:LA6692-3
+      loinc_la6686-5:
+        description: Duplication
+        meaning: LOINC:LA6686-5
+      loinc_la6687-3:
+        description: Insertion
+        meaning: LOINC:LA6687-3
+      loinc_la6688-1:
+        description: Insertion/Deletion
+        meaning: LOINC:LA6688-1
+      loinc_la6689-9:
+        description: Inversion
+        meaning: LOINC:LA6689-9
+      loinc_48019_4_other:
+        description: Other
+        meaning: LOINC:48019-4:OTHER
+      snomedct_261665006:
+        description: Unknown
+        meaning: SNOMEDCT:261665006
+
+  ZygosityEnum:
+    description: Zygosity.
+    permissible_values:
+      loinc_la6705-3:
+        description: Homozygous
+        meaning: LOINC:LA6705-3
+      loinc_la6706-1:
+        description: (simple) Heterozygous
+        meaning: LOINC:LA6706-1
+      loinc_la26217-2:
+        description: Compound heterozygous
+        meaning: LOINC:LA26217-2
+      loinc_la26220-6:
+        description: Double heterozygous
+        meaning: LOINC:LA26220-6
+      loinc_la6707-9:
+        description: (X-linked) Hemizygous
+        meaning: LOINC:LA6707-9
+      loinc_la6703-8:
+        description: Heteroplasmic
+        meaning: LOINC:LA6703-8
+      loinc_la6704-6:
+        description: Homoplasmic
+        meaning: LOINC:LA6704-6
+      loinc_53034_5_other:
+        description: Other
+        meaning: LOINC:53034-5:OTHER
+
+  ProteinFunctionEffectEnum:
+    description: Effect of the variant on protein function.
+    permissible_values:
+      "1":
+        description: Loss of function
+        meaning: "1"
+      "2":
+        description: Gain of function
+        meaning: "2"
+      "3":
+        description: Double negative
+        meaning: "3"
+      "4":
+        description: Other
+        meaning: "4"
+      "5":
+        description: Unknown
+        meaning: "5"
+
+  ClinicalSignificanceEnum:
+    description: Clinical significance of the variant (ACMG).
+    permissible_values:
+      loinc_la6668-3:
+        description: Pathogenic
+        meaning: LOINC:LA6668-3
+      loinc_la26332-9:
+        description: Likely pathogenic
+        meaning: LOINC:LA26332-9
+      loinc_la26333-7:
+        description: Uncertain significance
+        meaning: LOINC:LA26333-7
+      loinc_la26334-5:
+        description: Likely benign
+        meaning: LOINC:LA26334-5
+      loinc_la6675-8:
+        description: Benign
+        meaning: LOINC:LA6675-8
+      loinc_la4489-6:
+        description: Unknown
+        meaning: LOINC:LA4489-6

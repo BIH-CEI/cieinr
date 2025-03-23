@@ -1,19 +1,14 @@
-# Auto generated from form_2_demographics.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-15T19:07:59
-# Schema: patient_demographics_initial
+# Auto generated from form_7_live_vaccines.yaml by pythongen.py version: 0.0.1
+# Generation date: 2025-03-22T12:50:21
+# Schema: live_vaccine
 #
-# id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/form_2_demographics_initial_form.yaml
-# description: Patient demographics form with dates of birth, diagnosis and symptom onset for Phenopackets export
+# id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/linkml_schemas/live_vaccine.yaml
+# description: Schema for the live vaccine administration and specific immune response form.
+#
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
-import re
 from dataclasses import dataclass
-from datetime import (
-    date,
-    datetime,
-    time
-)
 from typing import (
     Any,
     ClassVar,
@@ -23,39 +18,18 @@ from typing import (
     Union
 )
 
-from jsonasobj2 import (
-    JsonObj,
-    as_dict
-)
 from linkml_runtime.linkml_model.meta import (
     EnumDefinition,
-    PermissibleValue,
-    PvFormulaOptions
+    PermissibleValue
 )
 from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from linkml_runtime.utils.formatutils import (
-    camelcase,
-    sfx,
-    underscore
-)
-from linkml_runtime.utils.metamodelcore import (
-    bnode,
-    empty_dict,
-    empty_list
-)
 from linkml_runtime.utils.slot import Slot
 from linkml_runtime.utils.yamlutils import (
-    YAMLRoot,
-    extended_float,
-    extended_int,
-    extended_str
+    YAMLRoot
 )
-from rdflib import (
-    Namespace,
-    URIRef
-)
+from rdflib import URIRef
 
 from linkml_runtime.linkml_model.types import Float, Integer, String
 
@@ -66,7 +40,10 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+HP = CurieNamespace('HP', 'https://purl.obolibrary.org/obo/HP_')
+NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT/')
 SNOMEDCT = CurieNamespace('SNOMEDCT', 'http://snomed.info/sct/')
+VO = CurieNamespace('VO', 'https://purl.obolibrary.org/obo/VO_')
 CIEINR = CurieNamespace('cieinr', 'https://github.com/BIH-CEI/cieinr')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
@@ -183,36 +160,70 @@ class BooleanAsInteger(Integer):
 
 
 @dataclass(repr=False)
-class PatientDemographicsInitial(YAMLRoot):
+class LiveVaccineHistory(YAMLRoot):
     """
-    Initial patient demographics information with dates of birth, diagnosis and symptom onset for Phenopackets export.
+    Form capturing live vaccine administration and specific immune response.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CIEINR["PatientDemographicsInitial"]
-    class_class_curie: ClassVar[str] = "cieinr:PatientDemographicsInitial"
-    class_name: ClassVar[str] = "PatientDemographicsInitial"
-    class_model_uri: ClassVar[URIRef] = CIEINR.PatientDemographicsInitial
+    class_class_uri: ClassVar[URIRef] = CIEINR["LiveVaccineHistory"]
+    class_class_curie: ClassVar[str] = "cieinr:LiveVaccineHistory"
+    class_name: ClassVar[str] = "LiveVaccineHistory"
+    class_model_uri: ClassVar[URIRef] = CIEINR.LiveVaccineHistory
 
-    patient_demographics_initial_form_complete: Union[str, "CompletionStatusEnumInfectionsInitial"] = None
-    snomedct_184099003: Optional[Union[str, UnionDateString]] = None
-    snomedct_432213005: Optional[Union[str, UnionDateString]] = None
-    snomedct_298059007: Optional[Union[str, UnionDateString]] = None
+    completion_live_vax: Optional[Union[str, UnionDateString]] = None
+    live_vax: Optional[Union[str, "LiveVaccineTypeEnum"]] = None
+    live_vax_other: Optional[str] = None
+    live_vax_dosages: Optional[Union[str, "LiveVaccineDosagesEnum"]] = None
+    live_vax_ae: Optional[Union[str, "VaccineAssociatedInfectionEnum"]] = None
+    ae_live_vax: Optional[Union[str, "AdverseEventObservationEnum"]] = None
+    live_vax_ae_other: Optional[str] = None
+    live_vax_ae_severity: Optional[Union[str, "LiveVaccineAdverseEventSeverityEnum"]] = None
+    live_vax_response: Optional[Union[str, "VaccineResponseEnum"]] = None
+    life_vax_response_date: Optional[Union[str, UnionDateString]] = None
+    measles_response: Optional[Union[str, "VaccineResponseEnum"]] = None
+    mumps_response: Optional[Union[str, "VaccineResponseEnum"]] = None
+    rubella_response: Optional[Union[str, "VaccineResponseEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.patient_demographics_initial_form_complete):
-            self.MissingRequiredField("patient_demographics_initial_form_complete")
-        if not isinstance(self.patient_demographics_initial_form_complete, CompletionStatusEnumInfectionsInitial):
-            self.patient_demographics_initial_form_complete = CompletionStatusEnumInfectionsInitial(self.patient_demographics_initial_form_complete)
+        if self.completion_live_vax is not None and not isinstance(self.completion_live_vax, UnionDateString):
+            self.completion_live_vax = UnionDateString(self.completion_live_vax)
 
-        if self.snomedct_184099003 is not None and not isinstance(self.snomedct_184099003, UnionDateString):
-            self.snomedct_184099003 = UnionDateString(self.snomedct_184099003)
+        if self.live_vax is not None and not isinstance(self.live_vax, LiveVaccineTypeEnum):
+            self.live_vax = LiveVaccineTypeEnum(self.live_vax)
 
-        if self.snomedct_432213005 is not None and not isinstance(self.snomedct_432213005, UnionDateString):
-            self.snomedct_432213005 = UnionDateString(self.snomedct_432213005)
+        if self.live_vax_other is not None and not isinstance(self.live_vax_other, str):
+            self.live_vax_other = str(self.live_vax_other)
 
-        if self.snomedct_298059007 is not None and not isinstance(self.snomedct_298059007, UnionDateString):
-            self.snomedct_298059007 = UnionDateString(self.snomedct_298059007)
+        if self.live_vax_dosages is not None and not isinstance(self.live_vax_dosages, LiveVaccineDosagesEnum):
+            self.live_vax_dosages = LiveVaccineDosagesEnum(self.live_vax_dosages)
+
+        if self.live_vax_ae is not None and not isinstance(self.live_vax_ae, VaccineAssociatedInfectionEnum):
+            self.live_vax_ae = VaccineAssociatedInfectionEnum(self.live_vax_ae)
+
+        if self.ae_live_vax is not None and not isinstance(self.ae_live_vax, AdverseEventObservationEnum):
+            self.ae_live_vax = AdverseEventObservationEnum(self.ae_live_vax)
+
+        if self.live_vax_ae_other is not None and not isinstance(self.live_vax_ae_other, str):
+            self.live_vax_ae_other = str(self.live_vax_ae_other)
+
+        if self.live_vax_ae_severity is not None and not isinstance(self.live_vax_ae_severity, LiveVaccineAdverseEventSeverityEnum):
+            self.live_vax_ae_severity = LiveVaccineAdverseEventSeverityEnum(self.live_vax_ae_severity)
+
+        if self.live_vax_response is not None and not isinstance(self.live_vax_response, VaccineResponseEnum):
+            self.live_vax_response = VaccineResponseEnum(self.live_vax_response)
+
+        if self.life_vax_response_date is not None and not isinstance(self.life_vax_response_date, UnionDateString):
+            self.life_vax_response_date = UnionDateString(self.life_vax_response_date)
+
+        if self.measles_response is not None and not isinstance(self.measles_response, VaccineResponseEnum):
+            self.measles_response = VaccineResponseEnum(self.measles_response)
+
+        if self.mumps_response is not None and not isinstance(self.mumps_response, VaccineResponseEnum):
+            self.mumps_response = VaccineResponseEnum(self.mumps_response)
+
+        if self.rubella_response is not None and not isinstance(self.rubella_response, VaccineResponseEnum):
+            self.rubella_response = VaccineResponseEnum(self.rubella_response)
 
         super().__post_init__(**kwargs)
 
@@ -248,29 +259,185 @@ class CodeSystemsContainer(YAMLRoot):
     iuis: Union[str, "IUIS"] = None
 
 # Enumerations
-class CompletionStatusEnumInfectionsInitial(EnumDefinitionImpl):
+class LiveVaccineTypeEnum(EnumDefinitionImpl):
     """
-    Enumeration for form completion status
+    Types of live vaccines.
+    """
+    vo_0010209 = PermissibleValue(
+        text="vo_0010209",
+        description="Oral Polio vaccine",
+        meaning=CIEINR["vo_0010209"])
+    vo_0000731 = PermissibleValue(
+        text="vo_0000731",
+        description="MMR (Measles, Mumps, Rubella)",
+        meaning=CIEINR["vo_0000731"])
+    vo_0021165 = PermissibleValue(
+        text="vo_0021165",
+        description="Varicella",
+        meaning=CIEINR["vo_0021165"])
+    vo_0000433 = PermissibleValue(
+        text="vo_0000433",
+        description="Vaccinia",
+        meaning=CIEINR["vo_0000433"])
+    vo_0000771 = PermissibleValue(
+        text="vo_0000771",
+        description="BCG",
+        meaning=CIEINR["vo_0000771"])
+    vo_0000123 = PermissibleValue(
+        text="vo_0000123",
+        description="Yellow Fever",
+        meaning=CIEINR["vo_0000123"])
+    vo_0003495 = PermissibleValue(
+        text="vo_0003495",
+        description="Influenza",
+        meaning=CIEINR["vo_0003495"])
+    vo_0000658 = PermissibleValue(
+        text="vo_0000658",
+        description="Rotavirus",
+        meaning=CIEINR["vo_0000658"])
+    other = PermissibleValue(
+        text="other",
+        description="Other",
+        meaning=CIEINR["other"])
+
+    _defn = EnumDefinition(
+        name="LiveVaccineTypeEnum",
+        description="Types of live vaccines.",
+    )
+
+class LiveVaccineDosagesEnum(EnumDefinitionImpl):
+    """
+    Number of doses for live vaccine.
     """
     _defn = EnumDefinition(
-        name="CompletionStatusEnumInfectionsInitial",
-        description="""Enumeration for form completion status""",
+        name="LiveVaccineDosagesEnum",
+        description="Number of doses for live vaccine.",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "0",
-            PermissibleValue(
-                text="0",
-                description="Incomplete"))
         setattr(cls, "1",
             PermissibleValue(
                 text="1",
-                description="Unverified"))
+                description="Dose 1",
+                meaning=CIEINR["1"]))
         setattr(cls, "2",
             PermissibleValue(
                 text="2",
-                description="Complete"))
+                description="Dose 2",
+                meaning=CIEINR["2"]))
+        setattr(cls, "3",
+            PermissibleValue(
+                text="3",
+                description="Dose 3",
+                meaning=CIEINR["3"]))
+        setattr(cls, "4",
+            PermissibleValue(
+                text="4",
+                description="Dose 4",
+                meaning=CIEINR["4"]))
+        setattr(cls, "5",
+            PermissibleValue(
+                text="5",
+                description="Dose 5 and more",
+                meaning=CIEINR["5"]))
+
+class VaccineAssociatedInfectionEnum(EnumDefinitionImpl):
+    """
+    Vaccine-associated infection observation.
+    """
+    hp_0020085 = PermissibleValue(
+        text="hp_0020085",
+        description="Vaccine-associated infection was observed",
+        meaning=CIEINR["hp_0020085"])
+    hp_0020085_exluded = PermissibleValue(
+        text="hp_0020085_exluded",
+        description="No vaccine-associated infection was observed",
+        meaning=CIEINR["hp_0020085_exluded"])
+    snomedct_261665006 = PermissibleValue(
+        text="snomedct_261665006",
+        description="Unknown",
+        meaning=CIEINR["snomedct_261665006"])
+
+    _defn = EnumDefinition(
+        name="VaccineAssociatedInfectionEnum",
+        description="Vaccine-associated infection observation.",
+    )
+
+class AdverseEventObservationEnum(EnumDefinitionImpl):
+    """
+    Adverse event observation for live vaccine.
+    """
+    _defn = EnumDefinition(
+        name="AdverseEventObservationEnum",
+        description="Adverse event observation for live vaccine.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "1",
+            PermissibleValue(
+                text="1",
+                description="True",
+                meaning=CIEINR["1"]))
+        setattr(cls, "2",
+            PermissibleValue(
+                text="2",
+                description="False",
+                meaning=CIEINR["2"]))
+        setattr(cls, "3",
+            PermissibleValue(
+                text="3",
+                description="Unknown",
+                meaning=CIEINR["3"]))
+
+class LiveVaccineAdverseEventSeverityEnum(EnumDefinitionImpl):
+    """
+    Severity levels of adverse events for live vaccine.
+    """
+    hp_0012825 = PermissibleValue(
+        text="hp_0012825",
+        description="Mild",
+        meaning=CIEINR["hp_0012825"])
+    hp_0012826 = PermissibleValue(
+        text="hp_0012826",
+        description="Moderate/medically attended",
+        meaning=CIEINR["hp_0012826"])
+    hp_0012828 = PermissibleValue(
+        text="hp_0012828",
+        description="Life threatening/medically attended",
+        meaning=CIEINR["hp_0012828"])
+
+    _defn = EnumDefinition(
+        name="LiveVaccineAdverseEventSeverityEnum",
+        description="Severity levels of adverse events for live vaccine.",
+    )
+
+class VaccineResponseEnum(EnumDefinitionImpl):
+    """
+    Vaccine response evaluation.
+    """
+    snomedct_365589000 = PermissibleValue(
+        text="snomedct_365589000",
+        description="Adequate antibody response",
+        meaning=CIEINR["snomedct_365589000"])
+    snomedct_266721009 = PermissibleValue(
+        text="snomedct_266721009",
+        description="No antibody response",
+        meaning=CIEINR["snomedct_266721009"])
+    snomedct_261665006 = PermissibleValue(
+        text="snomedct_261665006",
+        description="Not measured/unknown",
+        meaning=CIEINR["snomedct_261665006"])
+    other = PermissibleValue(
+        text="other",
+        description="Other",
+        meaning=CIEINR["other"])
+
+    _defn = EnumDefinition(
+        name="VaccineResponseEnum",
+        description="Vaccine response evaluation.",
+    )
 
 class NCBITaxon(EnumDefinitionImpl):
     """
@@ -446,17 +613,44 @@ class IUIS(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.snomedct_184099003 = Slot(uri=CIEINR.snomedct_184099003, name="snomedct_184099003", curie=CIEINR.curie('snomedct_184099003'),
-                   model_uri=CIEINR.snomedct_184099003, domain=None, range=Optional[Union[str, UnionDateString]])
+slots.completion_live_vax = Slot(uri=CIEINR.completion_live_vax, name="completion_live_vax", curie=CIEINR.curie('completion_live_vax'),
+                   model_uri=CIEINR.completion_live_vax, domain=None, range=Optional[Union[str, UnionDateString]])
 
-slots.snomedct_432213005 = Slot(uri=CIEINR.snomedct_432213005, name="snomedct_432213005", curie=CIEINR.curie('snomedct_432213005'),
-                   model_uri=CIEINR.snomedct_432213005, domain=None, range=Optional[Union[str, UnionDateString]])
+slots.live_vax = Slot(uri=CIEINR.live_vax, name="live_vax", curie=CIEINR.curie('live_vax'),
+                   model_uri=CIEINR.live_vax, domain=None, range=Optional[Union[str, "LiveVaccineTypeEnum"]])
 
-slots.snomedct_298059007 = Slot(uri=CIEINR.snomedct_298059007, name="snomedct_298059007", curie=CIEINR.curie('snomedct_298059007'),
-                   model_uri=CIEINR.snomedct_298059007, domain=None, range=Optional[Union[str, UnionDateString]])
+slots.live_vax_other = Slot(uri=CIEINR.live_vax_other, name="live_vax_other", curie=CIEINR.curie('live_vax_other'),
+                   model_uri=CIEINR.live_vax_other, domain=None, range=Optional[str])
 
-slots.patient_demographics_initial_form_complete = Slot(uri=CIEINR.patient_demographics_initial_form_complete, name="patient_demographics_initial_form_complete", curie=CIEINR.curie('patient_demographics_initial_form_complete'),
-                   model_uri=CIEINR.patient_demographics_initial_form_complete, domain=None, range=Union[str, "CompletionStatusEnumInfectionsInitial"])
+slots.live_vax_dosages = Slot(uri=CIEINR.live_vax_dosages, name="live_vax_dosages", curie=CIEINR.curie('live_vax_dosages'),
+                   model_uri=CIEINR.live_vax_dosages, domain=None, range=Optional[Union[str, "LiveVaccineDosagesEnum"]])
+
+slots.live_vax_ae = Slot(uri=CIEINR.live_vax_ae, name="live_vax_ae", curie=CIEINR.curie('live_vax_ae'),
+                   model_uri=CIEINR.live_vax_ae, domain=None, range=Optional[Union[str, "VaccineAssociatedInfectionEnum"]])
+
+slots.ae_live_vax = Slot(uri=CIEINR.ae_live_vax, name="ae_live_vax", curie=CIEINR.curie('ae_live_vax'),
+                   model_uri=CIEINR.ae_live_vax, domain=None, range=Optional[Union[str, "AdverseEventObservationEnum"]])
+
+slots.live_vax_ae_other = Slot(uri=CIEINR.live_vax_ae_other, name="live_vax_ae_other", curie=CIEINR.curie('live_vax_ae_other'),
+                   model_uri=CIEINR.live_vax_ae_other, domain=None, range=Optional[str])
+
+slots.live_vax_ae_severity = Slot(uri=CIEINR.live_vax_ae_severity, name="live_vax_ae_severity", curie=CIEINR.curie('live_vax_ae_severity'),
+                   model_uri=CIEINR.live_vax_ae_severity, domain=None, range=Optional[Union[str, "LiveVaccineAdverseEventSeverityEnum"]])
+
+slots.live_vax_response = Slot(uri=CIEINR.live_vax_response, name="live_vax_response", curie=CIEINR.curie('live_vax_response'),
+                   model_uri=CIEINR.live_vax_response, domain=None, range=Optional[Union[str, "VaccineResponseEnum"]])
+
+slots.life_vax_response_date = Slot(uri=CIEINR.life_vax_response_date, name="life_vax_response_date", curie=CIEINR.curie('life_vax_response_date'),
+                   model_uri=CIEINR.life_vax_response_date, domain=None, range=Optional[Union[str, UnionDateString]])
+
+slots.measles_response = Slot(uri=CIEINR.measles_response, name="measles_response", curie=CIEINR.curie('measles_response'),
+                   model_uri=CIEINR.measles_response, domain=None, range=Optional[Union[str, "VaccineResponseEnum"]])
+
+slots.mumps_response = Slot(uri=CIEINR.mumps_response, name="mumps_response", curie=CIEINR.curie('mumps_response'),
+                   model_uri=CIEINR.mumps_response, domain=None, range=Optional[Union[str, "VaccineResponseEnum"]])
+
+slots.rubella_response = Slot(uri=CIEINR.rubella_response, name="rubella_response", curie=CIEINR.curie('rubella_response'),
+                   model_uri=CIEINR.rubella_response, domain=None, range=Optional[Union[str, "VaccineResponseEnum"]])
 
 slots.codeSystemsContainer__ncbi_taxon = Slot(uri=CIEINR.ncbi_taxon, name="codeSystemsContainer__ncbi_taxon", curie=CIEINR.curie('ncbi_taxon'),
                    model_uri=CIEINR.codeSystemsContainer__ncbi_taxon, domain=None, range=Union[str, "NCBITaxon"])
