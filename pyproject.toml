@@ -3,17 +3,21 @@ requires = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "template_for_python_projects"
+name = "cieinr"
 authors = [
-    {name = "Filip Rehburg", email="filip.rehburg@charite.de"},
+    {name = "Adam Graefe", email="adam.graefe@charite.de"},
      ]
-description = "TODO"
+description = "This repository houses the LinkML representation of the data model for the Canadian Inborn Errors of Immunity National Registry (CIEINR). This project facilitates the export of patient data into Phenopackets, leveraging RareLink's functionalities."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10, <3.13"
+version = "1.0.0"  # Static version instead of dynamic
 keywords = [
-    "Test",
-    "TODO",
-    "ETC",
+    "Inborn Errors of Immunity",
+    "GA4GH Phenopackets",
+    "Canadian Inborn Errors of Immunity National Registry",
+    "Ontologies",
+    "Interoperability",
+    "HL7 FHIR"
 ]
 license = { file = "LICENSE" }
 classifiers = [
@@ -23,31 +27,37 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
     "Intended Audience :: Science/Research",
-    "Topic :: Scientific/Engineering :: Machine Learning"
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Medical Science Apps."
 ]
 dependencies = [
-    "numpy",
+    "rarelink @ file:///https://github.com/BIH-CEI/cieinr/tree/develop/submodules/rarelink",
+    "pytest",
+    "typer>=0.9.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
+    "phenopackets>=1.0.0,<2.0.2.post2",
+    "protobuf<4.0.0,>=3.20.2",
+    "linkml>=1.6.0",
+    "oaklib>=0.5.26",
+    "tqdm>=4.66.0",
+    "pyyaml>=6.0.1",
+    "pyphetools>=0.3.3",
+    "linkml>=1.8"
 ]
-dynamic = ["version"]
 
 [project.optional-dependencies]
 test = ["pytest>=7.0.0,<8.0.0", "pytest-cov"]
 docs = ["sphinx>=7.0.0", "sphinx-rtd-theme>=1.3.0", "sphinx-copybutton>=0.5.0"]
 
-[project.urls]
-homepage = "https://github.com/frehburg/template_for_python_projects"
-repository = "https://github.com/frehburg/template_for_python_projects.git"
-documentation = "https://frehburg.github.io/template_for_python_projects/stable"
-bugtracker = "https://github.com/frehburg/template_for_python_projects/issues"
+# Removed project.urls section since it had empty values
 
 [tool.setuptools]
 package-dir = { "" = "src" }
 
-[tool.setuptools.dynamic]
-version = { attr = "template_for_python_projects.__version__" }
-
 # The following would provide a command line executable called `sample`
 # which executes the function `main` from this package when invoked.
-[project.scripts]  # Optional
-sample = "sample:main"
+[project.scripts]
+cieinr = "cieinr.cli.app:main"

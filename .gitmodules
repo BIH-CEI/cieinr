@@ -1,0 +1,3 @@
+[submodule "submodules/rarelink"]
+	path = submodules/rarelink
+	url = https://github.com/BIH-CEI/rarelink.git

@@ -1,4 +1,51 @@
-## Custom Badges
+# Custom Badges and Compatibility Information
+
+## Python Compatibility
+
+[![Python 3.10-3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
+
+This project is compatible with Python versions 3.10, 3.11, and 3.12. 
+
+**Note on Python 3.13 Incompatibility:**
+Due to internal changes in Python 3.13's `dataclasses` module, the LinkML library (a core dependency) is not currently compatible with Python 3.13. Specifically:
+
+1. The LinkML library relies on internal implementation details of `dataclasses` like `_create_fn` which were removed in Python 3.13.
+2. Python 3.13 modified how Field objects are passed to internal functions in `dataclasses`.
+
+We've specifically restricted the project to Python < 3.13 in our `pyproject.toml` file to avoid these compatibility issues. If you need to use Python 3.13, consider using Docker with Python 3.12 as described in our documentation.
+
+## LinkML Compatibility
+
+[![LinkML](https://img.shields.io/badge/LinkML-1.8.0+-green.svg)](https://linkml.io/)
+
+This project uses LinkML version 1.8.0 or higher. The LinkML dependency is used for:
+
+1. Schema definition in YAML format
+2. Generation of Python data classes
+3. Validation of data against the schema
+4. Data transformations and conversions
+
+## GA4GH Phenopackets Compatibility 
+
+[![Phenopackets](https://img.shields.io/badge/Phenopackets-2.0-purple.svg)](https://phenopacket-schema.readthedocs.io/en/latest/)
+
+We implement GA4GH Phenopackets schema version 2.0, which provides a standardized format for sharing phenotypic information for a variety of use cases.
+
+## Generate LinkML Python Classes
+
+If you're using Python 3.10-3.12, you can generate Python classes directly:
+
+```bash
+gen-python src/cieinr/v1_0_0/linkml_schemas/cieinr.yaml > src/cieinr/v1_0_0/python_schemas/cieinr.py
+```
+
+For Python 3.13 users, use our Docker-based approach:
+
+```bash
+./generate_linkml.sh
+```
+
+## Dynamic Badges
 You can create custom badges such as [![LOCs](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/frehburg/25d4f4d4d222fcb5f266a280b1dd60d4/raw/phenopacket_mapper_locs.JSON)](https://github.com/bih-cei/phenopacket_mapper/actions/workflows/locs.yml).
 
 This relies on a GitHub workflow such as:
