@@ -35,8 +35,7 @@ interoperable data structures and facilitating the export of patient
 data into Phenopackets. This approach aligns with the goals of
 improving diagnosis, treatment, and research for IEI patients, as
 detailed in [Genotype-first approach to the diagnosis of primary
-immunodeficiencies: a Canadian perspective](https://www.sciencedirect.
-com/science/article/abs/pii/S1521661624001268).
+immunodeficiencies: a Canadian perspective](https://www.sciencedirect.com/science/article/abs/pii/S1521661624001268).
 
 This project integrates with RareLink to export data into Phenopackets,
 promoting data sharing and analysis using standardized formats. The
