@@ -8,7 +8,7 @@ Field mappings are explicitly defined, and additional processing is applied
 for Boolean conversions and prefix additions.
 """
 
-from rarelink.utils.processing.codes import add_prefix_to_code
+from rarelink.utils.code_processing import add_prefix_to_code
 
 
 

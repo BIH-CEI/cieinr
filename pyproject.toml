@@ -43,7 +43,8 @@ dependencies = [
     "oaklib>=0.5.26",
     "tqdm>=4.66.0",
     "pyyaml>=6.0.1",
-    "pyphetools>=0.3.3"
+    "pyphetools>=0.3.3",
+    "linkml>=1.8"
 ]
 
 [project.optional-dependencies]
