@@ -43,8 +43,7 @@ dependencies = [
     "oaklib>=0.5.26",
     "tqdm>=4.66.0",
     "pyyaml>=6.0.1",
-    "pyphetools>=0.3.3",
-    "rarelink @ file:submodules/rarelink"
+    "pyphetools>=0.3.3"
 ]
 
 [project.optional-dependencies]
