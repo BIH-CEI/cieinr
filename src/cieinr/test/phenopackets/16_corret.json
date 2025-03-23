@@ -442,7 +442,7 @@
             "variantInterpretation": {
               "acmgPathogenicityClassification": "UNCERTAIN_SIGNIFICANCE",
               "variationDescriptor": {
-                "id": "edfae9008f614e0c8a04b8ad94699c",
+                "id": "65fcf4625d5a4a5f955ba4c6d357e6",
                 "geneContext": {
                   "valueId": "HGNC:1500",
                   "symbol": "CASP10"
@@ -600,8 +600,8 @@
     }
   ],
   "metaData": {
-    "created": "2025-03-23T17:50:14.108382Z",
-    "createdBy": "CIEINR Test",
+    "created": "2025-03-23T15:06:57.786366Z",
+    "createdBy": "Adam G.",
     "resources": [
       {
         "id": "mondo",
