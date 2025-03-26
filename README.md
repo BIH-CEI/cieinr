@@ -34,15 +34,12 @@ representation of the CIEINR data model, enabling the creation of
 interoperable data structures and facilitating the export of patient
 data into Phenopackets. This approach aligns with the goals of
 improving diagnosis, treatment, and research for IEI patients, as
-detailed in [Genotype-first approach to the diagnosis of primary
-immunodeficiencies: a Canadian perspective](https://www.sciencedirect.com/science/article/abs/pii/S1521661624001268).
+detailed in [Genotype-first approach to the diagnosis of primary immunodeficiencies: a Canadian perspective](https://www.sciencedirect.com/science/article/abs/pii/S1521661624001268).
 
 This project integrates with RareLink to export data into Phenopackets,
 promoting data sharing and analysis using standardized formats. The
 forms used in this project are developed based on the rules found in
-[RareLink's documentation for developing REDCap instruments](https://
-rarelink.readthedocs.io/en/latest/4_user_guide/4_5_develop_redcap_
-instruments.html).
+[RareLink's documentation for developing REDCap instruments](https://rarelink.readthedocs.io/en/latest/4_user_guide/4_5_develop_redcap_instruments.html).
 
 ## Features
 
@@ -187,7 +184,8 @@ rarelink phenopackets export \
 
 ## License
 
-Specify the license under which your project is distributed. (e.g., MIT)
+This repository and the data model of the  Canadian Inborn Errors of Immunity 
+National Registry (CIEINR) is licensed under an [open-source Apache 2.0 license](https://github.com/BIH-CEI/cieinr/develop/LICENSE)
 
 ## Acknowledgements
 
@@ -196,6 +194,5 @@ Specify the license under which your project is distributed. (e.g., MIT)
 * We acknowledge the RareLink project for providing the tools and
   guidelines for Phenopacket generation.
 * We acknowledge the paper, [Genotype-first approach to the diagnosis
-  of primary immunodeficiencies: a Canadian perspective](https://
-  www.sciencedirect.com/science/article/abs/pii/S1521661624001268),
+  of primary immunodeficiencies: a Canadian perspective](https://www.sciencedirect.com/science/article/abs/pii/S1521661624001268),
   for the general information regarding CIEINR.
