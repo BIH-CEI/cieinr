@@ -1,7 +1,7 @@
 # Canadian Inborn Errors of Immunity National Registry (CIEINR) Data Model
 
 [![Python 3.10-3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
-[![License: Apache v2.0](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache v2.0](https://img.shields.io/badge/License-Apache-v2.0-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Phenopackets](https://img.shields.io/badge/Phenopackets-2.0-purple.svg)](https://phenopacket-schema.readthedocs.io/en/latest/)
 [![LinkML](https://img.shields.io/badge/LinkML-1.8.0+-green.svg)](https://linkml.io/)
 [![RareLink](https://img.shields.io/badge/RareLink-v2.0.0-blue.svg)](https://github.com/BIH-CEI/RareLink)
