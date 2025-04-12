@@ -1,4 +1,4 @@
-# Canadian Inborn Errors of Immunity National Registry (CIEINR) Data Model
+# Repository of the Canadian Inborn Errors of Immunity National Registry (CIEINR) Data Model
 
 [![Python CI](https://github.com/BIH-CEI/cieinr/actions/workflows/python_ci.yml/badge.svg)](https://github.com/BIH-CEI/cieinr/actions/workflows/python_ci.yml)
 [![Python 3.10-3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
