@@ -15,19 +15,21 @@ jobs:
         python-version: ['3.10', '3.11', '3.12']
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # ✅ This is the key fix
 
       - name: Set up Python
         uses: actions/setup-python@v4.3.1
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Check rarelink submodule (debug)
+        run: ls -la submodules/rarelink  # Optional, useful if things fail
+
       - name: Install package with test and docs dependencies
         run: python -m pip install --editable .[test,docs]
 
-      - name: Run pytest tests with coverage
-        run: pytest --cov=your_package
-
-      - name: Set warning filter
-        run: export PYTHONWARNINGS="ignore::DeprecationWarning"
-
+      - name: Run pytest tests with coverage (and suppress warnings)
+        run: PYTHONWARNINGS="ignore::DeprecationWarning" pytest --cov=cieinr
