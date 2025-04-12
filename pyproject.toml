@@ -33,7 +33,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Medical Science Apps."
 ]
 dependencies = [
-    "rarelink @ file:///https://github.com/BIH-CEI/cieinr/tree/develop/submodules/rarelink",
+    "rarelink @ file:submodules/rarelink",
     "pytest",
     "typer>=0.9.0",
     "python-dotenv>=1.0.0",
