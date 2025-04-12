@@ -33,3 +33,10 @@ jobs:
 
       - name: Run pytest tests with coverage (and suppress warnings)
         run: PYTHONWARNINGS="ignore::DeprecationWarning" pytest --cov=cieinr
+
+      - name: Run pytest tests with coverage (and suppress warnings)
+        run: |
+          echo "[pytest]" > pytest.ini
+          echo "testpaths = tests" >> pytest.ini
+          echo "python_files = test_*.py" >> pytest.ini
+          PYTHONWARNINGS="ignore::DeprecationWarning" pytest --cov=cieinr
