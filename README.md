@@ -1,6 +1,6 @@
 # Repository of the Canadian Inborn Errors of Immunity National Registry (CIEINR) Data Model
 
-[![Python CI](https://github.com/BIH-CEI/cieinr/github/workflows/python_ci.yml/badge.svg)](https://github.com/BIH-CEI/cieinr/blob/develop/.github/workflows/python_ci.yml)
+[![Python CI](https://github.com/BIH-CEI/cieinr/github/workflows/python_ci.yml/badge.svg)](https://github.com/BIH-CEI/cieinr/actions/workflows/python_ci.yml)
 [![Python 3.10-3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
 [![License: Apache v2.0](https://img.shields.io/badge/License-Apache2.0-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Phenopackets](https://img.shields.io/badge/Phenopackets-2.0-purple.svg)](https://phenopacket-schema.readthedocs.io/en/latest/)
