@@ -164,6 +164,10 @@ cython_debug/
 .idea/
 .vscode/
 
+# local mac os files
+.DS_Store
+**/.DS_Store
+
 
 # Phenopackets output of local REDCap site
 output/
