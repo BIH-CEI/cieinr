@@ -1,4 +1,4 @@
-id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/cieinr_code_systems_data
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/cieinr_code_systems
 name: cieinr_code_systems
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -13,88 +13,88 @@ enums:
   NCBITaxon:
     description: NCBI organismal classification
     code_set: https://www.ncbi.nlm.nih.gov/taxonomy
-    code_set_version: "2024-07-03"
-
+    code_set_version: '2025_04_10'
   SNOMEDCT:
     description: SNOMED CT
-    code_set: https://www.snomed.org/snomed-ct
-    code_set_version: "2024-09-01"
-
+    code_set: http://snomed.info/sct
+    code_set_version: '2025AB'
   MONDO:
     description: Monarch Disease Ontology
     code_set: https://purl.obolibrary.org/obo/MONDO/
-    code_set_version: "2024-09-03"
-
+    code_set_version: '2026-03-03'
   HP:
     description: Human Phenotype Ontology
     code_set: https://www.human-phenotype-ontology.org
-    code_set_version: "2024-08-13"
-
+    code_set_version: '2026-02-16'
   LOINC:
     description: Logical Observation Identifiers Names and Codes
     code_set: http://loinc.org
-    code_set_version: "2.78"
-
+    code_set_version: '281'
   OMIM:
     description: Online Mendelian Inheritance
     code_set: https://omim.org/
-    code_set_version: "2024-09-12"
-
-  ORPHA:
-    description: Orphanet Rare Disease Ontology
-    code_set: https://www.orpha.net/
-    code_set_version: "2024-09-12"
-
+    code_set_version: 'OMIM2024_08_09'
   NCIT:
     description: NCI Thesaurus OBO Edition
-    code_set: https://ncit.nci.nih.gov/
-    code_set_version: "24.04e"
-
+    code_set: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
+    code_set_version: '26.02d'
   UO:
     description: Units of Measurement Ontology
     code_set: https://www.ontobee.org/ontology/UO
-    code_set_version: "2024-09-12"
-
+    code_set_version: '2026-01-16'
   HGNC:
     description: HUGO Gene Nomenclature Committee
     code_set: https://www.genenames.org/
-    code_set_version: "2024-08-23"
-
+    code_set_version: '2024-08-23'
   HGVS:
     description: Human Genome Variation Society
-    code_set: https://varnomen.hgvs.org/
-    code_set_version: "21.0.0"
-
+    code_set: http://varnomen.hgvs.org/
+    code_set_version: '21.0.0'
   GA4GH:
     description: Global Alliance for Genomics and Health
     code_set: https://www.ga4gh.org/
-    code_set_version: "v2.0"
-
+    code_set_version: 'v2.0'
   HL7FHIR:
     description: Health Level 7 Fast Healthcare Interoperability Resources
     code_set: https://www.hl7.org/fhir
-    code_set_version: "v4.0.1"
-
+    code_set_version: 'v4.0.1'
   ICD11:
     description: International Classification of Diseases, Eleventh Revision
     code_set: https://icd.who.int/en
-    code_set_version: "2024-09-01"
-
+    code_set_version: '2025AB'
   ICD10CM:
-    description: International Classification of Diseases, Tenth Revision, Clinical Modification
+    description: International Classification of Diseases, Tenth Revision, Clinical
+      Modification
     code_set: https://icd10cmtool.cdc.gov/
-    code_set_version: "2024-09-01"
-
+    code_set_version: 'CD10CM_2025'
+  SO:
+    description: Sequence types and features ontology
+    code_set: https://www.sequenceontology.org/
+    code_set_version: '2.6'
+  GENO:
+    description: GENO - The Genotype Ontology
+    code_set: https://www.genoontology.org/
+    code_set_version: '2026-02-02'
+  ISO3166:
+    description: ISO 3166-1:2020(en) alpha-2 and alpha-3 country codes
+    code_set: https://www.iso.org/iso-3166-country-codes.html
+    code_set_version: 2020(en)
+  ICF:
+    description: International Classification of Functioning, Disability and Health
+    code_set: https://www.who.int/classifications/icf/en/
+    code_set_version: '1.0.2'
+  MAXO:
+    description: Medical Action Ontology
+    code_set: https://purl.obolibrary.org/obo/maxo.owl
+    code_set_version: '2025-04-24'
   BIOPORTAL:
     description: BioPortal ontology repository
     code_set: https://bioportal.bioontology.org/
     code_set_version: "2024-09-01"
-
   IUIS:
     description: International Union of Immunological Societies Classification
     code_set: https://iuis.org/
     code_set_version: "2024"
-
 classes:
   CodeSystemsContainer:
     description: >
@@ -123,10 +123,6 @@ classes:
       omim:
         description: Online Mendelian Inheritance in Man
         range: OMIM
-        required: true
-      orpha:
-        description: Orphanet Rare Disease Ontology
-        range: ORPHA
         required: true
       ncit:
         description: NCI Thesaurus OBO Edition
@@ -167,4 +163,8 @@ classes:
       iuis:
         description: International Union of Immunological Societies Classification
         range: IUIS
+        required: true
+      maxo:
+        description: Medical Action Ontology
+        range: MAXO
         required: true
