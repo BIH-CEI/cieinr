@@ -1,6 +1,8 @@
-id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/cieinr.yaml
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/cieinr.yaml
 name: cieinr
-description: National Inborn Errors of Immunity Registry in Canada - Simplified Model for Phenopackets Export
+description: >
+  National Inborn Errors of Immunity Registry in Canada (CIEINR) - 
+  Data model for REDCap-based registry with Phenopackets export support.
 prefixes:
   linkml: https://w3id.org/linkml/
   cieinr: https://github.com/BIH-CEI/cieinr
@@ -9,13 +11,18 @@ prefixes:
 imports:
   - linkml:types
   - cieinr_code_systems
-  - cieinr_repeated_elements
   - cieinr_types
-  # Import only the three forms we're focusing on
-  - form_1_basic
-  - form_2_demographics_initial
-  - form_3_infections_initial
-  - form_4_conditions
+  - patient_demographics_initial_form
+  - patient_diagnosiscarrier_status_main
+  - infections_initial_form
+  - infections_annual_form
+  - conditions
+  - inactivated_vaccine
+  - vaccine_history
+  - cbc
+  - lymphocytes_phenotype
+  - lymphocyte_function
+  - genetic_information
 
 default_prefix: cieinr
 default_range: string
@@ -23,12 +30,20 @@ default_range: string
 classes:
   Record:
     description: >
-      Base class for all records, containing only fields needed for Phenopackets export.
+      Root class for a CIEINR patient record containing all form data.
     slots:
       - record_id
-      - form_1_basic
-      - form_2_demographics_initial
-      - cieinr_repeated_elements
+      - patient_demographics_initial_form
+      - patient_diagnosiscarrier_status_main
+      - infections_initial_form
+      - infections_annual_form
+      - conditions
+      - inactivated_vaccine
+      - vaccine_history
+      - cbc
+      - lymphocytes_phenotype
+      - lymphocyte_function
+      - genetic_information
     tree_root: true
 
 slots:
@@ -38,33 +53,77 @@ slots:
     required: true
     identifier: true
 
-  form_1_basic:
-    description: Basic IEI diagnosis information
-    range: BasicForm
-    required: false
-    inlined: true
-
-  form_2_demographics_initial:
-    description: Initial patient demographics data
+  patient_demographics_initial_form:
+    description: Patient demographics and basic IEI diagnosis information
     range: PatientDemographicsInitial
     required: false
     inlined: true
 
-  form_3_infections_initial:
-    description: >
-      Initial infections form with types, severity, onset dates, and patterns 
+  patient_diagnosiscarrier_status_main:
+    description: IUIS 2024 hierarchical IEI classification
+    range: PatientDiagnosisCarrierStatus
+    required: false
+    inlined: true
+
+  infections_initial_form:
+    description: Initial infections data (repeating instrument)
     range: InfectionsInitial
     required: false
     inlined: true
+    multivalued: true
 
-  form_4_conditions:
-    description: Initial conditions form with types, severity, and patterns 
+  infections_annual_form:
+    description: Annual infections data (repeating instrument)
+    range: InfectionsAnnual
+    required: false
+    inlined: true
+    multivalued: true
+
+  conditions:
+    description: Systemic or organ-specific conditions (repeating instrument)
     range: ConditionsInitial
     required: false
     inlined: true
+    multivalued: true
 
-  cieinr_repeated_elements:
-    description: Container for repeated elements used in CIEINR
-    range: RepeatedElement
+  inactivated_vaccine:
+    description: Inactivated vaccine history (repeating instrument)
+    range: InactivatedVaccineHistory
     required: false
     inlined: true
+    multivalued: true
+
+  vaccine_history:
+    description: Vaccine history and specific immune response (repeating instrument)
+    range: VaccineHistory
+    required: false
+    inlined: true
+    multivalued: true
+
+  cbc:
+    description: Complete blood count measurements (repeating instrument)
+    range: CBC
+    required: false
+    inlined: true
+    multivalued: true
+
+  lymphocytes_phenotype:
+    description: Lymphocyte phenotype measurements (repeating instrument)
+    range: LymphocytesPhenotype
+    required: false
+    inlined: true
+    multivalued: true
+
+  lymphocyte_function:
+    description: Lymphocyte function and NK cytotoxicity (repeating instrument)
+    range: LymphocyteFunction
+    required: false
+    inlined: true
+    multivalued: true
+
+  genetic_information:
+    description: Genetic testing and variant information (repeating instrument)
+    range: GeneticInformation
+    required: false
+    inlined: true
+    multivalued: true

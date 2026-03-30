@@ -1,4 +1,4 @@
-id: https://github.com/BIH-CEI/cieinr/src/cieinr/v1_0_0/limkml_schemas/cieinr_types
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/cieinr_types
 name: cieinr_types
 description: Type definitions for the National IEI Registry in Canada data model
 prefixes:
