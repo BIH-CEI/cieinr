@@ -53,14 +53,14 @@ slots:
     title: Date of IEI diagnosis
     description: >
       Date of immunodeficiency diagnosis/carrier status
-    range: Date
+    range: union_date_string
     required: false
 
   snomedct_298059007:
     title: Onset of IEI symptoms
     description: >
       Date of onset of symptoms related to the immunodeficiency
-    range: Date
+    range: union_date_string
     required: false
 
   igrt_basic:

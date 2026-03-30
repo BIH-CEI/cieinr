@@ -34,13 +34,15 @@ classes:
       - snomedct_303699009
       - snomedct_21514008
       - snomedct_31099001
+      - other_infection_hpo
+      - other_infection_mondo
       - infection_severity
-      - infection_temp_pattern
       - causing_agent
       - causing_agent_viral
       - causing_agent_bacterial
       - causing_agent_mycotic
       - causing_organism_other
+      - infection_temp_pattern
       - infection_times_obseverd
       - infection_date
       - infection_date_2
@@ -48,10 +50,6 @@ classes:
       - infection_date_4
       - infection_date_5
       - infection_date_6
-      - infection_date_7
-      - infection_date_8
-      - infection_date_9
-      - infection_date_10
       - infections_initial_form_complete
 
 slots:
@@ -119,6 +117,18 @@ slots:
     title: Systemic Infection
     description: Specific systemic infection that the participant experienced.
     range: SystemicInfectionEnum
+    required: false
+
+  other_infection_hpo:
+    title: Other infection (HPO)
+    description: Other infection that the participant experienced, represented as an HPO term.
+    range: HP
+    required: false
+
+  other_infection_mondo:
+    title: Other infection (MONDO)
+    description: Other infection that the participant experienced, represented as a MONDO term.
+    range: MONDO
     required: false
 
   infection_severity:
@@ -202,30 +212,6 @@ slots:
   infection_date_6:
     title: Infection date 6
     description: The date the infection was sixth observed.
-    range: union_date_string
-    required: false
-
-  infection_date_7:
-    title: Infection date 7
-    description: The date the infection was seventh observed.
-    range: union_date_string
-    required: false
-
-  infection_date_8:
-    title: Infection date 8
-    description: The date the infection was eighth observed.
-    range: union_date_string
-    required: false
-
-  infection_date_9:
-    title: Infection date 9
-    description: The date the infection was ninth observed.
-    range: union_date_string
-    required: false
-
-  infection_date_10:
-    title: Infection date 10
-    description: The date the infection was tenth observed.
     range: union_date_string
     required: false
     
