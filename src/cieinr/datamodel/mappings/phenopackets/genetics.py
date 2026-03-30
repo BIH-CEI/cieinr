@@ -1,18 +1,18 @@
 INTERPRETATION_BLOCK = {
     "redcap_repeat_instrument": "genetic_information",
-    "id_field": "snomedct_422549004",
-    "progress_status_field": "ga4gh_progress_status",
+    "id_field": "record_id",
+    "progress_status_field": None,
     "diagnosis_field_1": "g_iei_deficiency",
     "diagnosis_field_2": "other_non_g_iei",
     "diagnosis_field_3": "g_other_iei_deficiency",
     "summary_field": "loinc_lp7824_8",
     "redcap_repeat_instance": "redcap_repeat_instance",
-    "subject_or_biosample_id_field": "snomedct_422549004",
-    "interpretation_status_field": "ga4gh_interp_status",
-    "reference_genome_field": "loinc_62374_4",
+    "interpretation_status_field": "interpretation_status",
+    "reference_genome_field": None,
     "acmg_pathogenicity_classification_field": "loinc_53037_8",
-    "therapeutic_actionability_field" : "ga4gh_therap_action"  
+    "therapeutic_actionability_field": None,
 }
+
 VARIATION_DESCRIPTOR_BLOCK = {
     "redcap_repeat_instrument": "genetic_information",
     "redcap_repeat_instance": "redcap_repeat_instance",
@@ -24,10 +24,6 @@ VARIATION_DESCRIPTOR_BLOCK = {
     "allelic_state_field_2": "loinc_53034_5_other",
     "structural_type_field_1": "loinc_48019_4",
     "structural_type_field_2": "loinc_48019_4_other",
-    # gene descriptor:
     "value_id_field": "loinc_48018_6",
-    # vcf
-    "genome_assembly_field": "loinc_62374_4",
+    "genome_assembly_field": None,
 }
-
-

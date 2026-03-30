@@ -1,8 +1,3 @@
-# src/cieinr/mappings/phenopackets/__init__.py
-"""
-CIEINR specific mapping to the Phenopacket schema blocks.
-"""
-
 from .mapping_dicts import mapping_dicts, get_mapping_by_name
 from .label_dicts import label_dicts
 from .individual import INDIVIDUAL_BLOCK
@@ -10,13 +5,13 @@ from .disease import DISEASE_BLOCK
 from .phenotypes import CONDITIONS_FEATURES_BLOCK, INFECTIONS_FEATURES_BLOCK
 from .medical_actions import (
     BASIC_PROCEDURE_BLOCK,
-    INACTIVATE_VACCINE_BLOCK,
-    LIVE_VACCINE_BLOCK,
+    INACTIVATED_VACCINE_BLOCK,
+    VACCINE_HISTORY_BLOCK,
 )
 from .measurements import (
     CBC_MEASUREMENT_BLOCK,
     LYMPHOCYTES_PHENOTYPE_BLOCK,
-    LYMPHOCYTE_FUNCTION_BLOCK
+    LYMPHOCYTE_FUNCTION_BLOCK,
 )
 from .genetics import INTERPRETATION_BLOCK, VARIATION_DESCRIPTOR_BLOCK
 from .resources import CIEINR_CODE_SYSTEMS
@@ -36,8 +31,8 @@ __all__ = [
     "LYMPHOCYTES_PHENOTYPE_BLOCK",
     "LYMPHOCYTE_FUNCTION_BLOCK",
     "VARIATION_DESCRIPTOR_BLOCK",
-    "INACTIVATE_VACCINE_BLOCK",
-    "LIVE_VACCINE_BLOCK",
+    "INACTIVATED_VACCINE_BLOCK",
+    "VACCINE_HISTORY_BLOCK",
     "CIEINR_CODE_SYSTEMS",
-    "create_phenopacket_mappings"
+    "create_phenopacket_mappings",
 ]
