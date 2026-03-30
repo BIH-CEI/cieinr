@@ -19,7 +19,8 @@ classes:
       Initial autoantibodies test information.
     slots:
       - autoantibodies_test
-      - autoantibodies_test_date
+      - anamonth
+      - anayear
       - autoanti_ana_val
       - autoanti_anca_val
       - autoanti_ena_val
@@ -45,11 +46,18 @@ slots:
     range: AutoantibodiesTestTimingEnum
     required: false
 
-  autoantibodies_test_date:
-    title: Autoantibodies Test Date
+  anamonth:
+    title: Month of Autoantibodies Test
     description: >
-      Please specify the date of the autoantibody test (format: 01-M-Y).
-    range: union_date_string
+      What is the month of the autoantibodies test? (format: M)
+    range: integer
+    required: false
+
+  anayear:
+    title: Year of Autoantibodies Test
+    description: >
+      What is the year of the autoantibodies test? (format: Y)
+    range: integer
     required: false
 
   autoanti_ana_val:

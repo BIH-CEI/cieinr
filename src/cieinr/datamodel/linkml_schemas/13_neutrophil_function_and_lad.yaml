@@ -20,7 +20,8 @@ classes:
       Form capturing phagocyte function test details.
     slots:
       - phagocyte_function_test
-      - phagocyte_test_date
+      - phagocytetestmonth
+      phagocytetestyear
       - neutrophil_test
       - other_test
       - nph_test_result
@@ -36,10 +37,18 @@ slots:
     range: PhagocyteTestTimingEnum
     required: false
 
-  phagocyte_test_date:
-    title: Phagocyte Test Date
-    description: What was the date of this test? (format: 01-M-Y)
-    range: union_date_string
+  phagocytetestmonth:
+    title: Month of Phagocyte Function Test
+    description: >
+      What is the month of the phagocyte function test? (format: M)
+    range: integer
+    required: false
+
+  phagocytetestyear:
+    title: Year of Phagocyte Function Test
+    description: >
+      What is the year of the phagocyte function test? (format: Y)
+    range: integer
     required: false
 
   neutrophil_test:
