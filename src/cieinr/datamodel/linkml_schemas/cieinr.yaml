@@ -2,7 +2,7 @@ id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/cieinr
 name: cieinr
 description: >
   National Inborn Errors of Immunity Registry in Canada (CIEINR) - 
-  Data model for REDCap-based registry with Phenopackets export support.
+  Simplified Data model specifically for REDCap-Phenopackets export.
 prefixes:
   linkml: https://w3id.org/linkml/
   cieinr: https://github.com/BIH-CEI/cieinr
