@@ -21,16 +21,16 @@ classes:
     description: >
       The basic form containing the IEI diagnosis information needed for Phenopackets export.
     slots:
-      - iei_deficiency_basic
-      - other_iei_deficiency
-      - snomedct_432213005
-      - non_genetic_iei
+      - iei_deficiency_basic_ann
+      - other_iei_deficiency_ann
+      - non_genetic_iei_ann
+      - non_genetic_iei_mondo_ann
       - basic_form_complete
       - igrt_basic
       - hct_basic_form
 
 slots:
-  iei_deficiency_basic:
+  iei_deficiency_basic_ann:
     title: IEI deficiency diagnosis or carrier status (IUIS 2024)
     description: >
       The IEI deficiency diagnosis or carrier status for the participant 
@@ -41,7 +41,7 @@ slots:
       This field contains an extensive list of IEI deficiencies with MONDO codes.
       Tip: use the IUIS 2024 classification. If not found, search in MONDO.
 
-  other_iei_deficiency:
+  other_iei_deficiency_ann:
     title: Other IEI deficiency diagnosis or carrier status
     description: >
       The IEI deficiency diagnosis or carrier status for the participant that 
@@ -49,67 +49,21 @@ slots:
     range: MONDO
     required: false
 
-  snomedct_432213005:
-    title: Date of IEI diagnosis
+  non_genetic_iei_ann: 
+    title: Non-genetic IEI diagnosis
     description: >
-      Date of immunodeficiency diagnosis/carrier status
-    range: Date
+      The non-genetic IEI diagnosis for the participant.
+    range: NonGeneticIEIEnum
     required: false
 
-  snomedct_298059007:
-    title: Onset of IEI symptoms
+  non_genetic_iei_mondo_ann:
+    title: Non-genetic IEI diagnosis with MONDO code
     description: >
-      Date of onset of symptoms related to the immunodeficiency
-    range: Date
+      The non-genetic IEI diagnosis for the participant with a MONDO code.
+    range: MONDO
     required: false
-
-  igrt_basic:
-    title:  Immunoglobulin replacement therapy
-    description: >
-      Has the patient ever received Immunoglobulin replacement therapy?
-    range: IGRTStatusEnumBasicForm
-    required: false
-
-  hct_basic_form:
-    title: Hematopoietic cell transplantation
-    description: >
-      Has the patient ever received Hematopoietic cell transplantation?
-    range: HCTStatusEnumBasicForm
-    required: false
-
-  basic_form_complete:
-    title: Form completion status
-    description: >
-      Indicates the completion status of the basic form.
-    range: CompletionStatusEnumBasicForm
-    required: true
 
 enums:
-  CompletionStatusEnumBasicForm:
-    description: >
-      Enumeration for form completion status
-    permissible_values:
-      "0":
-        description: Incomplete
-      "1":
-        description: Unverified
-      "2":
-        description: Complete
-
-  IGRTStatusEnumBasicForm:
-    description: >
-      Enumeration for Immunoglobulin replacement therapy status in the basic form
-    permissible_values:
-      ncit_c62710:
-        description: Immunoglobulin Therapy
-
-  HCTStatusEnumBasicForm:
-    description: >
-      Enumeration for Hematopoietic cell transplantation status in the basic form
-    permissible_values:
-      ncit_c15431:
-        description: Hematopoietic Cell Transplantation
-
   IUIS2024MONDOEnum:
     description: >
       Enumeration of Inborn Errors of Immunity based on IUIS 2024 classification
