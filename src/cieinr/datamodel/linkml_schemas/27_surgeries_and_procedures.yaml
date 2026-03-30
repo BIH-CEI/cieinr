@@ -1,0 +1,75 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/27_surgeries_and_procedures.yaml
+name: 27_surgeries_and_procedures
+description: >
+  Surgeries and procedures form capturing surgical treatment history, procedure date, and procedure details.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  SurgeriesAndProcedures:
+    description: >
+      Surgeries and procedures form capturing surgical treatment history, procedure date, and procedure details.
+    slots:
+      - completion_date_surgery
+      - procedure_13
+      - surgeryprocmonth
+      - surgeryprocyear
+      - surg_proced
+
+slots:
+  completion_date_surgery:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_13:
+    title: Has the patient received any surgical treatment or procedure (ex. splenectomy) ?
+    description: >
+      Has the patient received any surgical treatment or procedure (ex. splenectomy) ?
+    range: Procedure13Enum
+    required: false
+
+  surgeryprocmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  surgeryprocyear:
+    title: Year
+    description: >
+      Year
+    range: string
+    required: false
+
+  surg_proced:
+    title: Please indicate what surgical procedure was done and why
+    description: >
+      Please indicate what surgical procedure was done and why
+    range: string
+    required: false
+
+enums:
+
+    Procedure13Enum:
+      description: >
+        Enumeration for Has the patient received any surgical treatment or procedure (ex. splenectomy) ?
+      permissible_values:
+        ncit_c15329:
+          description: Yes
+          meaning: NCIT:c15329
+        "0":
+          description: No
+        "2":
+          description: don't know

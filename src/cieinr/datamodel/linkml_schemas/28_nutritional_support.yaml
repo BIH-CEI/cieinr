@@ -1,0 +1,162 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/28_nutritional_support.yaml
+name: 28_nutritional_support
+description: >
+  Nutritional support form capturing supplemental nutritional support history, types of support, start and end dates.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  NutritionalSupport:
+    description: >
+      Nutritional support form capturing supplemental nutritional support history, types of support, start and end dates.
+    slots:
+      - nutritional_form
+      - procedure_15
+      - procedure_15_type
+      - other_nutrition
+      - nutritionsupportstartmonth
+      - nutritionsupportstartyear
+      - nutrition_still_needed
+      - month_nutrition_end
+      - year_nutrition_end
+
+slots:
+  nutritional_form:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_15:
+    title: Has the patient ever required supplemental nutritional support? (supplemental formulas, nasogastric 
+    description: >
+      Has the patient ever required supplemental nutritional support? (supplemental formulas, nasogastric (NG) gastrostomy (G) tube feeds, etc.)
+    range: Procedure15Enum
+    required: false
+
+  procedure_15_type:
+    title: What types of nutritional support has the patient required?
+    description: >
+      What types of nutritional support has the patient required? Only one type of nutritional support can be completed at a time. Use multiple forms as required.
+    range: Procedure15TypeEnum
+    required: false
+
+  other_nutrition:
+    title: other nutrition
+    description: >
+      other nutrition
+    range: string
+    required: false
+
+  nutritionsupportstartmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  nutritionsupportstartyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  nutrition_still_needed:
+    title: Is the nutritional support still needed?
+    description: >
+      Is the nutritional support still needed?
+    range: NutritionStillNeededEnum
+    required: false
+
+  month_nutrition_end:
+    title: Month
+    description: >
+      Month
+    range: MonthNutritionEndEnum
+    required: false
+
+  year_nutrition_end:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+enums:
+
+    MonthNutritionEndEnum:
+      description: >
+        Enumeration for Month
+      permissible_values:
+        "1":
+          description: January
+        "2":
+          description: February
+        "3":
+          description: March
+        "4":
+          description: April
+        "5":
+          description: May
+        "6":
+          description: June
+        "7":
+          description: July
+        "8":
+          description: August
+        "9":
+          description: September
+        "10":
+          description: October
+        "11":
+          description: November
+        "12":
+          description: December
+
+    NutritionStillNeededEnum:
+      description: >
+        Enumeration for Is the nutritional support still needed?
+      permissible_values:
+        "1":
+          description: Yes
+        "2":
+          description: No
+        "3":
+          description: don't know
+
+    Procedure15Enum:
+      description: >
+        Enumeration for Has the patient ever required supplemental nutritional support? (supplemental fo
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    Procedure15TypeEnum:
+      description: >
+        Enumeration for What types of nutritional support has the patient required?
+      permissible_values:
+        "1":
+          description: Supplementation by mouth (eg. formula, high calorie supplements)
+        "2":
+          description: NG tube feeds
+        "3":
+          description: G tube feeds
+        "4":
+          description: GastroJejunal (GJ) tube feeds
+        "5":
+          description: Parenteral  (PN), IV nutrition
+        "99":
+          description: Other - Please specify: {other_nutrition}

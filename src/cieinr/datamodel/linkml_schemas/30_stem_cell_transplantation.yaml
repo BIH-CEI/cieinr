@@ -1,0 +1,441 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/30_stem_cell_transplantation.yaml
+name: 30_stem_cell_transplantation
+description: >
+  Hematopoietic stem cell transplantation (HSCT) form capturing transplant history, reasons, donor details, graft source, conditioning, engraftment, GVHD, and outcomes.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  LOINC: http://loinc.org/
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  HematopoieticStemCellsTransplantation:
+    description: >
+      Hematopoietic stem cell transplantation (HSCT) form capturing transplant history, reasons, donor details, graft source, conditioning, engraftment, GVHD, and outcomes.
+    slots:
+      - completion_date_hsct
+      - procedure_17
+      - what_transplant_number
+      - transplant_number
+      - reason_sct
+      - other_reason_hsct
+      - day0month
+      - day0year
+      - donor_relationship
+      - match_level
+      - hla_match
+      - source_graft
+      - other_graft
+      - stem_cell_purification
+      - what_conditioning_used
+      - other_conditioning
+      - radiation_conditioning
+      - did_engraftment_occur
+      - gvhd
+      - type_gvhd
+      - other_gvhd
+      - hct_complic
+      - hct_benefit
+      - sct_not_performed
+      - reason_not_hsct
+      - other_not_hsct
+
+slots:
+  completion_date_hsct:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_17:
+    title: Has the patient undergone a Hematopoietic Stem Cell transplantation (HSCT)?
+    description: >
+      Has the patient undergone a Hematopoietic Stem Cell transplantation (HSCT)?
+    range: Procedure17Enum
+    required: false
+
+  what_transplant_number:
+    title: Enter the HSCT you are completing this form for.
+    description: >
+      Enter the HSCT you are completing this form for. Please complete a form for each transplant.
+    range: WhatTransplantNumberEnum
+    required: false
+
+  transplant_number:
+    title: transplant_number
+    description: >
+      transplant_number
+    range: string
+    required: false
+
+  reason_sct:
+    title: What were the most significant reasons for HSCT?
+    description: >
+      What were the most significant reasons for HSCT?
+    range: ReasonSctEnum
+    required: false
+
+  other_reason_hsct:
+    title: Other reason for HSCT
+    description: >
+      Other reason for HSCT
+    range: string
+    required: false
+
+  day0month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  day0year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  donor_relationship:
+    title: Please indicate who the donor was:
+    description: >
+      Please indicate who the donor was:
+    range: DonorRelationshipEnum
+    required: false
+
+  match_level:
+    title: Please indicate the Human Leukocyte Antigens (HLA) match
+    description: >
+      Please indicate the Human Leukocyte Antigens (HLA) match
+    range: MatchLevelEnum
+    required: false
+
+  hla_match:
+    title: What other type of HLA match
+    description: >
+      What other type of HLA match
+    range: string
+    required: false
+
+  source_graft:
+    title: What is the source of graft?
+    description: >
+      What is the source of graft?
+    range: SourceGraftEnum
+    required: false
+
+  other_graft:
+    title: other
+    description: >
+      other
+    range: string
+    required: false
+
+  stem_cell_purification:
+    title: Please indicate the Stem Cells manipulation:
+    description: >
+      Please indicate the Stem Cells manipulation:
+    range: StemCellPurificationEnum
+    required: false
+
+  what_conditioning_used:
+    title: What type of conditioning was used?
+    description: >
+      What type of conditioning was used?
+    range: WhatConditioningUsedEnum
+    required: false
+
+  other_conditioning:
+    title: What other type of conditioning
+    description: >
+      What other type of conditioning
+    range: string
+    required: false
+
+  radiation_conditioning:
+    title: Was radiation used during conditioning?
+    description: >
+      Was radiation used during conditioning?
+    range: RadiationConditioningEnum
+    required: false
+
+  did_engraftment_occur:
+    title: Did the patient have graft failure?
+    description: >
+      Did the patient have graft failure?
+    range: DidEngraftmentOccurEnum
+    required: false
+
+  gvhd:
+    title: Did the patient experience Graft vs Host Disease (GVHD)?
+    description: >
+      Did the patient experience Graft vs Host Disease (GVHD)?
+    range: GvhdEnum
+    required: false
+
+  type_gvhd:
+    title: Please indicate the type of GVHD
+    description: >
+      Please indicate the type of GVHD
+    range: TypeGvhdEnum
+    required: false
+
+  other_gvhd:
+    title: Please specify what other type of GVHD the patient experienced:
+    description: >
+      Please specify what other type of GVHD the patient experienced:
+    range: string
+    required: false
+
+  hct_complic:
+    title: Please describe any other features or complications of Hematopoietic Stem Cell Transplantation (HSCT
+    description: >
+      Please describe any other features or complications of Hematopoietic Stem Cell Transplantation (HSCT)
+    range: string
+    required: false
+
+  hct_benefit:
+    title: Was there benefit from HCT?
+    description: >
+      Was there benefit from HCT?
+    range: HctBenefitEnum
+    required: false
+
+  sct_not_performed:
+    title: Was a transplant considered and not performed?
+    description: >
+      Was a transplant considered and not performed?
+    range: SctNotPerformedEnum
+    required: false
+
+  reason_not_hsct:
+    title: If a transplant was considered and not performed, why was it not performed?
+    description: >
+      If a transplant was considered and not performed, why was it not performed?
+    range: ReasonNotHsctEnum
+    required: false
+
+  other_not_hsct:
+    title: Other reason, HSCT is not performed
+    description: >
+      Other reason, HSCT is not performed
+    range: string
+    required: false
+
+enums:
+
+    DidEngraftmentOccurEnum:
+      description: >
+        Enumeration for Did the patient have graft failure?
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    DonorRelationshipEnum:
+      description: >
+        Enumeration for Please indicate who the donor was:
+      permissible_values:
+        "1":
+          description: Sibling donor
+        "2":
+          description: Mother
+        "3":
+          description: Father
+        "4":
+          description: Other relative
+        "5":
+          description: Unrelated
+        "6":
+          description: don't know
+
+    GvhdEnum:
+      description: >
+        Enumeration for Did the patient experience Graft vs Host Disease (GVHD)?
+      permissible_values:
+        mondo_0013730:
+          description: Yes
+          meaning: MONDO:0013730
+        "0":
+          description: No
+
+    HctBenefitEnum:
+      description: >
+        Enumeration for Was there benefit from HCT?
+      permissible_values:
+        "1":
+          description: Yes
+        "2":
+          description: No
+        "3":
+          description: Partial
+        "4":
+          description: Cannot be evaluated
+        "5":
+          description: Unknown
+
+    MatchLevelEnum:
+      description: >
+        Enumeration for Please indicate the Human Leukocyte Antigens (HLA) match
+      permissible_values:
+        "1":
+          description: 9/10
+        "2":
+          description: 10/10
+        "3":
+          description: Haploidentical
+        "4":
+          description: Umbilical cord blood
+        "5":
+          description: Other {hla_match}
+        "6":
+          description: don't know
+
+    Procedure17Enum:
+      description: >
+        Enumeration for Has the patient undergone a Hematopoietic Stem Cell transplantation (HSCT)?
+      permissible_values:
+        ncit_c15431:
+          description: Yes
+          meaning: NCIT:c15431
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    RadiationConditioningEnum:
+      description: >
+        Enumeration for Was radiation used during conditioning?
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    ReasonNotHsctEnum:
+      description: >
+        Enumeration for If a transplant was considered and not performed, why was it not performed?
+      permissible_values:
+        "1":
+          description: Lack of donor
+        "2":
+          description: Age or condition of the patient
+        "3":
+          description: Unfavorable probability of success
+        "4":
+          description: Patient preference
+        "99":
+          description: Other - Please specify: {other_not_hsct}
+        "5":
+          description: don't know
+
+    ReasonSctEnum:
+      description: >
+        Enumeration for What were the most significant reasons for HSCT?
+      permissible_values:
+        "1":
+          description: Immune deficiency
+        "2":
+          description: Malignancy
+        "3":
+          description: Autoimmunity
+        "4":
+          description: Other {other_reason_hsct}
+        "5":
+          description: don't know
+
+    SctNotPerformedEnum:
+      description: >
+        Enumeration for Was a transplant considered and not performed?
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+
+    SourceGraftEnum:
+      description: >
+        Enumeration for What is the source of graft?
+      permissible_values:
+        "1":
+          description: Bone marrow
+        "2":
+          description: Mobilized peripheral blood stem cells
+        "3":
+          description: Umbilical cord blood
+        "loinc_Ia46-8":
+          description: Other {other_graft}
+          meaning: LOINC:Ia46-8
+        "5":
+          description: don't know
+
+    StemCellPurificationEnum:
+      description: >
+        Enumeration for Please indicate the Stem Cells manipulation:
+      permissible_values:
+        "1":
+          description: Unfractionated
+        "2":
+          description: CD34 Enriched
+        "3":
+          description: T Cell Depleted
+        "4":
+          description: don't know
+
+    TypeGvhdEnum:
+      description: >
+        Enumeration for Please indicate the type of GVHD
+      permissible_values:
+        "1":
+          description: Acute grade I or II
+        "2":
+          description: Acute grade III
+        "3":
+          description: Acute grade IV
+        "4":
+          description: Chronic
+        "5":
+          description: Other {other_gvhd}
+
+    WhatConditioningUsedEnum:
+      description: >
+        Enumeration for What type of conditioning was used?
+      permissible_values:
+        "1":
+          description: Myeloablative
+        "2":
+          description: Reduced Intensity conditioning
+        "3":
+          description: Immunosuppression only
+        "4":
+          description: No conditioning
+        "5":
+          description: Other {other_conditioning}
+        "6":
+          description: don't know
+
+    WhatTransplantNumberEnum:
+      description: >
+        Enumeration for Enter the HSCT you are completing this form for.
+      permissible_values:
+        "1":
+          description: First transplant
+        "2":
+          description: Second transplant
+        "3":
+          description: Third transplant
+        "99":
+          description: Other - Please specify: {transplant_number}

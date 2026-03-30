@@ -1,0 +1,111 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/37_other_investigations.yaml
+name: 37_other_investigations
+description: >
+  Other investigations form capturing additional laboratory tests, diagnostic imaging, and other test results related to the underlying IEI.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  OtherInvestigations:
+    description: >
+      Other investigations form capturing additional laboratory tests, diagnostic imaging, and other test results related to the underlying IEI.
+    slots:
+      - completion_date_pft_v2_673b76
+      - add_test_name
+      - addcomptestmonth
+      - addcomptestyear
+      - date_chest_xray_v2
+      - test_procedureother
+      - pdf_add_test_results
+      - pdf_chest_ct_annual_v2_316dd5
+
+slots:
+  completion_date_pft_v2_673b76:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  add_test_name:
+    title: Please choose the additional test performed
+    description: >
+      Please choose the additional test performed
+    range: AddTestNameEnum
+    required: false
+
+  addcomptestmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  addcomptestyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  date_chest_xray_v2:
+    title: Please provide the following information at EACH designated time point in the dropdown list. Select 
+    description: >
+      Please provide the following information at EACH designated time point in the dropdown list. Select the appropriate box for the information you are providing:
+    range: TestTimingEnum
+    required: false
+
+  test_procedureother:
+    title: Name of test or procedure with abnormal results
+    description: >
+      Name of test or procedure with abnormal results
+    range: string
+    required: false
+
+  pdf_add_test_results:
+    title: Please upload the pdf of laboratory test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, 
+    description: >
+      Please upload the pdf of laboratory test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+  pdf_chest_ct_annual_v2_316dd5:
+    title: Please upload the additional diagnostic imaging pdf test results. REMOVE PATIENT'S PERSONAL INFORMAT
+    description: >
+      Please upload the additional diagnostic imaging pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+enums:
+    TestTimingEnum:
+      description: >
+        Enumeration for test timing
+      permissible_values:
+        ncit_c54734:
+          description: Before Treatment/ Baseline diagnosis
+          meaning: NCIT:C54734
+        ncit_c54735:
+          description: Post Treatment
+          meaning: NCIT:C54735
+        ncit_c25280:
+          description: Most recent test
+          meaning: NCIT:C25280
+
+    AddTestNameEnum:
+      description: >
+        Enumeration for Please choose the additional test performed
+      permissible_values:
+        "1":
+          description: laboratory
+        "2":
+          description: diagnostic imaging
+        "3":
+          description: other

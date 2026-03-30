@@ -1,0 +1,360 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/16_isohemagglutinins.yaml
+name: 16_isohemagglutinins
+description: >
+  IgG subsets, isohemagglutinins, and M-protein evaluation form capturing IgG subclass values, interpretations, isohaemagglutinin evaluation, patient blood group, and M-protein test details.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  HP: http://purl.obolibrary.org/obo/HP_
+  LOINC: http://loinc.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  IsohemagglutininsEvaluation:
+    description: >
+      IgG subsets, isohemagglutinins, and M-protein evaluation form capturing IgG subclass values, interpretations, isohaemagglutinin evaluation, patient blood group, and M-protein test details.
+    slots:
+      - completion_date_igg
+      - ig1_eval
+      - iggmonth
+      - iggyear
+      - igg1_val
+      - igg1_int
+      - igg2_val
+      - igg2_int
+      - igg3_val
+      - igg3_int
+      - igg4_val
+      - igg4_int
+      - isohaem_eval
+      - isohaem_date
+      - isohaemmonth
+      - isoheamyear
+      - patient_blood_group
+      - a_ab
+      - a_ab_val
+      - b_ab
+      - b_ab_val
+      - m_protein_yes
+      - proteinmonth
+      - protienyear
+      - m_protein_val
+      - m_protein_pdf
+
+slots:
+  completion_date_igg:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  ig1_eval:
+    title: Have Immunoglobulin G (IgG) subclasses been done?
+    description: >
+      Have Immunoglobulin G (IgG) subclasses been done?
+    range: Ig1EvalEnum
+    required: false
+
+  iggmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  iggyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  igg1_val:
+    title: IgG1 Value g/l
+    description: >
+      IgG1 Value g/l
+    range: decimal
+    required: false
+
+  igg1_int:
+    title: IgG1 Interpretation
+    description: >
+      IgG1 Interpretation
+    range: LabInterpretationEnum
+    required: false
+
+  igg2_val:
+    title: IgG2 Value g/l
+    description: >
+      IgG2 Value g/l
+    range: decimal
+    required: false
+
+  igg2_int:
+    title: IgG2 Interpretation
+    description: >
+      IgG2 Interpretation
+    range: LabInterpretationEnum
+    required: false
+
+  igg3_val:
+    title: IgG3 Value g/l
+    description: >
+      IgG3 Value g/l
+    range: decimal
+    required: false
+
+  igg3_int:
+    title: IgG3 Interpretation
+    description: >
+      IgG3 Interpretation
+    range: LabInterpretationEnum
+    required: false
+
+  igg4_val:
+    title: IgG4 Value g/l
+    description: >
+      IgG4 Value g/l
+    range: decimal
+    required: false
+
+  igg4_int:
+    title: IgG4 Interpretation
+    description: >
+      IgG4 Interpretation
+    range: LabInterpretationEnum
+    required: false
+
+  isohaem_eval:
+    title: Has an evaluation of isohaemagglutinins been done?
+    description: >
+      Has an evaluation of isohaemagglutinins been done?
+    range: IsohaemEvalEnum
+    required: false
+
+  isohaem_date:
+    title: Were Isohaemagglutinins done?
+    description: >
+      Were Isohaemagglutinins done? Month{isohaemmonth} Year{isoheamyear}
+    range: boolean
+    required: false
+
+  isohaemmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  isoheamyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  patient_blood_group:
+    title: Please indicate the patient's Blood Group
+    description: >
+      Please indicate the patient's Blood Group
+    range: PatientBloodGroupEnum
+    required: false
+
+  a_ab:
+    title: Anti-A antibodies (blood group B or O)
+    description: >
+      Anti-A antibodies (blood group B or O)
+    range: AAbEnum
+    required: false
+
+  a_ab_val:
+    title: If the patient should have Anti-A Antibodies, please indicate the result
+    description: >
+      If the patient should have Anti-A Antibodies, please indicate the result
+    range: AAbValEnum
+    required: false
+
+  b_ab:
+    title: Anti-B antibodies (blood group A or O)
+    description: >
+      Anti-B antibodies (blood group A or O)
+    range: BAbEnum
+    required: false
+
+  b_ab_val:
+    title: If the patient should have Anti-B Antibodies, please indicate the result
+    description: >
+      If the patient should have Anti-B Antibodies, please indicate the result
+    range: BAbValEnum
+    required: false
+
+  m_protein_yes:
+    title: Has a serum protein electrophoresis/M-protein (SPEP) (monoclonal, myeloma-related) been done?
+    description: >
+      Has a serum protein electrophoresis/M-protein (SPEP) (monoclonal, myeloma-related) been done?
+    range: MProteinYesEnum
+    required: false
+
+  proteinmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  protienyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  m_protein_val:
+    title: SPEP/M-protein (monoclonal protein, myeloma-related) result
+    description: >
+      SPEP/M-protein (monoclonal protein, myeloma-related) result
+    range: MProteinValEnum
+    required: false
+
+  m_protein_pdf:
+    title: Please attach the results of M-protein (pdf). REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI,
+    description: >
+      Please attach the results of M-protein (pdf). REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+enums:
+
+    LabInterpretationEnum:
+      description: >
+        Enumeration for lab value interpretation relative to age-related reference range
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    AAbEnum:
+      description: >
+        Enumeration for Anti-A antibodies (blood group B or O)
+      permissible_values:
+        loinc_30314_9:
+          description: Anti-A Antibodies [Titer]
+          meaning: LOINC:30314-9
+        "1":
+          description: Positive
+        "2":
+          description: Negative
+        "3":
+          description: Not applicable
+
+    AAbValEnum:
+      description: >
+        Enumeration for If the patient should have Anti-A Antibodies, please indicate the result
+      permissible_values:
+        ncit_c48190:
+          description: Absent
+          meaning: NCIT:c48190
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:c78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:c78800
+
+    BAbEnum:
+      description: >
+        Enumeration for Anti-B antibodies (blood group A or O)
+      permissible_values:
+        loinc_30201_8:
+          description: Anti-B Antibodies [Titer]
+          meaning: LOINC:30201-8
+        "1":
+          description: Positive
+        "2":
+          description: Negative
+        "3":
+          description: Not applicable
+
+    BAbValEnum:
+      description: >
+        Enumeration for If the patient should have Anti-B Antibodies, please indicate the result
+      permissible_values:
+        ncit_c48190:
+          description: Absent
+          meaning: NCIT:c48190
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:c78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:c78800
+
+    Ig1EvalEnum:
+      description: >
+        Enumeration for Have Immunoglobulin G (IgG) subclasses been done?
+      permissible_values:
+        "1":
+          description: yes
+        "2":
+          description: no
+
+    IsohaemEvalEnum:
+      description: >
+        Enumeration for Has an evaluation of isohaemagglutinins been done?
+      permissible_values:
+        ncit_c98843:
+          description: Yes
+          meaning: NCIT:c98843
+        no:
+          description: No
+
+    MProteinValEnum:
+      description: >
+        Enumeration for SPEP/M-protein (monoclonal protein, myeloma-related) result
+      permissible_values:
+        ncit_c14165:
+          description: normal
+          meaning: NCIT:c14165
+        hp_0010876:
+          description: abnormal
+          meaning: HP:0010876
+
+    MProteinYesEnum:
+      description: >
+        Enumeration for Has a serum protein electrophoresis/M-protein (SPEP) (monoclonal, myeloma-relate
+      permissible_values:
+        ncit_c129763:
+          description: Yes
+          meaning: NCIT:c129763
+        no:
+          description: No
+
+    PatientBloodGroupEnum:
+      description: >
+        Enumeration for Please indicate the patient's Blood Group
+      permissible_values:
+        ncit_c76249:
+          description: 0 (Should have A & B antibodies)
+          meaning: NCIT:c76249
+        ncit_c76246:
+          description: A (Should only have B antibodies)
+          meaning: NCIT:c76246
+        ncit_c76247:
+          description: B (Should only have A antibodies)
+          meaning: NCIT:c76247
+        ncit_c76248:
+          description: AB (Should not have A or B antibodies)
+          meaning: NCIT:c76248

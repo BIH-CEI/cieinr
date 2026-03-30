@@ -1,0 +1,235 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/15_immunoglobulin_evaluation.yaml
+name: 15_immunoglobulin_evaluation
+description: >
+  Immunoglobulin evaluation form capturing test timing, evaluation date, immunoglobulin replacement therapy status, and assay results for IgG, IgA, IgM, and IgE.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  ImmunoglobulinEvaluation:
+    description: >
+      Immunoglobulin evaluation form capturing test timing, evaluation date, immunoglobulin replacement therapy status, and assay results for IgG, IgA, IgM, and IgE.
+    slots:
+      - completion_date_immunoglob
+      - type_immunologbulins_test
+      - immunoglobulintestmonth
+      - immunoglobulintestyear
+      - igrt_result
+      - immunglobulin_iga
+      - immunglobulin_iga_val
+      - immunglobulin_iga_int
+      - immunglobulin_igm
+      - immunglobulin_igm_val
+      - immunglobulin_igm_int
+      - immunglobulin_igg
+      - immunglobulin_igg_val
+      - immunglobulin_igg_int
+      - immunglobulin_ige
+      - immunglobulin_ige_val
+      - immunglobulin_ige_int
+
+slots:
+  completion_date_immunoglob:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  type_immunologbulins_test:
+    title: Please provide the following information at EACH designated time point in the dropdown list. Select 
+    description: >
+      Please provide the following information at EACH designated time point in the dropdown list. Select the appropriate box for the information you are providing:
+    range: TestTimingEnum
+    required: false
+
+  immunoglobulintestmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  immunoglobulintestyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  igrt_result:
+    title: Was the patient on immunoglobulin replacement at the time of this test?
+    description: >
+      Was the patient on immunoglobulin replacement at the time of this test?
+    range: IgrtResultEnum
+    required: false
+
+  immunglobulin_iga:
+    title: Immunoglobulin - IgA
+    description: >
+      Immunoglobulin - IgA
+    range: ImmunglobulinIgaEnum
+    required: false
+
+  immunglobulin_iga_val:
+    title: IgA g/l - Please provide value
+    description: >
+      IgA g/l - Please provide value
+    range: decimal
+    required: false
+
+  immunglobulin_iga_int:
+    title: IgA value interpretation
+    description: >
+      IgA value interpretation
+    range: LabInterpretationEnum
+    required: false
+
+  immunglobulin_igm:
+    title: Immunoglobulin - IgM
+    description: >
+      Immunoglobulin - IgM
+    range: ImmunglobulinIgmEnum
+    required: false
+
+  immunglobulin_igm_val:
+    title: IgM g/l - Please provide value
+    description: >
+      IgM g/l - Please provide value
+    range: decimal
+    required: false
+
+  immunglobulin_igm_int:
+    title: IgM value interpretation
+    description: >
+      IgM value interpretation
+    range: LabInterpretationEnum
+    required: false
+
+  immunglobulin_igg:
+    title: Immunoglobulin - IgG
+    description: >
+      Immunoglobulin - IgG
+    range: ImmunglobulinIggEnum
+    required: false
+
+  immunglobulin_igg_val:
+    title: IgG g/l - Please provide value
+    description: >
+      IgG g/l - Please provide value
+    range: decimal
+    required: false
+
+  immunglobulin_igg_int:
+    title: IgG value interpretation
+    description: >
+      IgG value interpretation
+    range: LabInterpretationEnum
+    required: false
+
+  immunglobulin_ige:
+    title: Immunoglobulin - IgE
+    description: >
+      Immunoglobulin - IgE
+    range: ImmunglobulinIgeEnum
+    required: false
+
+  immunglobulin_ige_val:
+    title: IgE kU/L - Please provide value
+    description: >
+      IgE kU/L - Please provide value
+    range: decimal
+    required: false
+
+  immunglobulin_ige_int:
+    title: IgE value interpretation
+    description: >
+      IgE value interpretation
+    range: LabInterpretationEnum
+    required: false
+
+enums:
+    TestTimingEnum:
+      description: >
+        Enumeration for test timing
+      permissible_values:
+        ncit_c54734:
+          description: Before Treatment/ Baseline diagnosis
+          meaning: NCIT:C54734
+        ncit_c54735:
+          description: Post Treatment
+          meaning: NCIT:C54735
+        ncit_c25280:
+          description: Most recent test
+          meaning: NCIT:C25280
+
+    LabInterpretationEnum:
+      description: >
+        Enumeration for lab value interpretation relative to age-related reference range
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    IgrtResultEnum:
+      description: >
+        Enumeration for Was the patient on immunoglobulin replacement at the time of this test?
+      permissible_values:
+        "1":
+          description: Yes
+        "2":
+          description: No
+
+    ImmunglobulinIgaEnum:
+      description: >
+        Enumeration for Immunoglobulin - IgA
+      permissible_values:
+        ncit_c565:
+          description: IgA [g/l]
+          meaning: NCIT:c565
+        "2":
+          description: not done
+
+    ImmunglobulinIgeEnum:
+      description: >
+        Enumeration for Immunoglobulin - IgE
+      permissible_values:
+        ncit_c567:
+          description: IgE [kU/L]
+          meaning: NCIT:c567
+        "2":
+          description: not done
+
+    ImmunglobulinIggEnum:
+      description: >
+        Enumeration for Immunoglobulin - IgG
+      permissible_values:
+        ncit_c568:
+          description: IgG [g/l]
+          meaning: NCIT:c568
+        "2":
+          description: not done
+
+    ImmunglobulinIgmEnum:
+      description: >
+        Enumeration for Immunoglobulin - IgM
+      permissible_values:
+        ncit_c569:
+          description: IgM [g/l]
+          meaning: NCIT:c569
+        "2":
+          description: not done

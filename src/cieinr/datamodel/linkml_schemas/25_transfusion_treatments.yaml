@@ -1,0 +1,102 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/25_transfusion_treatments.yaml
+name: 25_transfusion_treatments
+description: >
+  Transfusion treatments form capturing blood transfusion history, types of transfusion received, and adverse events.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  LOINC: http://loinc.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SNOMEDCT: http://purl.obolibrary.org/obo/SNOMEDCT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  TransfusionTreatments:
+    description: >
+      Transfusion treatments form capturing blood transfusion history, types of transfusion received, and adverse events.
+    slots:
+      - date_transfusion_form
+      - procedure_11
+      - procedure_11_type1
+      - other_transfusion
+      - ad_ev_transf
+
+slots:
+  date_transfusion_form:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_11:
+    title: Has the patient received a blood transfusion?
+    description: >
+      Has the patient received a blood transfusion?
+    range: Procedure11Enum
+    required: false
+
+  procedure_11_type1:
+    title: Please, select the types of transfusion the patient has ever received
+    description: >
+      Please, select the types of transfusion the patient has ever received
+    range: Procedure11Type1Enum
+    required: false
+
+  other_transfusion:
+    title: Other
+    description: >
+      Other
+    range: string
+    required: false
+
+  ad_ev_transf:
+    title: Please, describe if patient had any adverse event after transfusion
+    description: >
+      Please, describe if patient had any adverse event after transfusion
+    range: string
+    required: false
+
+enums:
+    Procedure11Enum:
+      description: >
+        Enumeration for Has the patient received a blood transfusion?
+      permissible_values:
+        ncit_c15192:
+          description: Yes
+          meaning: NCIT:c15192
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    Procedure11Type1Enum:
+      description: >
+        Enumeration for Please, select the types of transfusion the patient has ever received
+      permissible_values:
+        ncit_c15409:
+          description: Red Blood Cells
+          meaning: NCIT:c15409
+        ncit_c15366:
+          description: Platelets
+          meaning: NCIT:c15366
+        ncit_c116475:
+          description: Plasma
+          meaning: NCIT:c116475
+        ncit_c62749:
+          description: Whole Blood
+          meaning: NCIT:c62749
+        snomedct_35108008:
+          description: Granulocytes
+          meaning: SNOMEDCT:35108008
+        snomedct_261665006:
+          description: Unknown Type
+          meaning: SNOMEDCT:261665006
+        "loinc_la46-8":
+          description: Other {other_transfusion}
+          meaning: LOINC:la46-8

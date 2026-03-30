@@ -1,0 +1,191 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/26_immunomodulator_medication.yaml
+name: 26_immunomodulator_medication
+description: >
+  Immunomodulator medication form capturing whether the patient received an immunomodulator, medication details, purpose, improvement, and adverse reactions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  ImmunomodulatorMedication:
+    description: >
+      Immunomodulator medication form capturing whether the patient received an immunomodulator, medication details, purpose, improvement, and adverse reactions.
+    slots:
+      - completion_date_immunmodmed
+      - procedure_12
+      - immunomodperscribemonth
+      - immunomodperscribeyear
+      - procedure_12_name
+      - imm_purpose
+      - other_imm_tx
+      - nt_improvement
+      - reaction_nt
+      - type_ar
+      - tx_disease
+      - prophylaxis
+      - rxn_immunomodulator
+
+slots:
+  completion_date_immunmodmed:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_12:
+    title: Has the patient ever received an immunomodulator?
+    description: >
+      Has the patient ever received an immunomodulator?
+    range: Procedure12Enum
+    required: false
+
+  immunomodperscribemonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  immunomodperscribeyear:
+    title: year
+    description: >
+      year
+    range: integer
+    required: false
+
+  procedure_12_name:
+    title: Which Immunmodulator therapy was given?
+    description: >
+      Which Immunmodulator therapy was given?
+    range: string
+    required: false
+
+  imm_purpose:
+    title: Why was the immunomodulator medication prescribed?
+    description: >
+      Why was the immunomodulator medication prescribed?  If used for more than one indication, complete separate forms for each indication.
+    range: ImmPurposeEnum
+    required: false
+
+  other_imm_tx:
+    title: 
+    description: >
+      
+    range: string
+    required: false
+
+  nt_improvement:
+    title: After administration, did the patient experience improvement?
+    description: >
+      After administration, did the patient experience improvement?
+    range: NtImprovementEnum
+    required: false
+
+  reaction_nt:
+    title: After administration, did the patient experience any adverse reactions to the immunomodulator medica
+    description: >
+      After administration, did the patient experience any adverse reactions to the immunomodulator medication?
+    range: ReactionNtEnum
+    required: false
+
+  type_ar:
+    title: What type of adverse reaction did the patient experience?
+    description: >
+      What type of adverse reaction did the patient experience?
+    range: TypeArEnum
+    required: false
+
+  tx_disease:
+    title: Please, indicate the type of disease
+    description: >
+      Please, indicate the type of disease
+    range: string
+    required: false
+
+  prophylaxis:
+    title: Type of prophylaxis
+    description: >
+      Type of prophylaxis
+    range: string
+    required: false
+
+  rxn_immunomodulator:
+    title: rxn_immunomodulator
+    description: >
+      rxn_immunomodulator
+    range: string
+    required: false
+
+enums:
+
+    ImmPurposeEnum:
+      description: >
+        Enumeration for Why was the immunomodulator medication prescribed?
+      permissible_values:
+        "1":
+          description: Treat Disease - Please specify the disease: {tx_disease}
+        "2":
+          description: Prophylaxis - Please specify the type of prophylaxis: {prophylaxis}
+        "3":
+          description: Hematopoietic stem cell transplant
+        "4":
+          description: Organ transplant
+        "5":
+          description: Other - Please specify why the immunomodulator medication was prescribed: {other_imm_tx}
+        "6":
+          description: don't know
+
+    NtImprovementEnum:
+      description: >
+        Enumeration for After administration, did the patient experience improvement?
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    Procedure12Enum:
+      description: >
+        Enumeration for Has the patient ever received an immunomodulator?
+      permissible_values:
+        ncit_c116540:
+          description: Yes
+          meaning: NCIT:c116540
+        "0":
+          description: No
+
+    ReactionNtEnum:
+      description: >
+        Enumeration for After administration, did the patient experience any adverse reactions to the im
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+        "2":
+          description: Unknown
+
+    TypeArEnum:
+      description: >
+        Enumeration for What type of adverse reaction did the patient experience?
+      permissible_values:
+        "1":
+          description: Allergic reaction (anaphylaxis, hives, oedema)
+        "2":
+          description: GI symptoms (nausea, vomiting)
+        "3":
+          description: Cardiovascular symptoms
+        "4":
+          description: Other - Please specify: {rxn_immunomodulator}
+        "5":
+          description: don't know
