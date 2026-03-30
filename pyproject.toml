@@ -10,7 +10,7 @@ authors = [
 description = "This repository houses the LinkML representation of the data model for the Canadian Inborn Errors of Immunity National Registry (CIEINR). This project facilitates the export of patient data into Phenopackets, leveraging RareLink's functionalities."
 readme = "README.md"
 requires-python = ">=3.10, <3.13"
-version = "1.0.0"  # Static version instead of dynamic
+version = "1.0.0"
 keywords = [
     "Inborn Errors of Immunity",
     "GA4GH Phenopackets",
@@ -33,19 +33,19 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Medical Science Apps."
 ]
 dependencies = [
-    "rarelink @ file:submodules/rarelink",
     "pytest",
+    "rarelink",
     "typer>=0.9.0",
     "python-dotenv>=1.0.0",
     "requests>=2.31.0",
-    "phenopackets>=1.0.0,<2.0.2.post2",
-    "protobuf<4.0.0,>=3.20.2",
-    "linkml>=1.6.0",
+    "phenopackets>=2.0.2.post5",
+    "protobuf>=3.20.2",
+    "linkml>=1.9",
+    "linkml-runtime",
     "oaklib>=0.5.26",
     "tqdm>=4.66.0",
     "pyyaml>=6.0.1",
     "pyphetools>=0.3.3",
-    "linkml>=1.8"
 ]
 
 [project.optional-dependencies]

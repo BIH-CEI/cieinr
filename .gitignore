@@ -167,6 +167,11 @@ cython_debug/
 # local mac os files
 .DS_Store
 **/.DS_Store
+# DS Store
+# macOS metadata
+.DS_Store
+**/.DS_Store
+.DS_Store/
 
 
 # Phenopackets output of local REDCap site
