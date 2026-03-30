@@ -24,7 +24,8 @@ classes:
       the capture date, and lab values for multiple blood components.
     slots:
       - cbc_type
-      - cbc_date
+      - cbcmonth
+      - cbcyear
       - cbc_haemoglobin
       - cbc_haemoglobin_unit
       - cbc_haemoglobin_range
@@ -62,11 +63,20 @@ slots:
     range: CBCTypeEnum
     required: false
 
-  cbc_date:
-    title: CBC Date
-    description: Please enter the date of the CBC captured.
-    range: union_date_string
+  cbcmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
     required: false
+
+  cbcyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
 
   cbc_haemoglobin:
     title: CBC - Haemoglobin
@@ -275,18 +285,15 @@ enums:
   CBCTypeEnum:
     description: Types of CBC tests.
     permissible_values:
-      ncit_c199317:
-        description: Test before the time of diagnosis
-        meaning: NCIT:C199317
-      ncit_c158810:
-        description: Test at time of Diagnosis
-        meaning: NCIT:C158810
-      ncit_c100059:
-        description: Test after diagnosis
-        meaning: NCIT:C100059
-      ncit_c4647:
-        description: Annual test
-        meaning: NCIT:C4647
+      ncit_c54734:
+        description: Before Treatment/ Baseline diagnosis
+        meaning: NCIT:C54734
+      ncit_c54735:
+        description: Post Treatment
+        meaning: NCIT:C54735
+      ncit_c25280:
+        description: Most recent test
+        meaning: NCIT:C25280
 
   HaemoglobinTestEnum:
     description: Hemoglobin test for CBC.

@@ -23,7 +23,8 @@ classes:
     slots:
       - tcr_test
       - type_tcr_test
-      - date_tcr_test
+      - tcrtestmonth
+      - tcrtestyear
       - tcr_v_beta_response
       - tcr_v_pdf_test
 
@@ -40,12 +41,19 @@ slots:
       Please provide the following information at each designated time point if possible. Click on the time point you are reporting.
     range: TCRTestTimingEnum
     required: false
-
-  date_tcr_test:
-    title: Date of TCR V Beta Test
+    
+  tcrtestmonth:
+    title: Month of TCR V Beta Test
     description: >
-      What is the date of the test? (format: 01-M-Y)
-    range: union_date_string
+      What is the month of the test? (format: M)
+    range: integer
+    required: false
+
+  tcrtestyear:
+    title: Year of TCR V Beta Test
+    description: >
+      What is the year of the test? (format: Y)
+    range: integer
     required: false
 
   tcr_v_beta_response:

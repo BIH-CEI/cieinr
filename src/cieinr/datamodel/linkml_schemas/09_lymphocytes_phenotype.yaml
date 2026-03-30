@@ -1,0 +1,544 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/lymphocytes_phenotype.yaml
+name: lymphocytes_phenotype
+description: >
+  Lymphocyte phenotype form capturing test timing and immune cell measurements for T cells, B cells, and Natural Killer cells.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  LOINC: http://loinc.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  UO: http://purl.obolibrary.org/obo/UO_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  LymphocytesPhenotype:
+    description: >
+      Lymphocyte phenotype form capturing test timing and immune cell measurements for T cells, B cells, and Natural Killer cells.
+    slots:
+      - completion_date_lympheno
+      - lympheno_test
+      - lympheno_loinc_8122_4
+      - cd3_tmonth
+      - cd3_tyear
+      - lympheno_loinc_8122_4_unit
+      - lympheno_loinc_8122_4_val
+      - lympheno_loinc_8122_4_int
+      - lympheno_loinc_24467_3
+      - cd3_cd4_month
+      - cd3_cd4_year
+      - lympheno_loinc_24467_3_unit
+      - lympheno_loinc_24467_3_val
+      - lympheno_loinc_24467_3_int
+      - lympheno_loinc_14135_8
+      - cd3_cd8_month
+      - cd3_cd8_year
+      - lympheno_loinc_14135_8_unit
+      - lympheno_loinc_14135_8_val
+      - lympheno_loinc_14135_8_int
+      - lympheno_loinc_8116_6
+      - cd19_bmonth
+      - cd19_byear
+      - lympheno_loinc_8116_6_unit
+      - lympheno_loinc_8116_6_val
+      - lympheno_loinc_8116_6_int
+      - lympheno_loinc_9558_8
+      - cd20_bmonth
+      - cd20_byear
+      - lympheno_loinc_9558_8_unit
+      - lympheno_loinc_9558_8_val
+      - lympheno_loinc_9558_8_int
+      - lympheno_loinc_9728_7
+      - nktcellsmonth
+      - nktcellsyear
+      - lympheno_loinc_9728_7_unit
+      - lympheno_loinc_9728_7_val
+      - lympheno_loinc_9728_7_int
+      - lymphopheno_other
+      - lymphopheno_test
+
+slots:
+  completion_date_lympheno:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  lympheno_test:
+    title: Please provide the following information at EACH designated time point in the dropdown list. Select 
+    description: >
+      Please provide the following information at EACH designated time point in the dropdown list. Select the appropriate box for the information you are providing:
+    range: LymphenoTestEnum
+    required: false
+
+  lympheno_loinc_8122_4:
+    title: CD3+ T Cells
+    description: >
+      CD3+ T Cells
+    range: LymphenoLoinc81224Enum
+    required: false
+
+  cd3_tmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  cd3_tyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+  
+  lympheno_loinc_8122_4_unit:
+    title: CD3+ T Cells Unit cells/microliter or x 10E6/L)
+    description: >
+      CD3+ T Cells Unit cells/microliter or x 10E6/L)
+    range: LymphenoLoinc81224UnitEnum
+    required: false
+
+  lympheno_loinc_8122_4_val:
+    title: CD3+ T cells Value (cells/microliter or 10E6/L)
+    description: >
+      CD3+ T cells Value (cells/microliter or 10E6/L)
+    range: string
+    required: false
+
+  lympheno_loinc_8122_4_int:
+    title: CD3+ interpretation
+    description: >
+      CD3+ interpretation
+    range: LymphenoLoinc81224IntEnum
+    required: false
+
+  lympheno_loinc_24467_3:
+    title: CD3+/CD4+ T Cells
+    description: >
+      CD3+/CD4+ T Cells
+    range: LymphenoLoinc244673Enum
+    required: false
+
+  cd3_cd4_month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  cd3_cd4_year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lympheno_loinc_24467_3_unit:
+    title: CD3+/CD4+ T Cells Unit (if possible Cells per milliliter)
+    description: >
+      CD3+/CD4+ T Cells Unit (if possible Cells per milliliter)
+    range: LymphenoLoinc244673UnitEnum
+    required: false
+
+  lympheno_loinc_24467_3_val:
+    title: CD3+/CD4+ T cells Value (cells/microliter or 10E6/L)
+    description: >
+      CD3+/CD4+ T cells Value (cells/microliter or 10E6/L)
+    range: string
+    required: false
+  lympheno_loinc_24467_3_int:
+    title: CD3+/CD4+ interpretation
+    description: >
+      CD3+/CD4+ interpretation
+    range: LymphenoLoinc244673IntEnum
+    required: false
+
+  lympheno_loinc_14135_8:
+    title: CD3+CD8+ T Cells
+    description: >
+      CD3+CD8+ T Cells
+    range: LymphenoLoinc141358Enum
+    required: false
+
+  cd3_cd8_month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  cd3_cd8_year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lympheno_loinc_14135_8_unit:
+    title: CD3+CD8+ T Cells Unit (if possible Cells per milliliter)
+    description: >
+      CD3+CD8+ T Cells Unit (if possible Cells per milliliter) (cells/microliter or 10E6/L)
+    range: LymphenoLoinc141358UnitEnum
+    required: false
+
+  lympheno_loinc_14135_8_val:
+    title: CD3+CD8+ T Cells Value (cells/microliter or 10E6/L)
+    description: >
+      CD3+CD8+ T Cells Value (cells/microliter or 10E6/L)
+    range: string
+    required: false
+
+  lympheno_loinc_14135_8_int:
+    title: CD3+CD8+ interpretation
+    description: >
+      CD3+CD8+ interpretation
+    range: LymphenoLoinc141358IntEnum
+    required: false
+
+  lympheno_loinc_8116_6:
+    title: CD19+ B Cells
+    description: >
+      CD19+ B Cells
+    range: LymphenoLoinc81166Enum
+    required: false
+
+  cd19_bmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  cd19_byear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lympheno_loinc_8116_6_unit:
+    title: CD19+ B Cells Unit (if possible Cells per milliliter)
+    description: >
+      CD19+ B Cells Unit (if possible Cells per milliliter)  (cells/microliter or 10E6/L)
+    range: LymphenoLoinc81166UnitEnum
+    required: false
+
+  lympheno_loinc_8116_6_val:
+    title: CD19+ B Cells Value (cells/microliter or 10E6/L)
+    description: >
+      CD19+ B Cells Value (cells/microliter or 10E6/L)
+    range: string
+    required: false
+
+  lympheno_loinc_8116_6_int:
+    title: CD19+ interpretation
+    description: >
+      CD19+ interpretation
+    range: LymphenoLoinc81166IntEnum
+    required: false
+  
+  lympheno_loinc_9558_8:
+    title: CD20+ B Cells
+    description: >
+      CD20+ B Cells
+    range: LymphenoLoinc95588Enum
+    required: false
+
+  cd20_bmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  cd20_byear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lympheno_loinc_9558_8_unit:
+    title: CD20+ B Cells Unit (if possible Cells per milliliter)
+    description: >
+      CD20+ B Cells Unit (if possible Cells per milliliter) (cells/microliter or 10E6/L)
+    range: LymphenoLoinc95588UnitEnum
+    required: false
+
+  lympheno_loinc_9558_8_val:
+    title: CD20+ B Cells Value (cells/microliter or 10E6/L)
+    description: >
+      CD20+ B Cells Value (cells/microliter or 10E6/L)
+    range: string
+    required: false
+    # Branching: [lympheno_loinc_9558_8] = 'loinc_9558_8'
+
+  lympheno_loinc_9558_8_int:
+    title: CD20+ interpretation
+    description: >
+      CD20+ interpretation
+    range: LymphenoLoinc95588IntEnum
+    required: false
+    # Branching: [lympheno_loinc_9558_8] = 'loinc_9558_8'
+
+  lympheno_loinc_9728_7:
+    title: CD3-CD16+CD56+ Natural Killer T Cells
+    description: >
+      CD3-CD16+CD56+ Natural Killer T Cells
+    range: LymphenoLoinc97287Enum
+    required: false
+
+  nktcellsmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+    # Branching: [lympheno_loinc_9728_7] = 'loinc_9728_7'
+
+  nktcellsyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+    # Branching: [lympheno_loinc_9728_7] = 'loinc_9728_7'
+
+  lympheno_loinc_9728_7_unit:
+    title: CD3-CD16+CD56+ Natural Killer T Cells Unit (if possible Cells per milliliter) (cells/microliter or 1
+    description: >
+      CD3-CD16+CD56+ Natural Killer T Cells Unit (if possible Cells per milliliter) (cells/microliter or 10E6/L)
+    range: LymphenoLoinc97287UnitEnum
+    required: false
+    # Branching: [lympheno_loinc_9728_7] = 'loinc_9728_7'
+
+  lympheno_loinc_9728_7_val:
+    title: CD3-CD16+CD56+ Natural Killer T Cells Value
+    description: >
+      CD3-CD16+CD56+ Natural Killer T Cells Value (cells/microliter or 10E6/L)
+    range: string
+    required: false
+    # Branching: [lympheno_loinc_9728_7] = 'loinc_9728_7'
+
+  lympheno_loinc_9728_7_int:
+    title: CD3-CD16+CD56+ Natural Killer T Cells interpretation
+    description: >
+      CD3-CD16+CD56+ Natural Killer T Cells interpretation
+    range: LymphenoLoinc97287IntEnum
+    required: false
+    # Branching: [lympheno_loinc_9728_7] = 'loinc_9728_7'
+
+  lymphopheno_other:
+    title: Were other more specific lymphocyte subsets tested?
+    description: >
+      Were other more specific lymphocyte subsets tested?   If yes, please upload the pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+  lymphopheno_test:
+    title: Please upload the pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    description: >
+      Please upload the pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+enums:
+    LymphenoTestEnum:
+      description: >
+        Enumeration for Please provide the following information at EACH designated time point in the dr
+      permissible_values:
+        ncit_c54734:
+          description: Before Treatment/ Baseline diagnosis
+          meaning: NCIT:C54734
+        ncit_c54735:
+          description: Post Treatment
+          meaning: NCIT:C54735
+        ncit_c25280:
+          description: Most recent test
+          meaning: NCIT:C25280
+
+    LymphenoLoinc81224Enum:
+      description: >
+        Enumeration for CD3+ T Cells
+      permissible_values:
+        loinc_8122_4:
+          description: CD3+ absolute count
+          meaning: LOINC:8122-4
+
+    LymphenoLoinc81224UnitEnum:
+      description: >
+        Enumeration for CD3+ T Cells Unit cells/microliter or x 10E6/L)
+      permissible_values:
+        uo_0000201:
+          description: Cells per microliter
+          meaning: UO:0000201
+
+    LymphenoLoinc81224IntEnum:
+      description: >
+        Enumeration for CD3+ interpretation
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    LymphenoLoinc244673Enum:
+      description: >
+        Enumeration for CD3+/CD4+ T Cells
+      permissible_values:
+        loinc_24467_3:
+          description: CD3+/CD4+ absolute count
+          meaning: LOINC:24467-3
+
+    LymphenoLoinc244673UnitEnum:
+      description: >
+        Enumeration for CD3+/CD4+ T Cells Unit (if possible Cells per milliliter)
+      permissible_values:
+        uo_0000201:
+          description: Cells per milliliter
+          meaning: UO:0000201
+
+    LymphenoLoinc244673IntEnum:
+      description: >
+        Enumeration for CD3+/CD4+ interpretation
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    LymphenoLoinc141358Enum:
+      description: >
+        Enumeration for CD3+CD8+ T Cells
+      permissible_values:
+        loinc_14135_8:
+          description: CD3+CD8+ absolute count
+          meaning: LOINC:14135-8
+
+    LymphenoLoinc141358UnitEnum:
+      description: >
+        Enumeration for CD3+CD8+ T Cells Unit (if possible Cells per milliliter)
+      permissible_values:
+        uo_0000201:
+          description: Cells per milliliter
+          meaning: UO:0000201
+
+    LymphenoLoinc141358IntEnum:
+      description: >
+        Enumeration for CD3+CD8+ interpretation
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    LymphenoLoinc81166Enum:
+      description: >
+        Enumeration for CD19+ B Cells
+      permissible_values:
+        loinc_8116_6:
+          description: CD19+ absolute count
+          meaning: LOINC:8116-6
+
+    LymphenoLoinc81166UnitEnum:
+      description: >
+        Enumeration for CD19+ B Cells Unit (if possible Cells per milliliter)
+      permissible_values:
+        uo_0000201:
+          description: Cells per milliliter
+          meaning: UO:0000201
+
+    LymphenoLoinc81166IntEnum:
+      description: >
+        Enumeration for CD19+ interpretation
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    LymphenoLoinc95588Enum:
+      description: >
+        Enumeration for CD20+ B Cells
+      permissible_values:
+        loinc_9558_8:
+          description: CD20+ absolute count
+          meaning: LOINC:9558-8
+
+    LymphenoLoinc95588UnitEnum:
+      description: >
+        Enumeration for CD20+ B Cells Unit (if possible Cells per milliliter)
+      permissible_values:
+        uo_0000201:
+          description: Cells per milliliter
+          meaning: UO:0000201
+
+    LymphenoLoinc95588IntEnum:
+      description: >
+        Enumeration for CD20+ interpretation
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    LymphenoLoinc97287Enum:
+      description: >
+        Enumeration for CD3-CD16+CD56+ Natural Killer T Cells
+      permissible_values:
+        loinc_9728_7:
+          description: CD3-CD16+CD56+ Natural killer cells absolute count
+          meaning: LOINC:9728-7
+
+    LymphenoLoinc97287UnitEnum:
+      description: >
+        Enumeration for CD3-CD16+CD56+ Natural Killer T Cells Unit (if possible Cells per milliliter) (c
+      permissible_values:
+        uo_0000201:
+          description: Cells per milliliter
+          meaning: UO:0000201
+
+    LymphenoLoinc97287IntEnum:
+      description: >
+        Enumeration for CD3-CD16+CD56+ Natural Killer T Cells interpretation
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727

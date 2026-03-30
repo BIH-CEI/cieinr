@@ -21,84 +21,94 @@ classes:
     description: >
       Form capturing live vaccine administration and specific immune response.
     slots:
-      - completion_live_vax
-      - live_vax
-      - live_vax_other
-      - live_vax_dosages
-      - live_vax_ae
-      - ae_live_vax
-      - live_vax_ae_other
-      - live_vax_ae_severity
-      - live_vax_response
-      - life_vax_response_date
+      - completion_vax
+      - vax_administered
+      - vax_other
+      - vax_dosages
+      - vax_ae
+      - ae_vax
+      - vax_ae_other
+      - vax_ae_severity
+      - vax_response
+      - imrespmonth
+      - imrespyear
       - measles_response
       - mumps_response
       - rubella_response
+      - diphtheria_response
+      - tetanus_response
+      - pertussis_response
 
 slots:
-  completion_live_vax:
+  completion_vax:
     title: Date of Form Completion
     description: Date of completion of this form.
     range: union_date_string
     required: false
 
-  live_vax:
+  vax:
     title: Live Vaccine Type
     description: Which kind of live vaccine was administered?
     range: LiveVaccineTypeEnum
     required: false
 
-  live_vax_other:
+  vax_other:
     title: Other Live Vaccine
     description: >
       Please indicate 'other' Live Vaccination? [VO]. Please search in the Vaccine Ontology.
     range: string
     required: false
 
-  live_vax_dosages:
+  vax_dosages:
     title: Live Vaccine Dosages
     description: How many doses of the selected Live Vaccination?
     range: LiveVaccineDosagesEnum
     required: false
 
-  live_vax_ae:
+  vax_ae:
     title: Vaccine-associated Infection
     description: >
       Was a vaccine-associated infection observed to the selected live vaccine?
     range: VaccineAssociatedInfectionEnum
     required: false
 
-  ae_live_vax:
+  ae_vax:
     title: Adverse Event Observed
     description: Was an adverse event observed?
     range: AdverseEventObservationEnum
     required: false
 
-  live_vax_ae_other:
+  vax_ae_other:
     title: Adverse Event Details
     description: >
       Please search in the HPO for the type of adverse events.
     range: string
     required: false
 
-  live_vax_ae_severity:
+  vax_ae_severity:
     title: Adverse Event Severity
     description: How severe were the observed adverse events for this vaccine?
     range: LiveVaccineAdverseEventSeverityEnum
     required: false
 
-  live_vax_response:
+  vax_response:
     title: Post-Vaccination Response Evaluation
     description: Response of the selected vaccine.
     range: VaccineResponseEnum
     required: false
 
-  life_vax_response_date:
-    title: Live Vaccine Response Date
+  imrespmonth:
+    title: Month
     description: >
-      What is the date of measurement of specific immune response to live vaccine?
-      (Do not include the day; indicate month and year only in format: 01_mm_yyy)
-    range: union_date_string
+      Month
+    range: integer
+    required: false
+
+  imrespyear:
+    title: Year
+    description: >
+      Year
+    range: integer
     required: false
 
   measles_response:
@@ -116,6 +126,27 @@ slots:
   rubella_response:
     title: Rubella Response
     description: Rubella response.
+    range: VaccineResponseEnum
+    required: false
+
+  diphtheria_response:
+    title: Diphtheria antibody response
+    description: >
+      Diphtheria antibody response
+    range: VaccineResponseEnum
+    required: false
+
+  tetanus_response:
+    title: Tetanus antibody response
+    description: >
+      Tetanus antibody response
+    range: VaccineResponseEnum
+    required: false
+
+  pertussis_response:
+    title: Pertussis antibody response
+    description: >
+      Pertussis antibody response
     range: VaccineResponseEnum
     required: false
 
@@ -224,3 +255,5 @@ enums:
       other:
         description: Other
         meaning: other
+
+  

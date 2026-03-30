@@ -22,12 +22,14 @@ classes:
     slots:
       - trec_test
       - type_trec_test
-      - date_trec_test
+      - trectestmonth
+      - trectestyear
       - trectest_result
       - trec_level
       - krec_test
       - type_krec_test
-      - date_krec
+      - krectestmonth
+      - krectestyear
       - krec_test_result
       - krec_level_custom
       - trec_pdf
@@ -45,10 +47,18 @@ slots:
     range: TREC_TestTimingEnum
     required: false
 
-  date_trec_test:
-    title: Date of TREC Test
-    description: What was the date of the TREC test? (format: 01-M-Y)
-    range: union_date_string
+  trectestmonth:
+    title: Month of TREC Test
+    description: >
+      What is the month of the TREC test? (format: M)
+    range: MonthEnum
+    required: false
+
+  trectestyear:
+    title: Year of TREC Test
+    description: >
+      What is the year of the TREC test? (format: Y)
+    range: integer
     required: false
 
   trectest_result:
@@ -75,10 +85,18 @@ slots:
     range: KREC_TestTimingEnum
     required: false
 
-  date_krec:
-    title: Date of KREC Test
-    description: What was the date of the KREC test? (format: 01-M-Y)
-    range: union_date_string
+  krectestmonth:
+    title: Month of TREC Test
+    description: >
+      What is the month of the TREC test? (format: M)
+    range: integer
+    required: false
+
+  krectestyear:
+    title: Year of TREC Test
+    description: >
+      What is the year of the TREC test? (format: Y)
+    range: integer
     required: false
 
   krec_test_result:

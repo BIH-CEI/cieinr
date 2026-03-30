@@ -1,0 +1,452 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/lymphocyte_function.yaml
+name: lymphocyte_function
+description: >
+  Lymphocyte function and NK cytotoxicity form capturing mitogen stimulation tests and natural killer cell cytotoxicity assessment.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  LymphocyteFunction:
+    description: >
+      Lymphocyte function and NK cytotoxicity form capturing mitogen stimulation tests and natural killer cell cytotoxicity assessment.
+    slots:
+      - completetion_date_lymphfunc
+      - lymphfunc_test
+      - lymphfunc_ncit_c88791
+      - phamonth
+      - phayear
+      - lymphfunc_ncit_c88791_val
+      - lymphfunc_ncit_c74017
+      - anticd3_cd28month
+      - anticd3_cd28_year
+      - lymphfunc_ncit_c74017_val
+      - lymphfunc_ncit_c88774
+      - conamonth
+      - conayear
+      - lymphfunc_ncit_c88774_val
+      - lymphfunc_ncit_c88789
+      - pwmmonth
+      - pwmyear
+      - lymphfunc_ncit_c88789_val
+      - lymphfunc_ncit_c17166
+      - spamonth
+      - spayear
+      - lymphfunc_ncit_c17166_val
+      - lymphfunc_ncit_c85185
+      - tetanusmonth
+      - tetanusyear
+      - lymphfunc_ncit_c85185_val
+      - lymphfunc_ncit_c34541
+      - diphtheriamonth
+      - diphtheriayear
+      - lymphfunc_ncit_c34541_val
+      - lymphfunc_ncit_c77163
+      - candidamonth
+      - candidayear
+      - lymphfunc_ncit_c77163_val
+      - lymphfunc_ncit_c116203
+      - nkcellcytomonth
+      - nkcellcytoyear
+      - lymphfunc_ncit_c116203_val
+      - lymph_fn
+
+slots:
+  completetion_date_lymphfunc:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  lymphfunc_test:
+    title: Please provide the following information at EACH designated time point in the dropdown list. Select 
+    description: >
+      Please provide the following information at EACH designated time point in the dropdown list. Select the appropriate box for the information you are providing:
+    range: LymphfuncTestEnum
+    required: false
+
+  lymphfunc_ncit_c88791:
+    title: Phytohemagglutinin (PHA)
+    description: >
+      Phytohemagglutinin (PHA)
+    range: LymphfuncNcitC88791Enum
+    required: false
+
+  phamonth:
+    title: Month
+    description: >
+      Month
+    range: itneger
+    required: false
+   
+  phayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+ 
+  lymphfunc_ncit_c88791_val:
+    title: PHA Result
+    description: >
+      PHA Result
+    range: LabResultEnum
+    required: false
+
+  lymphfunc_ncit_c74017:
+    title: Anti-CD3/CD28 Antibody
+    description: >
+      Anti-CD3/CD28 Antibody
+    range: LymphfuncNcitC74017Enum
+    required: false
+
+  anticd3_cd28month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  anticd3_cd28_year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lymphfunc_ncit_c74017_val:
+    title: Anti-CD3/CD28 Antibody Result
+    description: >
+      Anti-CD3/CD28 Antibody Result
+    range: LabResultEnum
+    required: false
+ 
+  lymphfunc_ncit_c88774:
+    title: Concanavalin A (ConA)
+    description: >
+      Concanavalin A (ConA)
+    range: LymphfuncNcitC88774Enum
+    required: false
+
+  conamonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  conayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lymphfunc_ncit_c88774_val:
+    title: ConA Result
+    description: >
+      ConA Result
+    range: LabResultEnum
+    required: false
+
+  lymphfunc_ncit_c88789:
+    title: Pokeweed mitogen (PWM)
+    description: >
+      Pokeweed mitogen (PWM)
+    range: LymphfuncNcitC88789Enum
+    required: false
+
+  pwmmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+ 
+  pwmyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+ 
+  lymphfunc_ncit_c88789_val:
+    title: PWM Result
+    description: >
+      PWM Result
+    range: LabResultEnum
+    required: false
+
+  lymphfunc_ncit_c17166:
+    title: Staph Aureus Protein A (SpA)
+    description: >
+      Staph Aureus Protein A (SpA)
+    range: LymphfuncNcitC17166Enum
+    required: false
+
+  spamonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+ 
+  spayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+ 
+  lymphfunc_ncit_c17166_val:
+    title: SpA Result
+    description: >
+      SpA Result
+    range: LabResultEnum
+    required: false
+ 
+  lymphfunc_ncit_c85185:
+    title: Tetanus
+    description: >
+      Tetanus
+    range: LymphfuncNcitC85185Enum
+    required: false
+
+  tetanusmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  tetanusyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lymphfunc_ncit_c85185_val:
+    title: Tetanus Result
+    description: >
+      Tetanus Result
+    range: LabResultEnum
+    required: false
+
+  lymphfunc_ncit_c34541:
+    title: Diphtheria
+    description: >
+      Diphtheria
+    range: LymphfuncNcitC34541Enum
+    required: false
+
+  diphtheriamonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  diphtheriayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lymphfunc_ncit_c34541_val:
+    title: Diphtheria Result
+    description: >
+      Diphtheria Result
+    range: LabResultEnum
+    required: false
+
+  lymphfunc_ncit_c77163:
+    title: Candida
+    description: >
+      Candida
+    range: LymphfuncNcitC77163Enum
+    required: false
+
+  candidamonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  candidayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lymphfunc_ncit_c77163_val:
+    title: Candida Result
+    description: >
+      Candida Result
+    range: LabResultEnum
+    required: false
+
+  lymphfunc_ncit_c116203:
+    title: Natural Killer (NK) Cell Cytotoxicity
+    description: >
+      Natural Killer (NK) Cell Cytotoxicity
+    range: LymphfuncNcitC116203Enum
+    required: false
+
+  nkcellcytomonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+ 
+  nkcellcytoyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  lymphfunc_ncit_c116203_val:
+    title: NK cell Cytotoxicity Result
+    description: >
+      NK cell Cytotoxicity Result
+    range: LabResultEnum
+    required: false
+
+  lymph_fn:
+    title: Please upload test report(s). Please, REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    description: >
+      Please upload test report(s). Please, REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+enums:
+    LymphfuncTestEnum:
+      description: >
+        Enumeration for Please provide the following information at EACH designated time point in the dr
+      permissible_values:
+        ncit_c54734:
+          description: Before Treatment/ Baseline diagnosis
+          meaning: NCIT:C54734
+        ncit_c54735:
+          description: Post Treatment
+          meaning: NCIT:C54735
+        ncit_c25280:
+          description: Most recent test
+          meaning: NCIT:C25280
+
+    LymphfuncNcitC88791Enum:
+      description: >
+        Enumeration for Phytohemagglutinin (PHA)
+      permissible_values:
+        ncit_c88791:
+          description: PHA (phytohemagglutinin)
+          meaning: NCIT:C88791
+        "1":
+          description: Not done
+
+    LymphfuncNcitC74017Enum:
+      description: >
+        Enumeration for Anti-CD3/CD28 Antibody
+      permissible_values:
+        ncit_c74017:
+          description: Anti-CD3/CD28 Antibody
+          meaning: NCIT:C74017
+        "1":
+          description: Not done
+
+    LymphfuncNcitC88774Enum:
+      description: >
+        Enumeration for Concanavalin A (ConA)
+      permissible_values:
+        ncit_c88774:
+          description: ConA (concanavalin A)
+          meaning: NCIT:C88774
+        "1":
+          description: Not done
+
+    LymphfuncNcitC88789Enum:
+      description: >
+        Enumeration for Pokeweed mitogen (PWM)
+      permissible_values:
+        ncit_c88789:
+          description: PWM (pokeweed mitogen)
+          meaning: NCIT:C88789
+        "1":
+          description: Not done
+
+    LymphfuncNcitC17166Enum:
+      description: >
+        Enumeration for Staph Aureus Protein A (SpA)
+      permissible_values:
+        ncit_c17166:
+          description: SpA (Staph Aureus Protein A)
+          meaning: NCIT:C17166
+        "1":
+          description: Not done
+
+    LymphfuncNcitC85185Enum:
+      description: >
+        Enumeration for Tetanus
+      permissible_values:
+        ncit_c85185:
+          description: Tetanus
+          meaning: NCIT:C85185
+        "1":
+          description: Not done
+
+    LymphfuncNcitC34541Enum:
+      description: >
+        Enumeration for Diphtheria
+      permissible_values:
+        ncit_c34541:
+          description: Diphtheria
+          meaning: NCIT:C34541
+        "1":
+          description: Not done
+
+    LymphfuncNcitC77163Enum:
+      description: >
+        Enumeration for Candida
+      permissible_values:
+        ncit_c77163:
+          description: Candida
+          meaning: NCIT:C77163
+        "1":
+          description: Not done
+
+    LabResultEnum:
+      description: >
+        Enumeration for Candida Result
+      permissible_values:
+        ncit_c48190:
+          description: Absent
+          meaning: NCIT:C48190
+        ncit_c54722:
+          description: Low
+          meaning: NCIT:C54722
+        ncit_c14165:
+          description: Normal
+          meaning: NCIT:C14165
+
+    LymphfuncNcitC116203Enum:
+      description: >
+        Enumeration for Natural Killer (NK) Cell Cytotoxicity
+      permissible_values:
+        ncit_c116203:
+          description: NK cell Cytotoxicity
+          meaning: NCIT:C116203
+        "1":
+          description: Not done

@@ -30,7 +30,8 @@ classes:
       - inactiv_vax_ae_severity
       - vo_0000424_before_pneu
       - inactiv_vax_response
-      - inactiv_vax_response_date
+      - reevalmonth
+      - reevalyear
 
 slots:
   completion_of_inact_vax:
@@ -93,13 +94,19 @@ slots:
     range: VaccineResponseEnum
     required: false
 
-  inactiv_vax_response_date:
-    title: Vaccination Response Date
+  reevalmonth:
+    title: Month
     description: >
-      Please indicate month and year of specific vaccination response evaluation (format: 01-M-Y).
-    range: union_date_string
+      Month
+    range: integer
     required: false
-    # Condition: [inactiv_vax_response] equals an applicable value
+
+  reevalyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
 
 enums:
   InactivatedVaccineTypeEnum:

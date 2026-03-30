@@ -46,8 +46,9 @@ classes:
       - new_condition
       - condition_severity
       - condition_temp_pattern
-      - condition_date
       - condition_date_1
+      - onsetmonth
+      - yearonset
       - conditions_initial_form_complete
 
 slots:
@@ -235,6 +236,20 @@ slots:
       Month-Year of onset (format: 01-M-Y).
       [condition_date] = 'yes'
     range: union_date_string
+    required: false
+
+  onsetmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  yearonset:
+    title: Year
+    description: >
+      Year
+    range: integer
     required: false
 
   conditions_initial_form_complete:
@@ -1001,3 +1016,4 @@ enums:
       "2":
         description: Complete
         meaning: "2"
+
