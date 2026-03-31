@@ -1,0 +1,547 @@
+{
+  "id": "1",
+  "subject": {
+    "id": "1",
+    "dateOfBirth": "2010-01-01T00:00:00Z",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P16Y2M"
+      }
+    },
+    "vitalStatus": {
+      "status": "UNKNOWN_STATUS"
+    },
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001287",
+        "label": "Meningitis"
+      },
+      "severity": {
+        "id": "HP:0012826",
+        "label": "Moderate"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0011011",
+          "label": "Subacute"
+        },
+        {
+          "id": "NCBITAXON:81852",
+          "label": "Enterococcaceae"
+        }
+      ],
+      "onset": {
+        "age": {
+          "iso8601duration": "P16Y2M"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001287",
+        "label": "Meningitis"
+      },
+      "severity": {
+        "id": "HP:0012826",
+        "label": "Moderate"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0011011",
+          "label": "Subacute"
+        },
+        {
+          "id": "NCBITAXON:81852",
+          "label": "Enterococcaceae"
+        }
+      ],
+      "onset": {
+        "age": {
+          "iso8601duration": "P15Y2M"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000246",
+        "label": "Sinusitis"
+      },
+      "severity": {
+        "id": "HP:0012829",
+        "label": "Profound"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0011010",
+          "label": "Chronic"
+        },
+        {
+          "id": "NCBITAXON:470132",
+          "label": "Catenulostroma chromoblastomycosum"
+        }
+      ],
+      "onset": {
+        "age": {
+          "iso8601duration": "P16Y2M"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000246",
+        "label": "Sinusitis"
+      },
+      "severity": {
+        "id": "HP:0012829",
+        "label": "Profound"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0011010",
+          "label": "Chronic"
+        },
+        {
+          "id": "NCBITAXON:470132",
+          "label": "Catenulostroma chromoblastomycosum"
+        }
+      ],
+      "onset": {
+        "age": {
+          "iso8601duration": "P15Y2M"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000246",
+        "label": "Sinusitis"
+      },
+      "severity": {
+        "id": "HP:0012829",
+        "label": "Profound"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0011010",
+          "label": "Chronic"
+        },
+        {
+          "id": "NCBITAXON:470132",
+          "label": "Catenulostroma chromoblastomycosum"
+        }
+      ],
+      "onset": {
+        "age": {
+          "iso8601duration": "P14Y2M"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011945",
+        "label": "Bronchiolitis obliterans organizing pneumonia"
+      },
+      "severity": {
+        "id": "HP:0012829",
+        "label": "Profound"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0011011",
+          "label": "Subacute"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0004386",
+        "label": "Gastrointestinal inflammation"
+      },
+      "severity": {
+        "id": "HP:0012829",
+        "label": "Profound"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0011009",
+          "label": "Acute"
+        }
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "assay": {
+        "id": "LOINC:26499-4",
+        "label": "Neutrophils:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78727",
+          "label": "Normal Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:26449-9",
+        "label": "Eosinophils:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78801",
+          "label": "Value Below Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:26474-7",
+        "label": "Lymphocytes:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78801",
+          "label": "Value Below Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:718-7",
+        "label": "Hemoglobin:MCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78800",
+          "label": "Value Above Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:777-3",
+        "label": "Platelets:NCnc:Pt:Bld:Qn:Automated count"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78800",
+          "label": "Value Above Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:8122-4",
+        "label": "Cells.CD3:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78800",
+          "label": "Value Above Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:24467-3",
+        "label": "Cells.CD3+CD4+:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78727",
+          "label": "Normal Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:14135-8",
+        "label": "Cells.CD3+CD8+:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78801",
+          "label": "Value Below Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:8122-4",
+        "label": "Cells.CD3:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78800",
+          "label": "Value Above Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "LOINC:24467-3",
+        "label": "Cells.CD3+CD4+:NCnc:Pt:Bld:Qn"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C78727",
+          "label": "Normal Reference Range"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C88791",
+        "label": "Phytohemagglutinin"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C54722",
+          "label": "Low"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C74017",
+        "label": "CD3/CD28 Costimulated Autologous T-Cells"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C54722",
+          "label": "Low"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C88774",
+        "label": "Concanavalin A"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C48190",
+          "label": "Absent"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C88789",
+        "label": "Pokeweed Mitogen"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C48190",
+          "label": "Absent"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C85185",
+        "label": "Tetanus"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C48190",
+          "label": "Absent"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C88791",
+        "label": "Phytohemagglutinin"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C14165",
+          "label": "Normal"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C74017",
+        "label": "CD3/CD28 Costimulated Autologous T-Cells"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C54722",
+          "label": "Low"
+        }
+      }
+    },
+    {
+      "assay": {
+        "id": "NCIT:C88774",
+        "label": "Concanavalin A"
+      },
+      "value": {
+        "ontologyClass": {
+          "id": "NCIT:C48190",
+          "label": "Absent"
+        }
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "1-interpretation-0",
+      "diagnosis": {
+        "disease": {
+          "id": "MONDO:0035370",
+          "label": "ALPI-related inflammatory bowel disease"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "1",
+            "variantInterpretation": {
+              "acmgPathogenicityClassification": "UNCERTAIN_SIGNIFICANCE",
+              "variationDescriptor": {
+                "id": "0afd370a508f420da1709d4ee450aa",
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_032977.3:c.-360T>C"
+                  }
+                ],
+                "allelicState": {
+                  "id": "GENO:0000458",
+                  "label": "(simple) Heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "MONDO:0035370",
+        "label": "ALPI-related inflammatory bowel disease"
+      }
+    }
+  ],
+  "medicalActions": [
+    {
+      "treatment": {
+        "agent": {
+          "id": "VO:0006041",
+          "label": "Pneumococcal conjugate vaccine 15-valent (PCV15) polysaccharide CRM197 conjugate adjuvant preservative free"
+        },
+        "cumulativeDose": {
+          "unit": {
+            "id": "UO:0000307",
+            "label": "dose unit"
+          },
+          "value": 2.0
+        }
+      },
+      "responseToTreatment": {
+        "id": "SNOMEDCT:365589000",
+        "label": "Antibody titer - finding"
+      }
+    },
+    {
+      "treatment": {
+        "agent": {
+          "id": "VO:0006041",
+          "label": "Pneumococcal conjugate vaccine 15-valent (PCV15) polysaccharide CRM197 conjugate adjuvant preservative free"
+        },
+        "cumulativeDose": {
+          "unit": {
+            "id": "UO:0000307",
+            "label": "dose unit"
+          },
+          "value": 2.0
+        }
+      },
+      "responseToTreatment": {
+        "id": "SNOMEDCT:365589000",
+        "label": "Antibody titer - finding"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-03-31T10:46:24.938447Z",
+    "createdBy": "Adam G.",
+    "resources": [
+      {
+        "id": "hpo",
+        "name": "Human Phenotype Ontology",
+        "url": "https://www.human-phenotype-ontology.org",
+        "version": "2026-02-16",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "mondo",
+        "name": "Monarch Disease Ontology",
+        "url": "https://purl.obolibrary.org/obo/MONDO/",
+        "version": "2026-03-03",
+        "namespacePrefix": "MONDO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/MONDO_"
+      },
+      {
+        "id": "loinc",
+        "name": "Logical Observation Identifiers Names and Codes",
+        "url": "http://loinc.org",
+        "version": "281",
+        "namespacePrefix": "LOINC",
+        "iriPrefix": "http://loinc.org/rdf/"
+      },
+      {
+        "id": "ncit",
+        "name": "NCI Thesaurus OBO Edition",
+        "url": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+        "version": "26.02d",
+        "namespacePrefix": "NCIT",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCIT_"
+      },
+      {
+        "id": "hgvs",
+        "name": "Human Genome Variation Society",
+        "url": "http://varnomen.hgvs.org/",
+        "version": "21.0.0",
+        "namespacePrefix": "HGVS",
+        "iriPrefix": "https://varnomen.hgvs.org/recommendations/variant/"
+      },
+      {
+        "id": "ga4gh",
+        "name": "Global Alliance for Genomics and Health",
+        "url": "https://www.ga4gh.org/",
+        "version": "v2.0",
+        "namespacePrefix": "GA4GH",
+        "iriPrefix": "https://www.ga4gh.org/"
+      },
+      {
+        "id": "geno",
+        "name": "GENO - The Genotype Ontology",
+        "url": "https://www.genoontology.org/",
+        "version": "2026-02-02",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "vo",
+        "name": "Vaccine Ontology",
+        "url": "https://purl.obolibrary.org/obo/vo.owl",
+        "version": "2024-09-12",
+        "namespacePrefix": "VO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/VO_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

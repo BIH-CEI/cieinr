@@ -14,7 +14,7 @@ prefixes:
 imports:
   - linkml:types
   - cieinr_types
-  - cieinr_code_systems
+  - _00a_cieinr_code_systems
 default_range: string
 default_prefix: cieinr
 
@@ -453,54 +453,54 @@ enums:
         description: unknown
         meaning: unknown
 
-ViralCausingAgentEnum:
-  description: Classes of viral causing agents
-  permissible_values:
-    ncbitaxon_10508:
-      description: Adenovirus
-      meaning: NCBITaxon:10508
-    ncbitaxon_2697049:
-      description: Adenovirus
-      meaning: NCBITAXON:2697049
-    ncbitaxon_10358:
-      description: COVID 19
-      meaning: NCBITAXON:10358
-    ebv_virus:
-      description: EBV virus
-      meaning: EBV_VIRUS
-    ncbitaxon_12059:
-      description: Entero/rhinovirus
-      meaning: NCBITaxon:12059
-    ncbitaxon_10407:
-      description: Hepatitis B virus
-      meaning: NCBITAXON:10407
-    ncbitaxon_12092:
-      description: Hepatitis A virus
-      meaning: NCBITAXON:12092
-    ncbitaxon_10294:
-      description: Herpes Simplex virus
-      meaning: NCBITAXON:10294
-    ncbitaxon_11320:
-      description: Influenza A virus
-      meaning: NCBITAXON:11320
-    ncbitaxon_11520:
-      description: Influenza B virus
-      meaning: NCBITaxon:11520
-    ncbitaxon_142786:
-      description: Norovirus
-      meaning: NCBITAXON:142786
-    ncbitaxon_12814:
-      description: Respiratory syncytial virus
-      meaning: NCBITAXON:12814
-    ncbitaxon_10912:
-      description: Rotavirus
-      meaning: NCBITAXON:10912
-    ncbitaxon_10335:
-      description: Varicella Zoster
-      meaning: NCBITAXON:10335
-    causing_agent_viral_other:
-      description: Other
-      meaning: causing_agent_viral_other
+  ViralCausingAgentEnum:
+    description: Classes of viral causing agents
+    permissible_values:
+      ncbitaxon_10508:
+        description: Adenovirus
+        meaning: NCBITaxon:10508
+      ncbitaxon_2697049:
+        description: Adenovirus
+        meaning: NCBITAXON:2697049
+      ncbitaxon_10358:
+        description: COVID 19
+        meaning: NCBITAXON:10358
+      ebv_virus:
+        description: EBV virus
+        meaning: EBV_VIRUS
+      ncbitaxon_12059:
+        description: Entero/rhinovirus
+        meaning: NCBITaxon:12059
+      ncbitaxon_10407:
+        description: Hepatitis B virus
+        meaning: NCBITAXON:10407
+      ncbitaxon_12092:
+        description: Hepatitis A virus
+        meaning: NCBITAXON:12092
+      ncbitaxon_10294:
+        description: Herpes Simplex virus
+        meaning: NCBITAXON:10294
+      ncbitaxon_11320:
+        description: Influenza A virus
+        meaning: NCBITAXON:11320
+      ncbitaxon_11520:
+        description: Influenza B virus
+        meaning: NCBITaxon:11520
+      ncbitaxon_142786:
+        description: Norovirus
+        meaning: NCBITAXON:142786
+      ncbitaxon_12814:
+        description: Respiratory syncytial virus
+        meaning: NCBITAXON:12814
+      ncbitaxon_10912:
+        description: Rotavirus
+        meaning: NCBITAXON:10912
+      ncbitaxon_10335:
+        description: Varicella Zoster
+        meaning: NCBITAXON:10335
+      causing_agent_viral_other:
+        description: Other
+        meaning: causing_agent_viral_other
 
   BacterialCausingAgentEnum:
     description: Classes of bacterial causing agents
@@ -519,7 +519,7 @@ ViralCausingAgentEnum:
         meaning: NCBITAXON:724
       snomedct_75032006:
         description: Klebsiella
-        meaning: SNOMED:75032006
+        meaning: SNOMEDCT:75032006
       ncbitaxon_33958:
         description: Lactobacillaceae
         meaning: NCBITAXON:33958

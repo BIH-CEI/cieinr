@@ -10,7 +10,7 @@ and outputs to patient_link.json in the same directory.
 import sys
 import os
 from cieinr.utils.processing.schemas.redcap_to_linkml import redcap_to_linkml
-from cieinr.v1_0_0.mappings.redcap_to_linkml.registry import MAPPING_FUNCTIONS
+from cieinr.datamodel.mappings.redcap_to_linkml.registry import MAPPING_FUNCTIONS
 
 def main():
     # Create res directory if it doesn't exist
@@ -49,6 +49,19 @@ def main():
     except Exception as e:
         print(f"Error during transformation: {e}")
         sys.exit(1)
+
+# Compute DOB from separate month/year fields
+    for record in transformed_data:
+        demographics = record.get("patient_demographics_initial_form", {})
+        year = demographics.get("birth_year")
+        month = demographics.get("birth_month")
+        if year and month:
+            record["computed_dob"] = f"{year}-{str(month).zfill(2)}-01"
+
+    # Re-write with computed fields
+    import json
+    with open(output_file, "w") as f:
+        json.dump(transformed_data, f, indent=2)
 
 if __name__ == "__main__":
     main()

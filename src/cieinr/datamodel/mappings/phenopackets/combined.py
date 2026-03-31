@@ -18,6 +18,7 @@ from cieinr.datamodel.mappings.phenopackets import (
 )
 
 
+
 def create_phenopacket_mappings() -> Dict[str, Any]:
     """
     Create a comprehensive mapping configuration for CIEINR Phenopacket creation.
@@ -31,9 +32,6 @@ def create_phenopacket_mappings() -> Dict[str, Any]:
         "individual": {
             "instrument_name": "patient_demographics_initial_form",
             "mapping_block": INDIVIDUAL_BLOCK,
-            "label_dicts": {
-                "GenderIdentity": label_dicts.get("GenderIdentity", {}),
-            },
             "mapping_dicts": {},
             "enum_classes": {},
         },
@@ -42,6 +40,38 @@ def create_phenopacket_mappings() -> Dict[str, Any]:
             "mapping_block": DISEASE_BLOCK,
             "enum_classes": {
                 "iei_deficiency_basic": "cieinr.datamodel.linkml_schemas.patient_demographics_initial_form.IeiDeficiencyBasicEnum",
+            },
+        },
+        "ontology_routing": {
+            "enabled": True,
+            "instruments": [
+                "infections_initial_form",
+            ],
+            "scan_fields": {
+                "infections_initial_form": [
+                    "snomedct_61274003",
+                    "snomedct_21483005",
+                    "snomedct_81745001",
+                    "snomedct_385383008",
+                    "snomedct_127856007",
+                    "snomedct_110522009",
+                    "snomedct_20139000",
+                    "snomedct_303699009",
+                    "snomedct_21514008",
+                    "snomedct_31099001",
+                    "other_infection_hpo",
+                    "other_infection_mondo",
+                ],
+            },
+            "onset_fields": {
+                "infections_initial_form": [
+                    "infection_date",
+                    "infection_date_2",
+                    "infection_date_3",
+                    "infection_date_4",
+                    "infection_date_5",
+                    "infection_date_6",
+                ],
             },
         },
         "phenotypicFeatures": [
@@ -56,22 +86,8 @@ def create_phenopacket_mappings() -> Dict[str, Any]:
                 },
                 "multi_onset": True,
                 "enable_field_scanning": False,
-                "ontology_routing": {
-                    "type_of_infection": {
-                        "snomedct_61274003": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct61274003Enum",
-                        "snomedct_21483005": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct21483005Enum",
-                        "snomedct_81745001": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct81745001Enum",
-                        "snomedct_385383008": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct385383008Enum",
-                        "snomedct_127856007": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct127856007Enum",
-                        "snomedct_110522009": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct110522009Enum",
-                        "snomedct_20139000": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct20139000Enum",
-                        "snomedct_303699009": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct303699009Enum",
-                        "snomedct_21514008": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct21514008Enum",
-                        "snomedct_31099001": "cieinr.datamodel.linkml_schemas.infections_initial_form.Snomedct31099001Enum",
-                    },
-                },
                 "enum_classes": {
-                    "type_of_infection": "cieinr.datamodel.linkml_schemas.infections_initial_form.TypeOfInfectionEnum",
+                    "type_of_infection": "cieinr.datamodel.linkml_schemas.infections_initial_form.InfectionTypeEnum",
                     "infection_severity": "cieinr.datamodel.linkml_schemas.infections_initial_form.InfectionSeverityEnum",
                 },
             },
