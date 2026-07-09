@@ -4,13 +4,21 @@
 [![Python 3.10-3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/downloads/)
 [![License: Apache v2.0](https://img.shields.io/badge/License-Apache2.0-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Phenopackets](https://img.shields.io/badge/Phenopackets-2.0-purple.svg)](https://phenopacket-schema.readthedocs.io/en/latest/)
-[![LinkML](https://img.shields.io/badge/LinkML-1.8.0+-green.svg)](https://linkml.io/)
-[![RareLink](https://img.shields.io/badge/RareLink-v2.0.0-blue.svg)](https://github.com/BIH-CEI/RareLink)
+[![LinkML](https://img.shields.io/badge/LinkML-1.9.0+-green.svg)](https://linkml.io/)
+[![RareLink](https://img.shields.io/badge/RareLink-v2.0.6-blue.svg)](https://github.com/BIH-CEI/RareLink)
 
 This repository houses the LinkML representation of the data model for
 the Canadian Inborn Errors of Immunity National Registry (CIEINR) and its
 all configurations for instant export to GA4GH Phenopackets utilising the 
-RareLink v2.0.0.dev1 engine.
+RareLink v2.0 engine.
+
+> [!IMPORTANT]
+> **Governance.** This registry operates under a formal governance framework.
+> Before using the data model or contributing, please read the
+> [Terms of Reference](governance/Terms of Reference - version 2.0.docx) — the mandate, structure,
+> and decision-making rules of the CIEINR Steering Committee — and the
+> [Policies and Procedures](governance/CIEINR Policies and Procedures - version 1.0.docx), which cover
+> data governance, access, privacy, external data sharing, and publication.
 
 ## Table of Contents
 
