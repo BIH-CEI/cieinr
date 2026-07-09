@@ -15,9 +15,9 @@ RareLink v2.0 engine.
 > [!IMPORTANT]
 > **Governance.** This registry operates under a formal governance framework.
 > Before using the data model or contributing, please read the
-> [Terms of Reference](governance/Terms of Reference - version 2.0.pdf) — the mandate, structure,
+> [Terms of Reference](governance/Terms_of_Reference_v2_0.pdf) — the mandate, structure,
 > and decision-making rules of the CIEINR Steering Committee — and the
-> [Policies and Procedures](governance/CIEINR Policies and Procedures - version 1.0.pdf), which cover
+> [Policies and Procedures](governance/CIEINR_Policies_and_Procedures_v1_0.pdf), which cover
 > data governance, access, privacy, external data sharing, and publication.
 
 ## Table of Contents
