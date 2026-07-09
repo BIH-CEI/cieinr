@@ -1,0 +1,277 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/24_immunoglobulin_infusions.yaml
+name: 24_immunoglobulin_infusions
+description: >
+  Immunoglobulin infusions form capturing Ig replacement therapy history, current therapy status, initiation and termination dates, dosage, routes, and adverse reactions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  ImmunoglobulinInfusions:
+    description: >
+      Immunoglobulin infusions form capturing Ig replacement therapy history, current therapy status, initiation and termination dates, dosage, routes, and adverse reactions.
+    slots:
+      - date_ig_form
+      - procedure_10
+      - currently_ig_therapy
+      - iginitationmonth
+      - iginititationyear
+      - igterminationmonth
+      - igterminationyear
+      - dose_gkg
+      - current_iggrt
+      - other_route_ig_replacement
+      - ig_route
+      - ig_route_other
+      - frequency_ig
+      - ivig_port
+      - reaction_ig
+      - ar_ig
+      - other_ar_ig
+      - severity_ar
+
+slots:
+  date_ig_form:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_10:
+    title: Has the patient ever received immunoglobulin (Ig) replacement therapy?
+    description: >
+      Has the patient ever received immunoglobulin (Ig) replacement therapy?
+    range: Procedure10Enum
+    required: false
+
+  currently_ig_therapy:
+    title: Is the patient currently on Ig therapy?
+    description: >
+      Is the patient currently on Ig therapy?
+    range: CurrentlyIgTherapyEnum
+    required: false
+
+  iginitationmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  iginititationyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  igterminationmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  igterminationyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  dose_gkg:
+    title: What is the most recent monthly equivalent dose the patient has received (in g/kg/month)?
+    description: >
+      What is the most recent monthly equivalent dose the patient has received (in g/kg/month)?  For example, if a 15 kg patient is on SCIG 30 g weekly: They are receiving 30 g/week divided by 15 kg = 2 g/k
+    range: integer
+    required: false
+
+  current_iggrt:
+    title: What route is currently being used for Ig replacement therapy for this patient?
+    description: >
+      What route is currently being used for Ig replacement therapy for this patient?
+    range: CurrentIggrtEnum
+    required: false
+
+  other_route_ig_replacement:
+    title: please specify
+    description: >
+      please specify
+    range: string
+    required: false
+
+  ig_route:
+    title: What route has been used for Ig replacement therapy for this patient in the past?
+    description: >
+      What route has been used for Ig replacement therapy for this patient in the past? Check all that apply
+    range: IgRouteEnum
+    required: false
+
+  ig_route_other:
+    title: Other IgG route
+    description: >
+      Other IgG route
+    range: string
+    required: false
+
+  frequency_ig:
+    title: For current or the most recent IgG replacement, how frequently has it been given, in days?
+    description: >
+      For current or the most recent IgG replacement, how frequently has it been given, in days?
+    range: integer
+    required: false
+
+  ivig_port:
+    title: Was a central line placed specifically for Intavenous Immunoglobulin (IVIG)?
+    description: >
+      Was a central line placed specifically for Intavenous Immunoglobulin (IVIG)?
+    range: IvigPortEnum
+    required: false
+
+  reaction_ig:
+    title: Did the patient experience an adverse reaction to the Ig replacement therapy?
+    description: >
+      Did the patient experience an adverse reaction to the Ig replacement therapy?
+    range: ReactionIgEnum
+    required: false
+
+  ar_ig:
+    title: What type of adverse reaction did the patient experience?
+    description: >
+      What type of adverse reaction did the patient experience? Check all that apply
+    range: ArIgEnum
+    required: false
+
+  other_ar_ig:
+    title: What other adverse reaction
+    description: >
+      What other adverse reaction
+    range: string
+    required: false
+
+  severity_ar:
+    title: What was the severity of the adverse reaction?
+    description: >
+      What was the severity of the adverse reaction?
+    range: SeverityArEnum
+    required: false
+
+enums:
+
+    ArIgEnum:
+      description: >
+        Enumeration for What type of adverse reaction did the patient experience?
+      permissible_values:
+        "1":
+          description: Local reaction (pain, swelling)
+        "2":
+          description: Anaphylaxis, hives, angioedema
+        "3":
+          description: Flair up of underlying disease
+        "4":
+          description: Fever
+        "99":
+          description: Other - Please specify: {other_ar_ig}
+        "5":
+          description: don't know
+
+    CurrentIggrtEnum:
+      description: >
+        Enumeration for What route is currently being used for Ig replacement therapy for this patient?
+      permissible_values:
+        "1":
+          description: IV
+        "2":
+          description: Subcutaneous
+        "3":
+          description: Hyaluronidase-facilitated SC
+        "4":
+          description: Intramuscular
+        "99":
+          description: Other - Please specify {other_route_ig_replacement}
+        "5":
+          description: don't know
+
+    CurrentlyIgTherapyEnum:
+      description: >
+        Enumeration for Is the patient currently on Ig therapy?
+      permissible_values:
+        ncit_c62710:
+          description: Yes
+          meaning: NCIT:c62710
+        "2":
+          description: No
+        "3":
+          description: don't know
+
+    IgRouteEnum:
+      description: >
+        Enumeration for What route has been used for Ig replacement therapy for this patient in the past
+      permissible_values:
+        "1":
+          description: IV
+        "2":
+          description: Subcutaneous
+        "3":
+          description: Hyaluronidase-facilitated SC
+        "4":
+          description: Intramuscular
+        "5":
+          description: don't know
+        "99":
+          description: Other - Please specify {ig_route_other}
+
+    IvigPortEnum:
+      description: >
+        Enumeration for Was a central line placed specifically for Intavenous Immunoglobulin (IVIG)?
+      permissible_values:
+        "1":
+          description: Yes
+        "2":
+          description: No
+        "3":
+          description: don't know
+
+    Procedure10Enum:
+      description: >
+        Enumeration for Has the patient ever received immunoglobulin (Ig) replacement therapy?
+      permissible_values:
+        ncit_c62710:
+          description: Yes
+          meaning: NCIT:c62710
+        "2":
+          description: No
+        "3":
+          description: don't know
+
+    ReactionIgEnum:
+      description: >
+        Enumeration for Did the patient experience an adverse reaction to the Ig replacement therapy?
+      permissible_values:
+        "1":
+          description: Yes
+        "2":
+          description: No
+        "3":
+          description: don't know
+
+    SeverityArEnum:
+      description: >
+        Enumeration for What was the severity of the adverse reaction?
+      permissible_values:
+        "1":
+          description: Mild (noted, but required no intervention)
+        "2":
+          description: Moderate (required medical intervention)
+        "3":
+          description: Severe (required hospitalization)
+        "4":
+          description: don't know

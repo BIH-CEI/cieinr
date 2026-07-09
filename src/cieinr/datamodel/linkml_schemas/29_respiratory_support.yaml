@@ -1,0 +1,140 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/29_respiratory_support.yaml
+name: 29_respiratory_support
+description: >
+  Respiratory support form capturing respiratory support history, types of support, start and end dates, and current need.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  RespiratorySupport:
+    description: >
+      Respiratory support form capturing respiratory support history, types of support, start and end dates, and current need.
+    slots:
+      - date_respiratory_support
+      - procedure_16
+      - procedure_16_type
+      - resp_other
+      - respstartmonth
+      - respstartyear
+      - resp_support_needed
+      - respendmonth
+      - respendyear
+
+slots:
+  date_respiratory_support:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_16:
+    title: Has the patient ever received respiratory support?
+    description: >
+      Has the patient ever received respiratory support?
+    range: Procedure16Enum
+    required: false
+
+  procedure_16_type:
+    title: What type of respiratory support has the patient received?
+    description: >
+      What type of respiratory support has the patient received?
+    range: Procedure16TypeEnum
+    required: false
+
+  resp_other:
+    title: respiratory other
+    description: >
+      respiratory other
+    range: string
+    required: false
+
+  respstartmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  respstartyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  resp_support_needed:
+    title: Is the respiratory support still needed?
+    description: >
+      Is the respiratory support still needed?
+    range: RespSupportNeededEnum
+    required: false
+
+  respendmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  respendyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+enums:
+
+    Procedure16Enum:
+      description: >
+        Enumeration for Has the patient ever received respiratory support?
+      permissible_values:
+        ncit_c15322:
+          description: Yes
+          meaning: NCIT:c15322
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    Procedure16TypeEnum:
+      description: >
+        Enumeration for What type of respiratory support has the patient received?
+      permissible_values:
+        ncit_c171507:
+          description: ECMO (extracorporeal membrane oxygenation)
+          meaning: NCIT:c171507
+        ncit_c37981:
+          description: Intubation
+          meaning: NCIT:c37981
+        ncit_c124040:
+          description: Continuous Positive Airway Pressure (CPAP)
+          meaning: NCIT:c124040
+        ncit_c124039:
+          description: Bilevel Positive Airway Pressure (BiPAP)
+          meaning: NCIT:c124039
+        ncit_c94624:
+          description: Oxygen
+          meaning: NCIT:c94624
+        "99":
+          description: Other - Please specify: {resp_other}
+
+    RespSupportNeededEnum:
+      description: >
+        Enumeration for Is the respiratory support still needed?
+      permissible_values:
+        "1":
+          description: Yes
+        "2":
+          description: No
+        "3":
+          description: don't know

@@ -1,0 +1,460 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/20_autoantibodies.yaml
+name: 20_autoantibodies
+description: >
+  Autoantibodies form capturing test timing and results for ANA, ANCA, ENA, anti-TPO, anti-platelet, IgA tTG, DAT, and other autoantibody tests.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  Autoantibodies:
+    description: >
+      Autoantibodies form capturing test timing and results for ANA, ANCA, ENA, anti-TPO, anti-platelet, IgA tTG, DAT, and other autoantibody tests.
+    slots:
+      - completion_date_autoanti
+      - autoanti_no_testing
+      - autoantibodies_normal_neg
+      - autoantibodies_test
+      - autoanti_ana_val
+      - anamonth
+      - anayear
+      - autoanti_anca_val
+      - ancamonth
+      - ancayear
+      - autoanti_ena_val
+      - enamonth
+      - enayear
+      - autoanti_anti_tpo_val
+      - tpomonth
+      - tpoyear
+      - autoanti_anti_plat_val
+      - antiplatemonth
+      - antiplateyear
+      - autoanti_iga_ttg_val
+      - igattgmonth
+      - igattgyear
+      - autoanti_dat_val
+      - datmonth
+      - datyear
+      - other_autoanti_test
+      - other_autoanti_val
+      - otherantibody1month
+      - otherantibody1year
+      - other_autoanti_test_2
+      - other_autoanti_val_2
+      - otherantibody2month
+      - otherantibody2year
+      - other_autoanti_test_3
+      - other_autoanti_val_3
+      - otherantibody3month
+      - otherantibody3year
+      - other_autoanti_test_4
+      - other_autoanti_val_4
+      - otherantibody4month
+      - otherantibody4year
+      - autoantibodyfiles
+
+slots:
+  completion_date_autoanti:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  autoanti_no_testing:
+    title: Participant has had testing.
+    description: >
+      Participant has had testing.
+    range: boolean
+    required: false
+
+  autoantibodies_normal_neg:
+    title: Participant's results were normal/ negative
+    description: >
+      Participant's results were normal/ negative
+    range: boolean
+    required: false
+
+  autoantibodies_test:
+    title: Please provide the following information at EACH designated time point in the dropdown list. Select 
+    description: >
+      Please provide the following information at EACH designated time point in the dropdown list. Select the appropriate box for the information you are providing:
+    range: TestTimingEnum
+    required: false
+
+  autoanti_ana_val:
+    title: Antinuclear antibody (ANA) Test Result
+    description: >
+      Antinuclear antibody (ANA) Test Result  (only titers >1:160 are considered positive)
+    range: AutoantiAnaValEnum
+    required: false
+
+  anamonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  anayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  autoanti_anca_val:
+    title: Antineutrophil cytoplasmic antibodies (ANCA) Test Result
+    description: >
+      Antineutrophil cytoplasmic antibodies (ANCA) Test Result
+    range: AutoantiAncaValEnum
+    required: false
+
+  ancamonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  ancayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  autoanti_ena_val:
+    title: Extractable Nuclear Antigen (ENA) Test Result
+    description: >
+      Extractable Nuclear Antigen (ENA) Test Result
+    range: AutoantiEnaValEnum
+    required: false
+
+  enamonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  enayear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  autoanti_anti_tpo_val:
+    title: Anti Thyroid Peroxidase (TPO) Test Result
+    description: >
+      Anti Thyroid Peroxidase (TPO) Test Result
+    range: AutoantiAntiTpoValEnum
+    required: false
+
+  tpomonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  tpoyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  autoanti_anti_plat_val:
+    title: Anti-platelet antibody Test Result
+    description: >
+      Anti-platelet antibody Test Result
+    range: AutoantiAntiPlatValEnum
+    required: false
+
+  antiplatemonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  antiplateyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  autoanti_iga_ttg_val:
+    title: IgA tTG (tissue Transglutaminase/celiac screen) Test Result
+    description: >
+      IgA tTG (tissue Transglutaminase/celiac screen) Test Result
+    range: AutoantiIgaTtgValEnum
+    required: false
+
+  igattgmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  igattgyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  autoanti_dat_val:
+    title: Direct Antiglobulin test (DAT) (direct Coombs test) Test Result
+    description: >
+      Direct Antiglobulin test (DAT) (direct Coombs test) Test Result
+    range: AutoantiDatValEnum
+    required: false
+
+  datmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  datyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  other_autoanti_test:
+    title: Please search for any other autoantibody testing that has been done
+    description: >
+      Please search for any other autoantibody testing that has been done
+    range: string
+    required: false
+
+  other_autoanti_val:
+    title: What was the result of this test
+    description: >
+      What was the result of this test
+    range: OtherAutoantiValEnum
+    required: false
+
+  otherantibody1month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  otherantibody1year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  other_autoanti_test_2:
+    title: Please search for any other autoantibody testing that has been done
+    description: >
+      Please search for any other autoantibody testing that has been done
+    range: string
+    required: false
+
+  other_autoanti_val_2:
+    title: What was the result of this test
+    description: >
+      What was the result of this test
+    range: OtherAutoantiVal2Enum
+    required: false
+
+  otherantibody2month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  otherantibody2year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  other_autoanti_test_3:
+    title: Please search for any other autoantibody testing that has been done
+    description: >
+      Please search for any other autoantibody testing that has been done
+    range: string
+    required: false
+
+  other_autoanti_val_3:
+    title: What was the result of this test
+    description: >
+      What was the result of this test
+    range: OtherAutoantiVal3Enum
+    required: false
+
+  otherantibody3month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  otherantibody3year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  other_autoanti_test_4:
+    title: Please search for any other autoantibody testing that has been done
+    description: >
+      Please search for any other autoantibody testing that has been done
+    range: string
+    required: false
+
+  other_autoanti_val_4:
+    title: What was the result of this test
+    description: >
+      What was the result of this test
+    range: OtherAutoantiVal4Enum
+    required: false
+
+  otherantibody4month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  otherantibody4year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  autoantibodyfiles:
+    title: Please upload all positive test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    description: >
+      Please upload all positive test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+enums:
+    TestTimingEnum:
+      description: >
+        Enumeration for test timing
+      permissible_values:
+        ncit_c54734:
+          description: Before Treatment/ Baseline diagnosis
+          meaning: NCIT:C54734
+        ncit_c54735:
+          description: Post Treatment
+          meaning: NCIT:C54735
+        ncit_c25280:
+          description: Most recent test
+          meaning: NCIT:C25280
+
+    AutoantiAnaValEnum:
+      description: >
+        Enumeration for Antinuclear antibody (ANA) Test Result
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    AutoantiAncaValEnum:
+      description: >
+        Enumeration for Antineutrophil cytoplasmic antibodies (ANCA) Test Result
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    AutoantiAntiPlatValEnum:
+      description: >
+        Enumeration for Anti-platelet antibody Test Result
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    AutoantiAntiTpoValEnum:
+      description: >
+        Enumeration for Anti Thyroid Peroxidase (TPO) Test Result
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    AutoantiDatValEnum:
+      description: >
+        Enumeration for Direct Antiglobulin test (DAT) (direct Coombs test) Test Result
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    AutoantiEnaValEnum:
+      description: >
+        Enumeration for Extractable Nuclear Antigen (ENA) Test Result
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    AutoantiIgaTtgValEnum:
+      description: >
+        Enumeration for IgA tTG (tissue Transglutaminase/celiac screen) Test Result
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    OtherAutoantiVal2Enum:
+      description: >
+        Enumeration for What was the result of this test
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    OtherAutoantiVal3Enum:
+      description: >
+        Enumeration for What was the result of this test
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    OtherAutoantiVal4Enum:
+      description: >
+        Enumeration for What was the result of this test
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682
+
+    OtherAutoantiValEnum:
+      description: >
+        Enumeration for What was the result of this test
+      permissible_values:
+        ncit_c35682:
+          description: Positive Test
+          meaning: NCIT:c35682

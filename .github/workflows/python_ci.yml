@@ -25,9 +25,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Check rarelink submodule (debug)
-        run: ls -la submodules/rarelink  # Optional, useful if things fail
-
       - name: Install package with test and docs dependencies
         run: python -m pip install --editable .[test,docs]
 

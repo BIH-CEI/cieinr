@@ -1,0 +1,197 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/32_gene_therapy.yaml
+name: 32_gene_therapy
+description: >
+  Gene therapy form capturing gene therapy history, gene and vector details, clinical trial information, results, and complications.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  GeneTherapy:
+    description: >
+      Gene therapy form capturing gene therapy history, gene and vector details, clinical trial information, results, and complications.
+    slots:
+      - completion_date_gene
+      - procedure_19
+      - genethmonth
+      - genethyear
+      - specify_gene
+      - vector_type
+      - other_vector_type
+      - clin_trial_gen
+      - results_gene_therapy
+      - other_results_gene_therapy
+      - gene_complication
+      - type_gene_complication
+      - other_gene_complication
+
+slots:
+  completion_date_gene:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_19:
+    title: Has the patient undergone gene therapy?
+    description: >
+      Has the patient undergone gene therapy?
+    range: Procedure19Enum
+    required: false
+
+  genethmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  genethyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  specify_gene:
+    title: Please specify the gene:
+    description: >
+      Please specify the gene:
+    range: string
+    required: false
+
+  vector_type:
+    title: Please specify the vector type:
+    description: >
+      Please specify the vector type:
+    range: VectorTypeEnum
+    required: false
+
+  other_vector_type:
+    title: Other vector type:
+    description: >
+      Other vector type:
+    range: string
+    required: false
+
+  clin_trial_gen:
+    title: Please describe if the gene therapy was done in a clinical trial or using a commercial treatment, an
+    description: >
+      Please describe if the gene therapy was done in a clinical trial or using a commercial treatment, and where the treatment was done. If done in a clinical trial, name of the clinical trial.
+    range: string
+    required: false
+
+  results_gene_therapy:
+    title: What are the results of the treatment?
+    description: >
+      What are the results of the treatment?
+    range: ResultsGeneTherapyEnum
+    required: false
+
+  other_results_gene_therapy:
+    title: What other results of gene therapy occurred?
+    description: >
+      What other results of gene therapy occurred?
+    range: string
+    required: false
+
+  gene_complication:
+    title: Did the patient have any complications?
+    description: >
+      Did the patient have any complications?
+    range: GeneComplicationEnum
+    required: false
+
+  type_gene_complication:
+    title: Please describe the complications
+    description: >
+      Please describe the complications
+    range: TypeGeneComplicationEnum
+    required: false
+
+  other_gene_complication:
+    title: Please describe other complications
+    description: >
+      Please describe other complications
+    range: string
+    required: false
+
+enums:
+
+    GeneComplicationEnum:
+      description: >
+        Enumeration for Did the patient have any complications?
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+
+    Procedure19Enum:
+      description: >
+        Enumeration for Has the patient undergone gene therapy?
+      permissible_values:
+        ncit_c15238:
+          description: Yes
+          meaning: NCIT:c15238
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    ResultsGeneTherapyEnum:
+      description: >
+        Enumeration for What are the results of the treatment?
+      permissible_values:
+        "1":
+          description: Full correction
+        "2":
+          description: Partial correction
+        "3":
+          description: Disease not corrected
+        "99":
+          description: Other - Please specify: {other_results_gene_therapy}
+        "5":
+          description: don't know
+
+    TypeGeneComplicationEnum:
+      description: >
+        Enumeration for Please describe the complications
+      permissible_values:
+        "1":
+          description: Myelodysplasia
+        "2":
+          description: Autoimmunity
+        "3":
+          description: Leukemia
+        "99":
+          description: Other - Please specify: {other_gene_complication}
+        "5":
+          description: don't know
+
+    VectorTypeEnum:
+      description: >
+        Enumeration for Please specify the vector type:
+      permissible_values:
+        "1":
+          description: Gamma-retrovirus
+        "2":
+          description: Lentivirus
+        "3":
+          description: CRISPR (Clustered Regularly Interspaced Short Palindromic Repeats)
+        "4":
+          description: Base editing
+        "5":
+          description: Prime editing
+        "6":
+          description: Other - Please specify: {other_vector_type}
+        "7":
+          description: don't know

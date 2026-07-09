@@ -1,0 +1,176 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/19_endoscopy_ultrasound.yaml
+name: 19_endoscopy_ultrasound
+description: >
+  Endoscopy and abdominal ultrasound form capturing evaluation type, date, timing, and results for endoscopy, ultrasound, and colonoscopy.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SNOMEDCT: http://purl.obolibrary.org/obo/SNOMEDCT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  EndoscopyAbdominalUltrasound:
+    description: >
+      Endoscopy and abdominal ultrasound form capturing evaluation type, date, timing, and results for endoscopy, ultrasound, and colonoscopy.
+    slots:
+      - completion_date_endo
+      - endoscopy_us
+      - preendomonth
+      - preendoyear
+      - time_endoscopy
+      - endoscopy_result_pre_dx
+      - ultrsouns_result
+      - colon_result
+      - resul_us
+      - pdf_endo_result_pre_dx
+      - pdf_abdominal_us_pre_dx
+      - pdf_abdominal_us_pre_dx_2
+      - procedure_6
+      - other_endoscopy
+
+slots:
+  completion_date_endo:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  endoscopy_us:
+    title: Please choose the test performed
+    description: >
+      Please choose the test performed
+    range: EndoscopyUsEnum
+    required: false
+
+  preendomonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  preendoyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  time_endoscopy:
+    title: Please provide the following information at EACH designated time point in the dropdown list. Select 
+    description: >
+      Please provide the following information at EACH designated time point in the dropdown list. Select the appropriate box for the information you are providing:
+    range: TestTimingEnum
+    required: false
+
+  endoscopy_result_pre_dx:
+    title: Please indicate the results of the endoscopy:
+    description: >
+      Please indicate the results of the endoscopy:
+    range: NormalAbnormalEnum
+    required: false
+
+  ultrsouns_result:
+    title: Please indicate the results of ultrasound:
+    description: >
+      Please indicate the results of ultrasound:
+    range: NormalAbnormalEnum
+    required: false
+
+  colon_result:
+    title: Please indicate the results of the colonoscopy:
+    description: >
+      Please indicate the results of the colonoscopy:
+    range: NormalAbnormalEnum
+    required: false
+
+  resul_us:
+    title: Briefly describe results, if abnormal
+    description: >
+      Briefly describe results, if abnormal
+    range: string
+    required: false
+
+  pdf_endo_result_pre_dx:
+    title: Please upload the endoscopy pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI,
+    description: >
+      Please upload the endoscopy pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+  pdf_abdominal_us_pre_dx:
+    title: Please upload ultrasound pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DO
+    description: >
+      Please upload ultrasound pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+  pdf_abdominal_us_pre_dx_2:
+    title: Please upload colonoscopy pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, D
+    description: >
+      Please upload colonoscopy pdf test results. REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+  procedure_6:
+    title: Which other Ultrasound was done?
+    description: >
+      Which other Ultrasound was done?
+    range: string
+    required: false
+
+  other_endoscopy:
+    title: Please upload other pdf test results.  REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    description: >
+      Please upload other pdf test results.  REMOVE PATIENT'S PERSONAL INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+enums:
+    TestTimingEnum:
+      description: >
+        Enumeration for test timing
+      permissible_values:
+        ncit_c54734:
+          description: Before Treatment/ Baseline diagnosis
+          meaning: NCIT:C54734
+        ncit_c54735:
+          description: Post Treatment
+          meaning: NCIT:C54735
+        ncit_c25280:
+          description: Most recent test
+          meaning: NCIT:C25280
+
+    NormalAbnormalEnum:
+      description: >
+        Enumeration for normal/abnormal result
+      permissible_values:
+        ncit_c14165:
+          description: normal
+          meaning: NCIT:C14165
+        ncit_c25401:
+          description: abnormal
+          meaning: NCIT:C25401
+
+    EndoscopyUsEnum:
+      description: >
+        Enumeration for Please choose the test performed
+      permissible_values:
+        snomedct_423827005:
+          description: Endoscopy
+          meaning: SNOMEDCT:423827005
+        snomedct_45036003:
+          description: Abdominal ultrasound test
+          meaning: SNOMEDCT:45036003
+        snomedct_73761001:
+          description: Colonoscopy
+          meaning: SNOMEDCT:73761001
+        "3":
+          description: Other ultrasound

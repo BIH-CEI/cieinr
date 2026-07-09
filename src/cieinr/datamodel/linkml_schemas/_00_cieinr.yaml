@@ -1,0 +1,129 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/cieinr.yaml
+name: cieinr
+description: >
+  National Inborn Errors of Immunity Registry in Canada (CIEINR) - 
+  Simplified Data model specifically for REDCap-Phenopackets export.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  MONDO: https://purl.obolibrary.org/obo/MONDO_
+  SNOMEDCT: http://snomed.info/sct/
+imports:
+  - linkml:types
+  - cieinr_code_systems
+  - cieinr_types
+  - patient_demographics_initial_form
+  - patient_diagnosiscarrier_status_main
+  - infections_initial_form
+  - infections_annual_form
+  - conditions
+  - inactivated_vaccine
+  - vaccine_history
+  - cbc
+  - lymphocytes_phenotype
+  - lymphocyte_function
+  - genetic_information
+
+default_prefix: cieinr
+default_range: string
+
+classes:
+  Record:
+    description: >
+      Root class for a CIEINR patient record containing all form data.
+    slots:
+      - record_id
+      - patient_demographics_initial_form
+      - patient_diagnosiscarrier_status_main
+      - infections_initial_form
+      - infections_annual_form
+      - conditions
+      - inactivated_vaccine
+      - vaccine_history
+      - cbc
+      - lymphocytes_phenotype
+      - lymphocyte_function
+      - genetic_information
+    tree_root: true
+
+slots:
+  record_id:
+    description: The unique record identifier assigned by the REDCap project
+    range: string
+    required: true
+    identifier: true
+
+  patient_demographics_initial_form:
+    description: Patient demographics and basic IEI diagnosis information
+    range: PatientDemographicsInitial
+    required: false
+    inlined: true
+
+  patient_diagnosiscarrier_status_main:
+    description: IUIS 2024 hierarchical IEI classification
+    range: PatientDiagnosisCarrierStatus
+    required: false
+    inlined: true
+
+  infections_initial_form:
+    description: Initial infections data (repeating instrument)
+    range: InfectionsInitial
+    required: false
+    inlined: true
+    multivalued: true
+
+  infections_annual_form:
+    description: Annual infections data (repeating instrument)
+    range: InfectionsAnnual
+    required: false
+    inlined: true
+    multivalued: true
+
+  conditions:
+    description: Systemic or organ-specific conditions (repeating instrument)
+    range: ConditionsInitial
+    required: false
+    inlined: true
+    multivalued: true
+
+  inactivated_vaccine:
+    description: Inactivated vaccine history (repeating instrument)
+    range: InactivatedVaccineHistory
+    required: false
+    inlined: true
+    multivalued: true
+
+  vaccine_history:
+    description: Vaccine history and specific immune response (repeating instrument)
+    range: VaccineHistory
+    required: false
+    inlined: true
+    multivalued: true
+
+  cbc:
+    description: Complete blood count measurements (repeating instrument)
+    range: CBC
+    required: false
+    inlined: true
+    multivalued: true
+
+  lymphocytes_phenotype:
+    description: Lymphocyte phenotype measurements (repeating instrument)
+    range: LymphocytesPhenotype
+    required: false
+    inlined: true
+    multivalued: true
+
+  lymphocyte_function:
+    description: Lymphocyte function and NK cytotoxicity (repeating instrument)
+    range: LymphocyteFunction
+    required: false
+    inlined: true
+    multivalued: true
+
+  genetic_information:
+    description: Genetic testing and variant information (repeating instrument)
+    range: GeneticInformation
+    required: false
+    inlined: true
+    multivalued: true

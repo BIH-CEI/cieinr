@@ -1,0 +1,266 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/31_organ_transplantation.yaml
+name: 31_organ_transplantation
+description: >
+  Solid organ transplantation therapy form capturing transplant history, reason, donor relationship, organ type, outcome, and reasons if not performed.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  SolidOrganTransplantationTherapy:
+    description: >
+      Solid organ transplantation therapy form capturing transplant history, reason, donor relationship, organ type, outcome, and reasons if not performed.
+    slots:
+      - completion_date_sot
+      - procedure_18
+      - sotmonth
+      - sotyear
+      - number_transplant
+      - transplant_number_organ
+      - reason_solid_transplant
+      - other_reason_solid
+      - solid_donor_relation
+      - source_solid_organ
+      - other_solid_organ
+      - solid_organ_outcome
+      - transplant_not_performed
+      - not_organ_transplant
+      - other_not_organ_transplant
+      - please_describe_the_reason
+
+slots:
+  completion_date_sot:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_18:
+    title: Has the patient undergone a solid organ transplant?
+    description: >
+      Has the patient undergone a solid organ transplant?
+    range: Procedure18Enum
+    required: false
+
+  sotmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  sotyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  number_transplant:
+    title: What solid organ transplant number is this?
+    description: >
+      What solid organ transplant number is this?
+    range: NumberTransplantEnum
+    required: false
+
+  transplant_number_organ:
+    title: transplant_number
+    description: >
+      transplant_number
+    range: string
+    required: false
+
+  reason_solid_transplant:
+    title: What is the most significant reason for a transplant?
+    description: >
+      What is the most significant reason for a transplant?
+    range: ReasonSolidTransplantEnum
+    required: false
+
+  other_reason_solid:
+    title: What is the other reason for solid transplant
+    description: >
+      What is the other reason for solid transplant
+    range: string
+    required: false
+
+  solid_donor_relation:
+    title: Please indicate who the donor was
+    description: >
+      Please indicate who the donor was
+    range: SolidDonorRelationEnum
+    required: false
+
+  source_solid_organ:
+    title: What solid organ was transplanted?
+    description: >
+      What solid organ was transplanted?
+    range: SourceSolidOrganEnum
+    required: false
+
+  other_solid_organ:
+    title: What other organ:
+    description: >
+      What other organ:
+    range: string
+    required: false
+
+  solid_organ_outcome:
+    title: What was the outcome?
+    description: >
+      What was the outcome?
+    range: SolidOrganOutcomeEnum
+    required: false
+
+  transplant_not_performed:
+    title: Was a transplant considered and not performed?
+    description: >
+      Was a transplant considered and not performed?
+    range: TransplantNotPerformedEnum
+    required: false
+
+  not_organ_transplant:
+    title: What is the reason for not performing the transplant?
+    description: >
+      What is the reason for not performing the transplant?
+    range: NotOrganTransplantEnum
+    required: false
+
+  other_not_organ_transplant:
+    title: What is the other reason for not performing a solid organ transplant
+    description: >
+      What is the other reason for not performing a solid organ transplant
+    range: string
+    required: false
+
+  please_describe_the_reason:
+    title: Please, describe any additional comments
+    description: >
+      Please, describe any additional comments
+    range: string
+    required: false
+
+enums:
+
+    NotOrganTransplantEnum:
+      description: >
+        Enumeration for What is the reason for not performing the transplant?
+      permissible_values:
+        "1":
+          description: Lack of donor
+        "2":
+          description: Age or condition of the patient
+        "3":
+          description: Unfavorable probability of success
+        "4":
+          description: Patient preference
+        "5":
+          description: Not eligible due to medical status (eg. alloantibodies)
+        "99":
+          description: Other - Please specify: {other_not_organ_transplant}
+        "6":
+          description: don't know
+
+    NumberTransplantEnum:
+      description: >
+        Enumeration for What solid organ transplant number is this?
+      permissible_values:
+        "1":
+          description: First transplant
+        "2":
+          description: Second transplant
+        "99":
+          description: Other - Please specify: {transplant_number_organ}
+
+    Procedure18Enum:
+      description: >
+        Enumeration for Has the patient undergone a solid organ transplant?
+      permissible_values:
+        ncit_c191377:
+          description: Yes
+          meaning: NCIT:c191377
+        "0":
+          description: No
+        "2":
+          description: don't know
+
+    ReasonSolidTransplantEnum:
+      description: >
+        Enumeration for What is the most significant reason for a transplant?
+      permissible_values:
+        "1":
+          description: Thymic aplasia
+        "2":
+          description: Organ failure or damage
+        "3":
+          description: Congenital abnormality
+        "99":
+          description: Other {other_reason_solid}
+        "5":
+          description: don't know
+
+    SolidDonorRelationEnum:
+      description: >
+        Enumeration for Please indicate who the donor was
+      permissible_values:
+        "1":
+          description: Cadaver
+        "2":
+          description: Living Related
+        "3":
+          description: Living Unrelated
+        "4":
+          description: don't know
+
+    SolidOrganOutcomeEnum:
+      description: >
+        Enumeration for What was the outcome?
+      permissible_values:
+        "1":
+          description: Stable with good function
+        "2":
+          description: Stable with partial function
+        "3":
+          description: Not stable/re-transplant probable
+        "4":
+          description: Rejected
+        "5":
+          description: don't know
+
+    SourceSolidOrganEnum:
+      description: >
+        Enumeration for What solid organ was transplanted?
+      permissible_values:
+        "1":
+          description: Kidney
+        "2":
+          description: Liver
+        "3":
+          description: Lung
+        "4":
+          description: Heart
+        "5":
+          description: Cornea
+        "6":
+          description: Thymus
+        "7":
+          description: Intestines
+        "99":
+          description: Other - Please specify: {other_solid_organ}
+
+    TransplantNotPerformedEnum:
+      description: >
+        Enumeration for Was a transplant considered and not performed?
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No

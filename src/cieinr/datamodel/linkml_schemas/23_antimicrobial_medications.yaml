@@ -1,0 +1,336 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/23_antimicrobial_medications.yaml
+name: 23_antimicrobial_medications
+description: >
+  Antimicrobial medications form capturing lifetime antimicrobial usage, antibacterial, antiviral, and antifungal treatment history, prophylaxis, and adverse reactions.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  AntimicrobialMedications:
+    description: >
+      Antimicrobial medications form capturing lifetime antimicrobial usage, antibacterial, antiviral, and antifungal treatment history, prophylaxis, and adverse reactions.
+    slots:
+      - date_antimicrobial_form
+      - procedure_9
+      - ab_lifetime
+      - ab_lifetime_freq
+      - indicate_antimicrobials
+      - antiviral_lifetime
+      - ab_lifetime_freq_2
+      - antivirals_life
+      - antifungal_lifetime_2
+      - ab_lifetime_freq_3
+      - antifungal_life
+      - procedure_14
+      - antimicrob_proph
+      - indicate_antimicrobials_2
+      - ae_antiinfect
+      - type_reaction_antiinfect
+      - other_antimicrob_effects
+      - other_reaction_antiinf
+
+slots:
+  date_antimicrobial_form:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  procedure_9:
+    title: Has the patient required any antimicrobial medications in their lifetime? (antibiotics, antifungals,
+    description: >
+      Has the patient required any antimicrobial medications in their lifetime? (antibiotics, antifungals, antivirals)
+    range: Procedure9Enum
+    required: false
+
+  ab_lifetime:
+    title: How many courses of antibacterials has the patient received?
+    description: >
+      How many courses of antibacterials has the patient received?
+    range: AbLifetimeEnum
+    required: false
+
+  ab_lifetime_freq:
+    title: Please choose the option
+    description: >
+      Please choose the option
+    range: AbLifetimeFreqEnum
+    required: false
+
+  indicate_antimicrobials:
+    title: Please indicate what antibacterials the patient has received in their life:
+    description: >
+      Please indicate what antibacterials the patient has received in their life:
+    range: string
+    required: false
+
+  antiviral_lifetime:
+    title: Approximately, how many courses of antiviral treatment has the patient received?
+    description: >
+      Approximately, how many courses of antiviral treatment has the patient received?
+    range: AntiviralLifetimeEnum
+    required: false
+
+  ab_lifetime_freq_2:
+    title: Please choose the option
+    description: >
+      Please choose the option
+    range: AbLifetimeFreq2Enum
+    required: false
+
+  antivirals_life:
+    title: Please indicate what antivirals patient has received in their life:
+    description: >
+      Please indicate what antivirals patient has received in their life:
+    range: string
+    required: false
+
+  antifungal_lifetime_2:
+    title: Approximately, how many courses of antifungal treatment has the patient received?
+    description: >
+      Approximately, how many courses of antifungal treatment has the patient received?
+    range: AntifungalLifetime2Enum
+    required: false
+
+  ab_lifetime_freq_3:
+    title: Please choose the option
+    description: >
+      Please choose the option
+    range: AbLifetimeFreq3Enum
+    required: false
+
+  antifungal_life:
+    title: Please indicate what antifungals the patient has recieved in their life:
+    description: >
+      Please indicate what antifungals the patient has recieved in their life:
+    range: string
+    required: false
+
+  procedure_14:
+    title: Has the patient required any antimicrobial medications for prophylaxis in their lifetime? (antibioti
+    description: >
+      Has the patient required any antimicrobial medications for prophylaxis in their lifetime? (antibiotics, antifungals, antivirals)
+    range: Procedure14Enum
+    required: false
+
+  antimicrob_proph:
+    title: Has the patient taken any antimicrobial medication for prophylaxis?
+    description: >
+      Has the patient taken any antimicrobial medication for prophylaxis? Include antibacterials, antifungals and antivirals.
+    range: AntimicrobProphEnum
+    required: false
+
+  indicate_antimicrobials_2:
+    title: Please indicate what antimicrobials the patient has received (antibiotics, antivirals, antibacterial
+    description: >
+      Please indicate what antimicrobials the patient has received (antibiotics, antivirals, antibacterial, anti-fungals) for prophylaxis:
+    range: string
+    required: false
+
+  ae_antiinfect:
+    title: Did the patient experience any adverse reactions to antimicrobial medications?
+    description: >
+      Did the patient experience any adverse reactions to antimicrobial medications?
+    range: AeAntiinfectEnum
+    required: false
+
+  type_reaction_antiinfect:
+    title: What type of reaction was observed?
+    description: >
+      What type of reaction was observed?
+    range: TypeReactionAntiinfectEnum
+    required: false
+
+  other_antimicrob_effects:
+    title: Other
+    description: >
+      Other
+    range: OtherAntimicrobEffectsEnum
+    required: false
+
+  other_reaction_antiinf:
+    title: Please, specify
+    description: >
+      Please, specify
+    range: string
+    required: false
+
+enums:
+    AbLifetimeEnum:
+      description: >
+        Enumeration for How many courses of antibacterials has the patient received?
+      permissible_values:
+        "1":
+          description: 0
+        "2":
+          description: 1
+        "3":
+          description: 2
+        "4":
+          description: 3
+        "5":
+          description: 4
+        "6":
+          description: 5
+        "7":
+          description: 6
+
+    AbLifetimeFreq2Enum:
+      description: >
+        Enumeration for Please choose the option
+      permissible_values:
+        "1":
+          description: per year, on average
+        "2":
+          description: per month, on average
+        "3":
+          description: total in their lifetime
+        "4":
+          description: don't know
+
+    AbLifetimeFreq3Enum:
+      description: >
+        Enumeration for Please choose the option
+      permissible_values:
+        "1":
+          description: per year, on average
+        "2":
+          description: per month, on average
+        "3":
+          description: total in their lifetime
+        "4":
+          description: don't know
+
+    AbLifetimeFreqEnum:
+      description: >
+        Enumeration for Please choose the option
+      permissible_values:
+        "1":
+          description: per year, on average
+        "2":
+          description: per month, on average
+        "3":
+          description: total in their lifetime
+        "4":
+          description: don't know
+
+    AeAntiinfectEnum:
+      description: >
+        Enumeration for Did the patient experience any adverse reactions to antimicrobial medications?
+      permissible_values:
+        "1":
+          description: Yes
+        "0":
+          description: No
+
+    AntifungalLifetime2Enum:
+      description: >
+        Enumeration for Approximately, how many courses of antifungal treatment has the patient received
+      permissible_values:
+        "1":
+          description: 0
+        "2":
+          description: 1
+        "3":
+          description: 2
+        "4":
+          description: 3
+        "5":
+          description: 4
+        "6":
+          description: 5
+        "7":
+          description: 6
+
+    AntimicrobProphEnum:
+      description: >
+        Enumeration for Has the patient taken any antimicrobial medication for prophylaxis?
+      permissible_values:
+        "1":
+          description: Prophylaxis for recurrent bacterial infections
+        "2":
+          description: Pneumocystis jirovecii pneumonia (PJP) prophylaxis
+        "3":
+          description: Prophylaxis for recurrent fungal infections
+        "4":
+          description: Prophylaxis for recurrent viral infections (CMV, HSV)
+        "5":
+          description: Don't know
+
+    AntiviralLifetimeEnum:
+      description: >
+        Enumeration for Approximately, how many courses of antiviral treatment has the patient received?
+      permissible_values:
+        "1":
+          description: 0
+        "2":
+          description: 1
+        "3":
+          description: 2
+        "4":
+          description: 3
+        "5":
+          description: 4
+        "6":
+          description: 5
+        "7":
+          description: 6
+
+    OtherAntimicrobEffectsEnum:
+      description: >
+        Enumeration for Other
+      permissible_values:
+        "1":
+          description: C.difficile
+        "2":
+          description: Rash
+        "3":
+          description: Steven Johnson syndrome/toxic epidermal necrolysis
+        "4":
+          description: please specify {other_reaction_antiinf}
+
+    Procedure14Enum:
+      description: >
+        Enumeration for Has the patient required any antimicrobial medications for prophylaxis in their 
+      permissible_values:
+        ncit_c94242:
+          description: Yes
+          meaning: NCIT:c94242
+        "0":
+          description: No
+        "2":
+          description: Unknown
+
+    Procedure9Enum:
+      description: >
+        Enumeration for Has the patient required any antimicrobial medications in their lifetime? (antib
+      permissible_values:
+        ncit_c94242:
+          description: Yes
+          meaning: NCIT:c94242
+        "0":
+          description: No
+        "2":
+          description: Unknown
+
+    TypeReactionAntiinfectEnum:
+      description: >
+        Enumeration for What type of reaction was observed?
+      permissible_values:
+        "1":
+          description: Allergic reaction (anaphylaxis, hives, oedema)
+        "2":
+          description: GI symptoms (nausea, vomiting,diarrhea)
+        "3":
+          description: Cardiovascular symptoms
+        "99":
+          description: Other - Please specify

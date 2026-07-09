@@ -1,0 +1,1586 @@
+id: https://github.com/BIH-CEI/cieinr/src/cieinr/datamodel/linkml_schemas/17_complement_function.yaml
+name: 17_complement_function
+description: >
+  Complement function form capturing evaluation timing and results for CH50, CH100, C1q, C2, C3, C4, MBL, Ficolin-3, MASPs, AH50, complement factors (B, D, H, I), properdin, and complement components C5-C9 functional and antigen tests.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cieinr: https://github.com/BIH-CEI/cieinr
+  LOINC: http://loinc.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+imports:
+  - linkml:types
+  - cieinr_types
+  - cieinr_code_systems
+default_range: string
+default_prefix: cieinr
+
+classes:
+  ComplementFunction:
+    description: >
+      Complement function form capturing evaluation timing and results for CH50, CH100, C1q, C2, C3, C4, MBL, Ficolin-3, MASPs, AH50, complement factors (B, D, H, I), properdin, and complement components C5-C9 functional and antigen tests.
+    slots:
+      - completion_date_complement
+      - complement_time
+      - ch50
+      - ch50month
+      - ch50year
+      - ch50_int
+      - ch50_val
+      - ch50_unit
+      - ch100
+      - ch100month
+      - ch100year
+      - ch100_int
+      - ch100_val
+      - ch100_unit
+      - complement_c1q
+      - c1qmonth
+      - c1qyear
+      - complement_c1q_int
+      - complement_c1q_val
+      - complement_c1q_unit
+      - complement_c2
+      - c2month
+      - c2year
+      - complement_c2_int
+      - complement_c2_val
+      - complement_c2_unit
+      - complement_c3
+      - c3month
+      - c3year
+      - complement_c3_int
+      - complement_c3_val
+      - complement_c3_unit
+      - complement_c4
+      - c4month
+      - c4year
+      - complement_c4_int
+      - complement_c4_val
+      - complement_c4_unit
+      - mannose_bind_lectin
+      - mblmonth
+      - mblyear
+      - mannose_bind_lectin_int
+      - mannose_bind_lectin_val
+      - mannose_bind_lectin_unit
+      - ficolin_3
+      - ficolin3month
+      - ficolin3year
+      - ficolin_3_int
+      - ficolin_3_val
+      - ficolin_3_unit
+      - masps
+      - maspsmonth
+      - maspsyear
+      - masps_descr
+      - masps_int
+      - masps_val
+      - masps_unit
+      - mann_bind_lectin_sp2
+      - mblserinemonth
+      - mblserineyear
+      - mann_bind_lectin_sp2_int
+      - mann_bind_lectin_sp2_val
+      - mann_bind_lectin_sp2_unit
+      - ah50
+      - ah50month
+      - ah50year
+      - ah50_int
+      - ah50_val
+      - ah50_unit
+      - complement_factor_d
+      - factordmonth
+      - factordyear
+      - complement_factor_d_int
+      - complement_factor_d_val
+      - complement_factor_d_unit
+      - complement_factor_b
+      - factorbmonth
+      - factorbyear
+      - complement_factor_b_int
+      - complement_factor_b_val
+      - complement_factor_b_unit
+      - properdin
+      - properdinmonth
+      - properdinyear
+      - properdin_int
+      - properdin_val
+      - properdin_unit
+      - complement_factor_h
+      - factorhmonth
+      - factorhyear
+      - complement_factor_h_int
+      - complement_factor_h_val
+      - complement_factor_h_unit
+      - complement_factor_i
+      - factorimonth
+      - factoriyear
+      - complement_factor_i_int
+      - complement_factor_i_val
+      - complement_factor_i_unit
+      - complement_c5_func
+      - c5funcmonth
+      - c5funcyear
+      - complement_c5_func_int
+      - complement_c5_func_val
+      - complement_c5_func_unit
+      - c5_antigen
+      - c5antimonth
+      - c5antiyear
+      - c5_antigen_int
+      - c5_antigen_val
+      - c5_antigen_unit
+      - complement_c6_func
+      - c6funcmonth
+      - c6funcyear
+      - complement_c6_func_int
+      - complement_c6_func_val
+      - complement_c6_func_unit
+      - c6_antigen
+      - c6antimonth
+      - c6antiyear
+      - c6_antigen_int
+      - c6_antigen_val
+      - c6_antigen_unit
+      - complement_c7_func
+      - c7funcmonth
+      - c7funcyear
+      - complement_c7_func_int
+      - complement_c7_func_val
+      - complement_c7_func_unit
+      - c7_antigen
+      - c7antimonth
+      - c7antiyear
+      - c7_antigen_int
+      - c7_antigen_val
+      - c7_antigen_unit
+      - complement_c8_func
+      - c8funcmonth
+      - c8funcyear
+      - complement_c8_func_int
+      - complement_c8_func_val
+      - complement_c8_func_unit
+      - c8_antigen
+      - c8antimonth
+      - c8antiyear
+      - c8_antigen_int
+      - c8_antigen_val
+      - c8_antigen_unit
+      - complement_c9_func
+      - c9funcmonth
+      - c9funcyear
+      - complement_c9_func_int
+      - complement_c9_func_val
+      - complement_c9_func_unit
+      - c9_antigen
+      - c9antimonth
+      - c9antiyear
+      - c9_antigen_int
+      - c9_antigen_val
+      - c9_antigen_unit
+      - compliment_pdf
+
+slots:
+  completion_date_complement:
+    title: Date of completing this form.
+    description: >
+      Date of completing this form.
+    range: union_date_string
+    required: false
+
+  complement_time:
+    title: Please provide the following information at EACH designated time point in the dropdown list. Select 
+    description: >
+      Please provide the following information at EACH designated time point in the dropdown list. Select the appropriate box for the information you are providing:
+    range: TestTimingEnum
+    required: false
+
+  ch50:
+    title: Complement Total (CH50) Test
+    description: >
+      Complement Total (CH50) Test
+    range: Ch50Enum
+    required: false
+
+  ch50month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  ch50year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  ch50_int:
+    title: CH50 level
+    description: >
+      CH50 level
+    range: LabInterpretationEnum
+    required: false
+
+  ch50_val:
+    title: CH50 value
+    description: >
+      CH50 value
+    range: decimal
+    required: false
+
+  ch50_unit:
+    title: CH50 value unit
+    description: >
+      CH50 value unit
+    range: string
+    required: false
+
+  ch100:
+    title: CH100 Test
+    description: >
+      CH100 Test
+    range: Ch100Enum
+    required: false
+
+  ch100month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  ch100year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  ch100_int:
+    title: CH100 level
+    description: >
+      CH100 level
+    range: LabInterpretationEnum
+    required: false
+
+  ch100_val:
+    title: CH100 value
+    description: >
+      CH100 value
+    range: decimal
+    required: false
+
+  ch100_unit:
+    title: CH100 value unit
+    description: >
+      CH100 value unit
+    range: string
+    required: false
+
+  complement_c1q:
+    title: C1q Test
+    description: >
+      C1q Test
+    range: ComplementC1qEnum
+    required: false
+
+  c1qmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c1qyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c1q_int:
+    title: C1q level
+    description: >
+      C1q level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c1q_val:
+    title: C1q value
+    description: >
+      C1q value
+    range: decimal
+    required: false
+
+  complement_c1q_unit:
+    title: C1q value unit
+    description: >
+      C1q value unit
+    range: string
+    required: false
+
+  complement_c2:
+    title: C2 Test
+    description: >
+      C2 Test
+    range: ComplementC2Enum
+    required: false
+
+  c2month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c2year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c2_int:
+    title: C2 level
+    description: >
+      C2 level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c2_val:
+    title: C2 value
+    description: >
+      C2 value
+    range: decimal
+    required: false
+
+  complement_c2_unit:
+    title: C2 value unit
+    description: >
+      C2 value unit
+    range: string
+    required: false
+
+  complement_c3:
+    title: C3 Test
+    description: >
+      C3 Test
+    range: ComplementC3Enum
+    required: false
+
+  c3month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c3year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c3_int:
+    title: C3 level
+    description: >
+      C3 level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c3_val:
+    title: C3 value
+    description: >
+      C3 value
+    range: decimal
+    required: false
+
+  complement_c3_unit:
+    title: C3 value unit
+    description: >
+      C3 value unit
+    range: string
+    required: false
+
+  complement_c4:
+    title: C4  Test
+    description: >
+      C4  Test
+    range: ComplementC4Enum
+    required: false
+
+  c4month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c4year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c4_int:
+    title: C4 level
+    description: >
+      C4 level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c4_val:
+    title: C4 value
+    description: >
+      C4 value
+    range: decimal
+    required: false
+
+  complement_c4_unit:
+    title: C4 value unit
+    description: >
+      C4 value unit
+    range: string
+    required: false
+
+  mannose_bind_lectin:
+    title: Mannose-Binding Lectin (MBL) Test
+    description: >
+      Mannose-Binding Lectin (MBL) Test
+    range: MannoseBindLectinEnum
+    required: false
+
+  mblmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  mblyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  mannose_bind_lectin_int:
+    title: MBL level
+    description: >
+      MBL level
+    range: LabInterpretationEnum
+    required: false
+
+  mannose_bind_lectin_val:
+    title: MBL value
+    description: >
+      MBL value
+    range: decimal
+    required: false
+
+  mannose_bind_lectin_unit:
+    title: MBL value unit
+    description: >
+      MBL value unit
+    range: string
+    required: false
+
+  ficolin_3:
+    title: Ficolin-3 Measurement
+    description: >
+      Ficolin-3 Measurement
+    range: Ficolin3Enum
+    required: false
+
+  ficolin3month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  ficolin3year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  ficolin_3_int:
+    title: Ficolin-3 level
+    description: >
+      Ficolin-3 level
+    range: LabInterpretationEnum
+    required: false
+
+  ficolin_3_val:
+    title: Ficolin-3 value
+    description: >
+      Ficolin-3 value
+    range: decimal
+    required: false
+
+  ficolin_3_unit:
+    title: Ficolin-3 value unit
+    description: >
+      Ficolin-3 value unit
+    range: string
+    required: false
+
+  masps:
+    title: Lectin Complement Pathway Serine Proteases (MASPs) 1-3 Tests
+    description: >
+      Lectin Complement Pathway Serine Proteases (MASPs) 1-3 Tests
+    range: MaspsEnum
+    required: false
+
+  maspsmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  maspsyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  masps_descr:
+    title: Please describe which MASPs were measured
+    description: >
+      Please describe which MASPs were measured
+    range: string
+    required: false
+
+  masps_int:
+    title: MASPs 1-3 level
+    description: >
+      MASPs 1-3 level
+    range: LabInterpretationEnum
+    required: false
+
+  masps_val:
+    title: MASPs 1-3 Value
+    description: >
+      MASPs 1-3 Value
+    range: decimal
+    required: false
+
+  masps_unit:
+    title: MASPs 1-3 Value Unit
+    description: >
+      MASPs 1-3 Value Unit
+    range: string
+    required: false
+
+  mann_bind_lectin_sp2:
+    title: MBL Serine Protease 2 Test
+    description: >
+      MBL Serine Protease 2 Test
+    range: MannBindLectinSp2Enum
+    required: false
+
+  mblserinemonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  mblserineyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  mann_bind_lectin_sp2_int:
+    title: MBL Serine Protease 2 level
+    description: >
+      MBL Serine Protease 2 level
+    range: LabInterpretationEnum
+    required: false
+
+  mann_bind_lectin_sp2_val:
+    title: MBL Serine Protease 2 value
+    description: >
+      MBL Serine Protease 2 value
+    range: decimal
+    required: false
+
+  mann_bind_lectin_sp2_unit:
+    title: MBL Serine Protease 2 value unit
+    description: >
+      MBL Serine Protease 2 value unit
+    range: string
+    required: false
+
+  ah50:
+    title: Alternative Complement pathway (AH50) Test
+    description: >
+      Alternative Complement pathway (AH50) Test
+    range: Ah50Enum
+    required: false
+
+  ah50month:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  ah50year:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  ah50_int:
+    title: AH50 level
+    description: >
+      AH50 level
+    range: LabInterpretationEnum
+    required: false
+
+  ah50_val:
+    title: AH50 value
+    description: >
+      AH50 value
+    range: decimal
+    required: false
+
+  ah50_unit:
+    title: AH50 value unit
+    description: >
+      AH50 value unit
+    range: string
+    required: false
+
+  complement_factor_d:
+    title: Factor D Test
+    description: >
+      Factor D Test
+    range: ComplementFactorDEnum
+    required: false
+
+  factordmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  factordyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_factor_d_int:
+    title: Factor D level
+    description: >
+      Factor D level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_factor_d_val:
+    title: Factor D value
+    description: >
+      Factor D value
+    range: decimal
+    required: false
+
+  complement_factor_d_unit:
+    title: Factor D value unit
+    description: >
+      Factor D value unit
+    range: string
+    required: false
+
+  complement_factor_b:
+    title: Factor B
+    description: >
+      Factor B
+    range: ComplementFactorBEnum
+    required: false
+
+  factorbmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  factorbyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_factor_b_int:
+    title: Factor B level
+    description: >
+      Factor B level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_factor_b_val:
+    title: Factor B value
+    description: >
+      Factor B value
+    range: decimal
+    required: false
+
+  complement_factor_b_unit:
+    title: Factor B value unit
+    description: >
+      Factor B value unit
+    range: string
+    required: false
+
+  properdin:
+    title: Properdin Test
+    description: >
+      Properdin Test
+    range: ProperdinEnum
+    required: false
+
+  properdinmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  properdinyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  properdin_int:
+    title: Properdin level
+    description: >
+      Properdin level
+    range: LabInterpretationEnum
+    required: false
+
+  properdin_val:
+    title: Properdin value
+    description: >
+      Properdin value
+    range: decimal
+    required: false
+
+  properdin_unit:
+    title: Properdin value unit
+    description: >
+      Properdin value unit
+    range: string
+    required: false
+
+  complement_factor_h:
+    title: Factor H Test
+    description: >
+      Factor H Test
+    range: ComplementFactorHEnum
+    required: false
+
+  factorhmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  factorhyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_factor_h_int:
+    title: Factor H level
+    description: >
+      Factor H level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_factor_h_val:
+    title: Factor H value
+    description: >
+      Factor H value
+    range: decimal
+    required: false
+
+  complement_factor_h_unit:
+    title: Factor H value unit
+    description: >
+      Factor H value unit
+    range: string
+    required: false
+
+  complement_factor_i:
+    title: Factor I Test
+    description: >
+      Factor I Test
+    range: ComplementFactorIEnum
+    required: false
+
+  factorimonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  factoriyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_factor_i_int:
+    title: Factor I level
+    description: >
+      Factor I level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_factor_i_val:
+    title: Factor I value
+    description: >
+      Factor I value
+    range: decimal
+    required: false
+
+  complement_factor_i_unit:
+    title: I value unit
+    description: >
+      I value unit
+    range: string
+    required: false
+
+  complement_c5_func:
+    title: C5 Functional Test
+    description: >
+      C5 Functional Test
+    range: ComplementC5FuncEnum
+    required: false
+
+  c5funcmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c5funcyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c5_func_int:
+    title: C5 Functional level
+    description: >
+      C5 Functional level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c5_func_val:
+    title: C5 Functional Test value
+    description: >
+      C5 Functional Test value
+    range: decimal
+    required: false
+
+  complement_c5_func_unit:
+    title: C5 value unit
+    description: >
+      C5 value unit
+    range: string
+    required: false
+
+  c5_antigen:
+    title: C5 Antigen Test
+    description: >
+      C5 Antigen Test
+    range: C5AntigenEnum
+    required: false
+
+  c5antimonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c5antiyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  c5_antigen_int:
+    title: C5 Antigen level
+    description: >
+      C5 Antigen level
+    range: LabInterpretationEnum
+    required: false
+
+  c5_antigen_val:
+    title: C5 Antigen value
+    description: >
+      C5 Antigen value
+    range: decimal
+    required: false
+
+  c5_antigen_unit:
+    title: C5 Antigen value unit
+    description: >
+      C5 Antigen value unit
+    range: string
+    required: false
+
+  complement_c6_func:
+    title: C6 Functional Test
+    description: >
+      C6 Functional Test
+    range: ComplementC6FuncEnum
+    required: false
+
+  c6funcmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c6funcyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c6_func_int:
+    title: C6 Functional level
+    description: >
+      C6 Functional level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c6_func_val:
+    title: C6 Functional value
+    description: >
+      C6 Functional value
+    range: decimal
+    required: false
+
+  complement_c6_func_unit:
+    title: C6 Functional value unit
+    description: >
+      C6 Functional value unit
+    range: string
+    required: false
+
+  c6_antigen:
+    title: C6 Antigen Test
+    description: >
+      C6 Antigen Test
+    range: C6AntigenEnum
+    required: false
+
+  c6antimonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c6antiyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  c6_antigen_int:
+    title: C6 Antigen level
+    description: >
+      C6 Antigen level
+    range: LabInterpretationEnum
+    required: false
+
+  c6_antigen_val:
+    title: C6 Antigen value
+    description: >
+      C6 Antigen value
+    range: decimal
+    required: false
+
+  c6_antigen_unit:
+    title: C6 Antigen value unit
+    description: >
+      C6 Antigen value unit
+    range: string
+    required: false
+
+  complement_c7_func:
+    title: C7 Functional Test
+    description: >
+      C7 Functional Test
+    range: ComplementC7FuncEnum
+    required: false
+
+  c7funcmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c7funcyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c7_func_int:
+    title: C7 Functional level
+    description: >
+      C7 Functional level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c7_func_val:
+    title: C7 Functional value
+    description: >
+      C7 Functional value
+    range: decimal
+    required: false
+
+  complement_c7_func_unit:
+    title: C7 Functional value unit
+    description: >
+      C7 Functional value unit
+    range: string
+    required: false
+
+  c7_antigen:
+    title: C7 Antigen Test
+    description: >
+      C7 Antigen Test
+    range: C7AntigenEnum
+    required: false
+
+  c7antimonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c7antiyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  c7_antigen_int:
+    title: C7 Antigen level
+    description: >
+      C7 Antigen level
+    range: LabInterpretationEnum
+    required: false
+
+  c7_antigen_val:
+    title: C7 Antigen value
+    description: >
+      C7 Antigen value
+    range: decimal
+    required: false
+
+  c7_antigen_unit:
+    title: C7 Antigen value unit
+    description: >
+      C7 Antigen value unit
+    range: string
+    required: false
+
+  complement_c8_func:
+    title: C8 Functional Test
+    description: >
+      C8 Functional Test
+    range: ComplementC8FuncEnum
+    required: false
+
+  c8funcmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c8funcyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c8_func_int:
+    title: C8 Functional level
+    description: >
+      C8 Functional level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c8_func_val:
+    title: C8 Functional value
+    description: >
+      C8 Functional value
+    range: decimal
+    required: false
+
+  complement_c8_func_unit:
+    title: C8 Functional value unit
+    description: >
+      C8 Functional value unit
+    range: string
+    required: false
+
+  c8_antigen:
+    title: C8 Antigen Test
+    description: >
+      C8 Antigen Test
+    range: C8AntigenEnum
+    required: false
+
+  c8antimonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c8antiyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  c8_antigen_int:
+    title: C8 Antigen level
+    description: >
+      C8 Antigen level
+    range: LabInterpretationEnum
+    required: false
+
+  c8_antigen_val:
+    title: C8 Antigen value
+    description: >
+      C8 Antigen value
+    range: decimal
+    required: false
+
+  c8_antigen_unit:
+    title: C8 Antigen unit
+    description: >
+      C8 Antigen unit
+    range: string
+    required: false
+
+  complement_c9_func:
+    title: C9  Functional Test
+    description: >
+      C9  Functional Test
+    range: ComplementC9FuncEnum
+    required: false
+
+  c9funcmonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c9funcyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  complement_c9_func_int:
+    title: C9 Functional level
+    description: >
+      C9 Functional level
+    range: LabInterpretationEnum
+    required: false
+
+  complement_c9_func_val:
+    title: C9 Functional value
+    description: >
+      C9 Functional value
+    range: decimal
+    required: false
+
+  complement_c9_func_unit:
+    title: C9 Functional value unit
+    description: >
+      C9 Functional value unit
+    range: string
+    required: false
+
+  c9_antigen:
+    title: C9 Antigen Test
+    description: >
+      C9 Antigen Test
+    range: C9AntigenEnum
+    required: false
+
+  c9antimonth:
+    title: Month
+    description: >
+      Month
+    range: integer
+    required: false
+
+  c9antiyear:
+    title: Year
+    description: >
+      Year
+    range: integer
+    required: false
+
+  c9_antigen_int:
+    title: C9 Antigen level
+    description: >
+      C9 Antigen level
+    range: LabInterpretationEnum
+    required: false
+
+  c9_antigen_val:
+    title: C9 Antigen value
+    description: >
+      C9 Antigen value
+    range: decimal
+    required: false
+
+  c9_antigen_unit:
+    title: C9 Antigen value unit
+    description: >
+      C9 Antigen value unit
+    range: string
+    required: false
+
+  compliment_pdf:
+    title: Please upload the pdf(s) results.  REMOVE ALL IDENTIFYING PATIENT INFORMATION (NAME, MRN, ULI, DOB)
+    description: >
+      Please upload the pdf(s) results.  REMOVE ALL IDENTIFYING PATIENT INFORMATION (NAME, MRN, ULI, DOB)
+    range: string
+    required: false
+
+enums:
+    TestTimingEnum:
+      description: >
+        Enumeration for test timing
+      permissible_values:
+        ncit_c54734:
+          description: Before Treatment/ Baseline diagnosis
+          meaning: NCIT:C54734
+        ncit_c54735:
+          description: Post Treatment
+          meaning: NCIT:C54735
+        ncit_c25280:
+          description: Most recent test
+          meaning: NCIT:C25280
+
+    LabInterpretationEnum:
+      description: >
+        Enumeration for lab value interpretation relative to age-related reference range
+      permissible_values:
+        ncit_c78801:
+          description: Below age-related reference range
+          meaning: NCIT:C78801
+        ncit_c78800:
+          description: Within age-related reference range
+          meaning: NCIT:C78800
+        ncit_c78727:
+          description: Above age-related reference range
+          meaning: NCIT:C78727
+
+    Ah50Enum:
+      description: >
+        Enumeration for Alternative Complement pathway (AH50) Test
+      permissible_values:
+        loinc_74520_8:
+          description: Complement alternate pathway AH50 test done
+          meaning: LOINC:74520-8
+        not_done:
+          description: Complement alternate pathway AH50 test not done
+
+    C5AntigenEnum:
+      description: >
+        Enumeration for C5 Antigen Test
+      permissible_values:
+        c5_antigen:
+          description: C5 Antigen test done
+        not_done:
+          description: C5 Antigen test not done
+
+    C6AntigenEnum:
+      description: >
+        Enumeration for C6 Antigen Test
+      permissible_values:
+        c6_antigen:
+          description: C6 Antigen test done
+        not_done:
+          description: C6 Antigen test not done
+
+    C7AntigenEnum:
+      description: >
+        Enumeration for C7 Antigen Test
+      permissible_values:
+        c7_antigen:
+          description: C7 Antigen test done
+        not_done:
+          description: C7 Antigen test not done
+
+    C8AntigenEnum:
+      description: >
+        Enumeration for C8 Antigen Test
+      permissible_values:
+        c8_antigen:
+          description: C8 Antigen test done
+        not_done:
+          description: C8 Antigen test not done
+
+    C9AntigenEnum:
+      description: >
+        Enumeration for C9 Antigen Test
+      permissible_values:
+        c9_antigen:
+          description: C9 Antigen test done
+        not_done:
+          description: C9 Antigen test not done
+
+    Ch100Enum:
+      description: >
+        Enumeration for CH100 Test
+      permissible_values:
+        ncit_c147317:
+          description: CH100 test done
+          meaning: NCIT:c147317
+        not_done:
+          description: CH100 test not done
+
+    Ch50Enum:
+      description: >
+        Enumeration for Complement Total (CH50) Test
+      permissible_values:
+        ncit_c100423:
+          description: CH50 test done
+          meaning: NCIT:c100423
+        not_done:
+          description: CH50 test not done
+
+    ComplementC1qEnum:
+      description: >
+        Enumeration for C1q Test
+      permissible_values:
+        ncit_c186029:
+          description: C1q test done
+          meaning: NCIT:c186029
+        not_done:
+          description: C1q test not done
+
+    ComplementC2Enum:
+      description: >
+        Enumeration for C2 Test
+      permissible_values:
+        ncit_c202394:
+          description: C2 test done
+          meaning: NCIT:c202394
+        not_done:
+          description: C2 test not done
+
+    ComplementC3Enum:
+      description: >
+        Enumeration for C3 Test
+      permissible_values:
+        ncit_c80174:
+          description: C3 test done
+          meaning: NCIT:c80174
+        "1":
+          description: C3 test not done
+
+    ComplementC4Enum:
+      description: >
+        Enumeration for C4  Test
+      permissible_values:
+        ncit_c80177:
+          description: C4 test done
+          meaning: NCIT:c80177
+        "1":
+          description: C4 test not done
+
+    ComplementC5FuncEnum:
+      description: >
+        Enumeration for C5 Functional Test
+      permissible_values:
+        loinc_60472_8:
+          description: Complement C5 functional test done
+          meaning: LOINC:60472-8
+        "1":
+          description: Complement C5 functional test not done
+
+    ComplementC6FuncEnum:
+      description: >
+        Enumeration for C6 Functional Test
+      permissible_values:
+        loinc_60459_5:
+          description: Complement C6 functional test done
+          meaning: LOINC:60459-5
+        not_done:
+          description: Complement C6 functional test not done
+
+    ComplementC7FuncEnum:
+      description: >
+        Enumeration for C7 Functional Test
+      permissible_values:
+        loinc_87724_1:
+          description: Complement C7 functional test done
+          meaning: LOINC:87724-1
+        not_done:
+          description: Complement C7 functional test not done
+
+    ComplementC8FuncEnum:
+      description: >
+        Enumeration for C8 Functional Test
+      permissible_values:
+        loinc_50997_6:
+          description: Complement C8 functional test done
+          meaning: LOINC:50997-6
+        not_done:
+          description: Complement C8 functional test not done
+
+    ComplementC9FuncEnum:
+      description: >
+        Enumeration for C9  Functional Test
+      permissible_values:
+        loinc_87727_4:
+          description: Complement C9 functional test done
+          meaning: LOINC:87727-4
+        not_done:
+          description: Complement C9 functional test not done
+
+    ComplementFactorBEnum:
+      description: >
+        Enumeration for Factor B
+      permissible_values:
+        ncit_c178649:
+          description: Complement Factor B test done
+          meaning: NCIT:c178649
+        not_done:
+          description: Complement Factor B test not done
+
+    ComplementFactorDEnum:
+      description: >
+        Enumeration for Factor D Test
+      permissible_values:
+        ncit_c84326:
+          description: Complement Factor D test done
+          meaning: NCIT:c84326
+        not_done:
+          description: Complement Factor D test not done
+
+    ComplementFactorHEnum:
+      description: >
+        Enumeration for Factor H Test
+      permissible_values:
+        ncit_c97211:
+          description: Complement Factor H test done
+          meaning: NCIT:c97211
+        not_done:
+          description: Complement Factor H test not done
+
+    ComplementFactorIEnum:
+      description: >
+        Enumeration for Factor I Test
+      permissible_values:
+        ncit_c198614:
+          description: Complement Factor I test done
+          meaning: NCIT:c198614
+        not_done:
+          description: Complement Factor I test not done
+
+    Ficolin3Enum:
+      description: >
+        Enumeration for Ficolin-3 Measurement
+      permissible_values:
+        ncit_c201576:
+          description: Ficolin-3 test done
+          meaning: NCIT:c201576
+        "1":
+          description: Ficolin-3 test not done
+
+    MannBindLectinSp2Enum:
+      description: >
+        Enumeration for MBL Serine Protease 2 Test
+      permissible_values:
+        ncit_c181978:
+          description: MBL Serine Protease 2 test done
+          meaning: NCIT:c181978
+        not_done:
+          description: MBL Serine Protease 2 test not done
+
+    MannoseBindLectinEnum:
+      description: >
+        Enumeration for Mannose-Binding Lectin (MBL) Test
+      permissible_values:
+        ncit_c1151:
+          description: Mannose-Binding Lectin test done
+          meaning: NCIT:c1151
+        "1":
+          description: Mannose-Binding Lectin test not done
+
+    MaspsEnum:
+      description: >
+        Enumeration for Lectin Complement Pathway Serine Proteases (MASPs) 1-3 Tests
+      permissible_values:
+        ncit_c17123:
+          description: MASPs 1-3 test done
+          meaning: NCIT:c17123
+        "1":
+          description: MASPs 1-3 test not done
+
+    ProperdinEnum:
+      description: >
+        Enumeration for Properdin Test
+      permissible_values:
+        ncit_c118199:
+          description: Properdin test done
+          meaning: NCIT:c118199
+        not_done:
+          description: Properdin test not done
