@@ -178,3 +178,5 @@ cython_debug/
 output/
 submodules/rarelink
 submodules/rarelink
+.DS_Store
+refactor.md
